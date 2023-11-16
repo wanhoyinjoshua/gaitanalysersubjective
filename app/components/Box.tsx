@@ -23,7 +23,7 @@ const Box = (props:any) => {
     >
       <dt className="font-medium text-gray-900">Impairments</dt>
       {props.list.map((e:any)=>{
-        return <dd className="font-medium text-gray-900">{e}</dd>
+        return <dd key={e[0]}className="font-medium text-gray-900">{e}</dd>
       })}
      
     </div>

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Box from '../components/Box';
-const page = () => {
+const Page = () => {
 
     
     const total_observations=
@@ -219,4 +219,4 @@ function tryagain(){
   )
 }
 
-export default page
+export default Page

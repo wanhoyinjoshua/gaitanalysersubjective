@@ -125,7 +125,7 @@ export default function Home() {
     
     <div className="flex-1 p-4"> {paData&&
       paData.map((item)=>{
-        return <section className='flex'>
+        return <section key={item["prob"]}className='flex'>
           <div className='flex-1 p-4'>{item["P(A)"]}</div>
           <div className='flex-1 p-4'>
           {item["prob"]}
@@ -140,7 +140,7 @@ export default function Home() {
       
       {pbData&&
       pbData.map((item)=>{
-        return <section>
+        return <section key={item["P(B)"]}>
           <div>{item["P(B)"]}</div>
           <button  onClick={()=>{yes(item["P(B)"])}}>yes</button>
           <button  onClick={()=>{no(item["P(B)"])}}>no</button>
@@ -153,7 +153,7 @@ export default function Home() {
     <div class="flex-1 p-4">
     {calData&&
       calData.map((item)=>{
-        return <section className='flex'>
+        return <section key={item["prob"]}className='flex'>
           <div className='flex-1 p-4'>{item["P(A)"]}</div>
           <div className='flex-1 p-4'>
           {item["prob"]}
