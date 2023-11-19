@@ -142,12 +142,12 @@ console.log(props.list)
       {props.list['impairments'].map((e:any)=>{
         if(e.status==true){
           return (
-            <div>
+            <div key={e[0]}>
           <dd key={e[0]}className="font-medium text-gray-900"><strong>{e.impairment}</strong></dd>
           <div>Potential treatment ideas</div>
           {e.treatment.length==0?<div>There are no strageties for this impairment</div>:null}
           {e.treatment.map((e:any)=>{
-            return <div>{e.des}</div>
+            return <div key={e.des}>{e.des}</div>
           })}
           </div>
           
