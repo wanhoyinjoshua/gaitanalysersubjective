@@ -22,8 +22,16 @@ const Box = (props:any) => {
       className="grid grid-cols-1 gap-1 p-3 even:bg-gray-50 sm:grid-cols-1 sm:gap-4"
     >
       <dt className="font-medium text-gray-900">Impairments</dt>
-      {props.list.map((e:any)=>{
-        return <dd key={e[0]}className="font-medium text-gray-900">{e}</dd>
+      {props.list['impairments'].map((e:any)=>{
+        if(e.status==true){
+          return <dd key={e[0]}className="font-medium text-gray-900">{JSON.stringify(e.impairment)}</dd>
+
+
+        }else{
+          return <dd key={e[0]}className="font-medium text-red-500 line-through ">{JSON.stringify(e.impairment)}</dd>
+
+        }
+       
       })}
      
     </div>
