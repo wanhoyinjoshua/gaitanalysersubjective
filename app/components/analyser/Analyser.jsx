@@ -324,13 +324,16 @@ const Analyser = (props) => {
           </p>
         </div>
         <div className="ml-4 mt-4 flex-shrink-0">
-          <button
-            type="button"
-            onClick={getpotentialimpairments}
+          <a
+          href='/version'
+            
+            onClick={()=>{
+
+            }}
             className="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Analyse again
-          </button>
+          </a>
         </div>
       </div>
   
