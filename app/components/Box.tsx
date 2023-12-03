@@ -14,8 +14,8 @@ console.log(props.list)
     props.list['impairments'].map((e:any)=>{
       if(e.status==true){
         setNil(false)
-      for (let i = 0; i <= e.treatment.length-1; i++) {
-        if(e.treatment[i]&&e.treatment[i].strength!=0){
+      for (let i = 0; i <= e.treatmentideas.length-1; i++) {
+        if(e.treatmentideas[i]&&e.treatmentideas[i].strength!=0){
           console.log("shishi")
           setStrength((prev)=>{
             return prev+1
@@ -23,7 +23,7 @@ console.log(props.list)
 
 
         }
-        if(e.treatment[i]&&e.treatment[i].coordination==true){
+        if(e.treatmentideas[i]&&e.treatmentideas[i].coordination==true){
           console.log("shishi")
           setCoordination((prev)=>{
             return prev+1
@@ -32,7 +32,7 @@ console.log(props.list)
 
         }
 
-        if(e.treatment[i]&&e.treatment[i]['rom']==true){
+        if(e.treatmentideas[i]&&e.treatmentideas[i]['rom']==true){
           console.log("shishi")
           setROM((prev)=>{
             return prev+1
@@ -41,7 +41,7 @@ console.log(props.list)
 
         }
         
-        if(e.treatment[i]&&e.treatment[i].part==true){
+        if(e.treatmentideas[i]&&e.treatmentideas[i].part==true){
           console.log("shishi")
           setPart((prev)=>{
             return prev+1
@@ -49,7 +49,7 @@ console.log(props.list)
 
 
         }
-        if(e.treatment[i]&&e.treatment[i].whole==true){
+        if(e.treatmentideas[i]&&e.treatmentideas[i].whole==true){
           console.log("shishi")
           setWhole((prev)=>{
             return prev+1
@@ -80,7 +80,7 @@ console.log(props.list)
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-        {props.title}
+        {props.list["kinematic"]["label"]}
       </h3>
       
 <article
@@ -143,11 +143,11 @@ console.log(props.list)
         if(e.status==true){
           return (
             <div key={e[0]}>
-          <dd key={e[0]}className="font-medium text-gray-900"><strong>{e.impairment}</strong></dd>
+          <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
           <div>Potential treatment ideas</div>
-          {e.treatment.length==0?<div>There are no strageties for this impairment</div>:null}
-          {e.treatment.map((e:any)=>{
-            return <div key={e.des}>{e.des}</div>
+          {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
+          {e.treatmentideas.map((e:any)=>{
+            return <div key={e.label}>{e.label}</div>
           })}
           </div>
           
@@ -157,7 +157,7 @@ console.log(props.list)
 
         }else{
           return <dd key={e[0]}className="font-medium text-red-500 line-through ">
-            {e.impairment}</dd>
+            {e["key"]}</dd>
 
         }
        

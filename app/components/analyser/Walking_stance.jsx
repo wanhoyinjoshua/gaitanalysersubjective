@@ -372,7 +372,7 @@ const Walking_stance = () => {
         console.log(selected_observations)
         if(selected_observations&&impairment){
             setCurrentimpairment(Object.entries(impairment).map(([key, value]) => ({ key, ...value })))
-
+            console.log(currentimpairment)
         }
 
         if(testingphase && selected_observations&&impairment){
@@ -518,7 +518,7 @@ function yes(){
             }
         }
     
-    
+        //thats when you set the impairment 
         setImpairment([...newimpairment])
         return
     }
@@ -546,7 +546,7 @@ function yes(){
         console.log("finsh")
         
         setObservations(gg)
-        
+        //cherck this one first
         setImpairment(filterdict(dict,gg))
 
     }else{

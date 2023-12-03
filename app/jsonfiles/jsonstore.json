@@ -1,0 +1,348 @@
+{
+    "treatments": [
+      {
+        "label": "Stepping affected foot on/off block, Increase the need for dorsiflexion by bringing block closer to toes so toes catch if insufficient dorsiflexion",
+        "body": 0,
+        "level": 0,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 0
+      },
+      {
+        "label": "Stepping with affected foot behind intact (start with affected ankle in plantar flexion, stepping into heel strike)",
+        "body": 0,
+        "level": 1,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 1
+      },
+      {
+        "label": "Step with affected foot and place obstacles in front , the closer it is , the harder it will be",
+        "body": 0,
+        "level": 1,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 2
+      },
+      {
+        "label": "Walking emphasising walking with heel strike at initial contact.",
+        "body": 0,
+        "level": 2,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 3
+      },
+      {
+        "label": "Walking on a treadmill set at a slight incline to demand more DF",
+        "body": 0,
+        "level": 2,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 4
+      },
+      {
+        "label": "Walking over obstacles ",
+        "body": 0,
+        "level": 2,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 5
+      },
+      {
+        "label": "Walking over grass, carpet or other surfaces to increase DF",
+        "body": 0,
+        "level": 2,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 6
+      },
+      {
+        "label": "Stepping affected foot on/off block. Increase the need for hip flexion by bringing block closer to toes so foot will catch if insufficient hip flexion",
+        "body": 0,
+        "level": 0,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 7
+      },
+      {
+        "label": "stepping with affected foot behind intact (start with affected hip in hip extension, stepping into heel strike)",
+        "body": 0,
+        "level": 1,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 8
+      },
+      {
+        "label": "Walking emphasising walking with knees up to encoruage hip flexion",
+        "body": 0,
+        "level": 1,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 9
+      },
+      {
+        "label": "Hip flexion wth nonaffected leg standing on block with so that affected foot doesn’t touch the ground",
+        "body": 0,
+        "level": 2,
+        "strength": 0,
+        "coordination": true,
+        "part": false,
+        "whole": false,
+        "rom": false,
+        "value": 10
+      },
+      {
+        "label": "Swing phase, for slow walkers specifically train knee flexion at beginning of swing",
+        "body": 0,
+        "level": 0,
+        "strength": 0,
+        "coordination": true,
+        "part": true,
+        "whole": false,
+        "rom": false,
+        "value": 11
+      },
+      {
+        "label": "Ankle rom , sustained positioning , streching / AFO whilst mobilising.",
+        "body": 0,
+        "level": 0,
+        "strength": 0,
+        "coordination": false,
+        "part": true,
+        "whole": false,
+        "rom": true,
+        "value": 12
+      }
+    ],
+    "kinematic_deviations": [
+      {
+        "value": 0,
+        "label": "Decreased ankle dorsiflexion throughout swing"
+      },
+      {
+        "value": 1,
+        "label": "Decreased hip flexion in early swing"
+      },
+      {
+        "value": 2,
+        "label": "Decreased knee flexion in early and mid swing"
+      },
+      {
+        "value": 3,
+        "label": "Knee hyperextension at end of swing"
+      }
+    ],
+    "impairments": [
+      {
+        "impairment": "Decreased strength ankle dorsiflexors",
+        "kinematic_deviations": [
+          0
+        ],
+        "testing": "MMT ankle dorsiflexors sitting, knee in flexion",
+        "category": 0,
+        "treatment": [
+          0,
+          2,
+          4,
+          5,
+          6,
+          1,
+          3
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased ability to rapidly dorsiflex",
+        "kinematic_deviations": [
+          0
+        ],
+        "testing": "Test ability to dorsiflex rapidly and repetitively",
+        "category": 0,
+        "treatment": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased ability to maintain DF with knee extension",
+        "kinematic_deviations": [
+          0
+        ],
+        "testing": "Test ability to maintain DF whilst flexing and extending knee",
+        "category": 0,
+        "treatment": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased sensation in ankle ",
+        "kinematic_deviations": [],
+        "testing": "",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased passive ankle dorsiflexion",
+        "kinematic_deviations": [
+          0
+        ],
+        "testing": "Tardieu scale for ankle plantarflexors, rom testing ",
+        "category": 0,
+        "treatment": [
+          12
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased strength hip flexors",
+        "kinematic_deviations": [
+          1,
+          2
+        ],
+        "testing": "MMT – test iliopsoas, not quadriceps e.g. knee in flexion",
+        "category": 0,
+        "treatment": [
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased ability to rapidly flex hip",
+        "kinematic_deviations": [
+          1
+        ],
+        "testing": "Test ability to flex hip rapidly",
+        "category": 0,
+        "treatment": [
+          7,
+          8,
+          10
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased sensation in the hip",
+        "kinematic_deviations": [
+          1,
+          2
+        ],
+        "testing": "Tactile sensation tests Proprioception tests",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased strength hip flexors to rapidly flex hip",
+        "kinematic_deviations": [
+          1
+        ],
+        "testing": "MMT –note test iliopsoas, e.g. knee in flexion",
+        "category": 0,
+        "treatment": [
+          10,
+          9
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased strength in knee flexors in slow walker",
+        "kinematic_deviations": [
+          2
+        ],
+        "testing": "MMT -Knee flexors: supine, standing",
+        "category": 0,
+        "treatment": [
+          11
+        ],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased ability to rapidly flex hip and allow knee to flex freely",
+        "kinematic_deviations": [
+          2
+        ],
+        "testing": "Test ability to flex hip rapidly with knee flexion",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased eccentric strength hip extensors to decelerate hip flexion",
+        "kinematic_deviations": [
+          3
+        ],
+        "testing": "MMT –hip extensors eccentrically",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased eccentric strength in knee flexors to decelerate knee extension",
+        "kinematic_deviations": [
+          3
+        ],
+        "testing": "Knee flexors eccentrically: supine, standing",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      },
+      {
+        "impairment": "Decreased ability to decelerate hip flexion and decelerate knee prior to heel strike",
+        "kinematic_deviations": [
+          3
+        ],
+        "testing": "Test ability to control hip flex hip with knee extension",
+        "category": 0,
+        "treatment": [],
+        "body": 0
+      }
+    ]
+  }
