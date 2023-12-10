@@ -330,8 +330,10 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
 <div>
  
  {nil==true?<div>It appears no impairments can sufficiently explain this kinematic deviation, please focus on whole task activity as much as possible!</div>:<div></div>}
-{nil ==true?null: <div>
-   It appears that {strength>=coordination?"a strength based exercise program":"coordination based"}
+
+{nil ==true?null: categories["Strength"]["number"]==0&&categories["Coordination"]["number"]==0?<div>It appears that neither strength / coordination based exercise will target this impairment, please consider other subtle impairments, eg proprioception, sensation</div>:
+<div>
+   It appears that {categories["Strength"]["number"]>=categories["Coordination"]["number"]?"a strength based exercise program":"coordination based"}
    / {part>=whole?"part task":"whole task"} training
    will be most beneficial for this kinematic deviation.
    </div>}
