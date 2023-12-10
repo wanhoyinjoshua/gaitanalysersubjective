@@ -181,10 +181,7 @@ const Analyser = (props) => {
         })
         }
         console.log(hhh)
-        var newhhh= hhh.map((e)=>{
-          e
-
-        })
+        
 
         setTreatmentpdf([...hhh])
       
