@@ -1,9 +1,71 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useRef} from 'react';
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
+import axios from "axios"
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@react-pdf/renderer';
+
 
 import Box from '../Box'
+
+const styles = StyleSheet.create({
+  page: {
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
+  },
+  header: {
+    fontSize: 12,
+    marginBottom: 20,
+    textAlign: 'center',
+    color: 'grey',
+  },
+  image:{
+    height:"200",
+    width:"140"
+  },
+  table: { 
+    display: "table", 
+    width: "auto", 
+    borderStyle: "none", 
+    borderWidth: 0, 
+    borderRightWidth: 0, 
+    borderBottomWidth: 0 ,
+    
+  }, 
+  section:{marginBottom: 30,
+    fontSize: 14,
+    textAlign: 'justify',
+    fontFamily: 'Times-Roman'},
+
+  tableRow: { 
+    margin: "auto", 
+    flexDirection: "row" 
+  }, 
+  tableCol: { 
+    width: "45%", 
+    borderStyle: "solid", 
+    borderWidth: 1, 
+    borderLeftWidth: 0, 
+    borderTopWidth: 0 
+  }, 
+  tableCell: { 
+    margin: "auto", 
+    marginTop: 5, 
+    fontSize: 10 ,
+    height:"20%",
+  }
+  , pageNumber: {
+    position: 'absolute',
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    color: 'grey',
+  },
+});
+
 
 const Analyser = (props) => {
     const [kinematic_deviation,setKinematic]=useState([])
@@ -16,17 +78,292 @@ const Analyser = (props) => {
     const [testingphase,setTestingPhase]=useState(false)
     const [insightsphase,setInsightsPhase]=useState(false)
     const[finalist,setFinalist]=useState([])
+    const [muscletestingbutton,setMuscletestingbutton]=useState(false)
+    const [subgroup,setSubgroup]=useState()
+    const [skippedImpairments,setSkippedimpairments]=useState([])
+    const [treatmentpdf,setTreatmentpdf]= useState([])
     //ankle =0
     //genere = 0 is strength 1 is coordination, 2 is part task , 3 is whole task 
+    const MyDoc = () => (
+      <Document>
+        <Page size="A4" style={styles.page}>
+        <Text style={styles.header} fixed>
+        ~ exercises selected from www.physiotherapyexercises.com ~
+      </Text>
 
+        <View > 
+       
+        {treatmentpdf.map(e=>(<View style={styles.section}> 
+              <View>
+
+                <Text>{JSON.stringify(e["deviation_pdf"])}</Text>
+                <View style={styles.table}>
+                {e.treatment_pdf.map(e=>(
+
+                  <View style={styles.tableRow}>
+                    <View style={styles.tableCol}> 
+                <Image style={styles.image} src={`/assets/Ex${e["img_id"]}.jpeg`}></Image> 
+              </View> 
+              <View style={styles.tableCol}> 
+                
+                <Text style={styles.tableCell}>{JSON.stringify(e.label)}</Text> 
+              </View> 
+                  </View>
+
+
+                ))}
+                </View>
+              
+
+
+              </View>
+         
+              
+            
+               </View>))}
+      </View>
+         
+         
+          
+      <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+        `${pageNumber} / ${totalPages}`
+      )} fixed />
+            
+          
+          
+        </Page>
+      </Document>
+    );
+    const handleConvert = async () => {
+      
+      try {
+        const response = await axios.get("/api/word");
+        console.log(response.data.message)
+        return response.data.message
+      } catch (error) {
+        console.error('Error converting WebP image:', error);
+        alert('Error converting WebP image. Check console for details.');
+      }
+    };
     useEffect(()=>{
         setKinematic(props.json["kinematic_deviations"])
         setImpairmentlist(props.json["impairments"])
         setTreatmentlist(props.json["treatments"])
+        
+        var hhh=[]
+        console.log(finalist)
+        {finalist&& finalist.forEach((e)=>{
+          var treatment_pdf={"deviation_pdf":e["kinematic"]["label"],"treatment_pdf":[]}
+         
+            
+          e['impairments'].map(async (e)=>{
+            if(e.status==true){
+              
+            for (let i = 0; i <= e.treatmentideas.length-1; i++) {
+              console.log("hi")
+              
+              treatment_pdf["treatment_pdf"].push(e.treatmentideas[i])
+              
+             
+            
+              
+          
+            }
+          }
+           
+      
+      
+          })
+          hhh.push(treatment_pdf)
+
+          
+          
+        })
+        }
+        console.log(hhh)
+        var newhhh= hhh.map((e)=>{
+          e
+
+        })
+
+        setTreatmentpdf([...hhh])
+      
+        
+        console.log('page is relaoding')
+        if(selectedimpairment&&selectedimpairment[impairmentcount]&&selectedimpairment[impairmentcount]["class"]&&selectedimpairment[impairmentcount]["class"].includes("str")){
+          //then display
+          
+          console.log("hihih")
+          setMuscletestingbutton(true)
+
+
+        }
+        else{
+          setMuscletestingbutton(false)
+
+        }
 
        
 
-    },[props])
+    },[props,impairmentcount,selectedimpairment,,finalist])
+    function addpdf(event){
+      console.log("hihsihsihsihsihishyeehahahahahh")
+      if(treatmentpdf.length==1){
+
+      }
+      else{
+        setTreatmentpdf((prevArray) => 
+        [...prevArray, event]
+      
+      );
+        
+      }
+     
+    }
+    function isGroup1(){
+      //need to delete the all coor impairments from the impairment count onwards
+      //and then from the current impairment dig into the treatment and set all difficulty to beginner  
+      var newlist=[...selectedimpairment]
+      var skipped=[...skippedImpairments]
+      newlist[impairmentcount]["status"]=true
+      console.log(newlist)
+     
+      
+      for (let i = impairmentcount+1; i < newlist.length; i++) {
+        if(newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])){
+
+          //then set as false
+          skipped.push(newlist[i])
+          newlist.splice(i,1)
+          
+        }
+        
+      }
+      setSkippedimpairments([...skipped])
+
+      //loop through the treatment stage:
+      for(let i = 0; i < newlist[impairmentcount]["treatment"].length; i++){
+        var treatmenttagret=treatmentlist[newlist[impairmentcount]["treatment"][i]]
+        if(treatmenttagret["level"]==0 && treatmenttagret["strength"]!=0){
+          //now delete the treatment?
+          
+
+
+        }else{
+          newlist[impairmentcount]["treatment"].splice(i,1)
+
+        }
+
+      }
+
+      setSelectedImpairment([...newlist])
+
+    }
+
+    function isGroup2(){
+      //need to delete the
+      var newlist=[...selectedimpairment]
+      var skipped=[...skippedImpairments]
+      newlist[impairmentcount]["status"]=true
+     
+      
+      for (let i = impairmentcount+1; i < newlist.length; i++) {
+        if(newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])){
+
+          //then set as false
+          skipped.push(newlist[i])
+          newlist.splice(i,1)
+        }
+        
+      }
+
+      //loop through the treatment stage:
+      for(let i = 0; i < newlist[impairmentcount]["treatment"].length; i++){
+        var treatmenttagret=treatmentlist[newlist[impairmentcount]["treatment"][i]]
+        if(treatmenttagret["level"]==1 && treatmenttagret["strength"]!=0 ){
+          //now delete the treatment?
+          
+
+
+        }else{
+          newlist[impairmentcount]["treatment"].splice(i,1)
+
+        }
+        
+
+      }
+
+      setSelectedImpairment([...newlist]) 
+
+    }
+
+    function isGroup3(){
+      var newlist=[...selectedimpairment]
+      var skipped=[...skippedImpairments]
+      newlist[impairmentcount]["status"]=true
+     
+     
+      
+      
+
+      //loop through the treatment stage:
+      for(let i = 0; i < newlist[impairmentcount]["treatment"].length; i++){
+        var treatmenttagret=treatmentlist[newlist[impairmentcount]["treatment"][i]]
+        if(treatmenttagret["level"]==2 && treatmenttagret["strength"]!=0){
+          //now delete the treatment?
+          
+
+
+        }else{
+          newlist[impairmentcount]["treatment"].splice(i,1)
+
+        }
+        
+
+      }
+
+      setSelectedImpairment([...newlist]) 
+
+    }
+
+    function isGroup4(){
+      var newlist=[...selectedimpairment]
+      var skipped=[...skippedImpairments]
+      newlist[impairmentcount]["status"]=true
+     
+      skipped.push(newlist[impairmentcount])
+      newlist.splice(impairmentcount,1)
+      /*
+      for (let i = impairmentcount+1; i < newlist.length; i++) {
+        if(newlist[i]["class"]=="str"&&newlist[i]["physio_movement"][0]==newlist[impairmentcount]["physio_movement"][0]){
+
+          //then set as false
+          newlist[i]["status"]=false
+        }
+        
+      }
+      */
+
+      //loop through the treatment stage:
+
+      /*
+      for(let i = 0; i < newlist[impairmentcount]["treatment"].length; i++){
+        var treatmenttagret=treatmentlist[newlist[impairmentcount]["treatment"][i]]
+        if(treatmenttagret["strength"]!=0){
+          //now delete the treatment?
+          newlist[impairmentcount]["treatment"].splice(i,1)
+          
+
+
+        }
+        
+
+      }
+      */
+
+      setSelectedImpairment([...newlist]) 
+
+    }
 
  
 
@@ -39,12 +376,21 @@ const Analyser = (props) => {
                 const filteredValues = values.filter(value => selected_observations.includes(value));
         
                 if (filteredValues.length > 0) {
-                    selectedimpairment.push({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"]})
+                  if(element["class"].includes("str")){
+                    selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"]})
+
+                  }else{
+                    selectedimpairment.push({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"]})
+
+                  }
+                    
                 }
             }
         }
         
         );
+        //arrange impairments here
+
 
         setSelectedImpairment([...selectedimpairment])
         console.log([...selectedimpairment])
@@ -68,7 +414,8 @@ const Analyser = (props) => {
             //element is the index of the original observation list 
             var finalised_kinematic_deviation={"kinematic":kinematic_deviation[element]}
             var identifiedimpairments=[]
-            selectedimpairment.forEach((impairment)=>{
+            var newselectedimpairment= selectedimpairment.concat(skippedImpairments)
+            newselectedimpairment.forEach((impairment)=>{
                 if(impairment["kinematic_deviations"].includes(element)){
                     console.log(impairment["treatment"])
                     var treatmentideas=[]
@@ -79,14 +426,27 @@ const Analyser = (props) => {
 
                     })
                     impairment["treatmentideas"]=treatmentideas
+
                     //impairment["treatment"]=impairment["treatment"].map((e)=>{return treatmentlist[e]})
-                    identifiedimpairments.push(impairment)
+                    
+                    if(impairment["status"]==true){
+                      identifiedimpairments.unshift(impairment,1)
+
+                    }
+                    
+                    else{
+                      identifiedimpairments.push(impairment)
+
+                    }
+                    
 
 
 
                 }
 
             })
+
+            
             finalised_kinematic_deviation["impairments"]=identifiedimpairments
             
             finallist.push(finalised_kinematic_deviation)
@@ -107,6 +467,7 @@ const Analyser = (props) => {
 
   return (
     <div>
+      
          {observation_phase&&
         <div className="-space-y-px rounded-md bg-white px-5">
 
@@ -247,46 +608,142 @@ const Analyser = (props) => {
                         </div>
                         </div>
                         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                        <button className="inline-flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onClick={()=>{
-                if(impairmentcount+1==selectedimpairment.length){
-                    //return
-                    //convert selectedimpairment to a list of kinematic deviations with imapirments
-                    console.log("hi")
-                    setTestingPhase(false)
-                    console.log(getfinalist())
-                    setInsightsPhase(true)
-                    setFinalist([...getfinalist()])
+                        {muscletestingbutton==false&&
+                         <section>
+                         <button className="inline-flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                     console.log("hi")
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 var newlist=[...selectedimpairment]
+                 newlist[impairmentcount]["status"]=true
+                 console.log(newlist)
+                 setSelectedImpairment([...newlist])
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+                 
+ 
+             }}>Yes</button>
+               <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                     console.log("hi")
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+ 
+             }}>No</button>
+ 
+                         </section>
+                        
+                        
+                        }
 
-                    
-                    return
-                }
-                var newlist=[...selectedimpairment]
-                newlist[impairmentcount]["status"]=true
-                console.log(newlist)
-                setSelectedImpairment([...newlist])
-                Setimpairmentcount((prev)=>{
-                    return prev+1
-                })
+                        {muscletestingbutton&&
+                        <section className='flex flex-col'>
+                          <button className="inline-flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                     console.log("hi")
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 isGroup1()
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+                 
+ 
+             }}>Paralysed-MMT 0</button>
+               <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                     console.log("hi")
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 isGroup2()
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+ 
+             }}>Very weak-MMT 1-2</button>
 
-            }}>Yes</button>
-              <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
-                if(impairmentcount+1==selectedimpairment.length){
-                    //return
-                    //convert selectedimpairment to a list of kinematic deviations with imapirments
-                    console.log("hi")
-                    setTestingPhase(false)
-                    console.log(getfinalist())
-                    setInsightsPhase(true)
-                    setFinalist([...getfinalist()])
+<button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                     console.log("hi")
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 isGroup3()
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+ 
+             }}>Weak-MMT 3-4</button>
 
-                    
-                    return
-                }
-                Setimpairmentcount((prev)=>{
-                    return prev+1
-                })
-
-            }}>No</button>
+<button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                 if(impairmentcount+1==selectedimpairment.length){
+                     //return
+                     //convert selectedimpairment to a list of kinematic deviations with imapirments
+                   
+                     setTestingPhase(false)
+                     console.log(getfinalist())
+                     setInsightsPhase(true)
+                     setFinalist([...getfinalist()])
+ 
+                     
+                     return
+                 }
+                 isGroup4()
+                 
+                 Setimpairmentcount((prev)=>{
+                     return prev+1
+                 })
+ 
+             }}>Strong-MMT 5</button>
+                        </section>
+                        
+                        }
+                       
+                       
                         
                         
                         </div>
@@ -334,6 +791,10 @@ const Analyser = (props) => {
           >
             Analyse again
           </a>
+          <PDFDownloadLink document={<MyDoc  />} fileName="somename.pdf">
+      {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+     
+    </PDFDownloadLink>
         </div>
       </div>
   
@@ -343,7 +804,7 @@ const Analyser = (props) => {
                 <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
       
     </div>
-                <Box list={insight}></Box>
+                <Box list={insight} setter={addpdf} current={addpdf}></Box>
 
                 </div>
         })}

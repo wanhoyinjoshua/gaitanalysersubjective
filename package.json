@@ -12,10 +12,15 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.2.1",
     "@headlessui/react": "^1.7.17",
+    "@react-pdf/renderer": "^3.1.14",
+    "axios": "^1.6.2",
+    "base64-img": "^1.0.4",
     "next": "^14.0.3",
+    "officegen": "^0.6.5",
     "papaparse": "^5.4.1",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.33.0",
     "webpack": "^5.89.0"
   },
   "devDependencies": {
