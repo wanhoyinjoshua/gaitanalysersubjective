@@ -94,13 +94,13 @@ const Analyser = (props) => {
         <View > 
        
         {treatmentpdf.map(e=>(<View style={styles.section}> 
-              <View>
+              <View key={e["deviation_pdf"]}>
 
                 <Text>{JSON.stringify(e["deviation_pdf"])}</Text>
                 <View style={styles.table}>
                 {e.treatment_pdf.map(e=>(
 
-                  <View style={styles.tableRow}>
+                  <View key={JSON.stringify(e)}style={styles.tableRow}>
                     <View style={styles.tableCol}> 
                 <Image style={styles.image} src={`/assets/Ex${e["img_id"]}.jpeg`}></Image> 
               </View> 

@@ -40,7 +40,7 @@ const [fancylist,setlist]=useState([1,2,3])
        
         
           {fancylist.map(e=>(<View style={styles.section}>
-            <Image src={imglink}></Image>
+            <Image key={imglink} src={imglink}></Image>
         </View>))}
           
         
