@@ -82,7 +82,7 @@ const [fancylist,setlist]=useState([1,2,3])
   useEffect(()=>{
     //maybe on effect
     
-    props.list['impairments'].map((e:any)=>{
+    props.list['impairments'].forEach((e:any)=>{
       if(e.status==true){
         setNil(false)
       for (let i = 0; i <= e.treatmentideas.length-1; i++) {
