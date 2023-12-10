@@ -157,9 +157,11 @@ const [fancylist,setlist]=useState([1,2,3])
             <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
             <div>Potential treatment ideas</div>
             {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
+            <ol className='list-decimal grid grid-cols-1 divide-y'>
             {e.treatmentideas.map((e:any)=>{
-              return <div key={e.label}>{e.label}</div>
+              return <li key={e.label}>{e.label}</li>
             })}
+            </ol>
             </div>
             
             
@@ -195,9 +197,11 @@ const [fancylist,setlist]=useState([1,2,3])
             <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
             <div>Potential treatment ideas</div>
             {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
+            <ol className='list-decimal grid grid-cols-1 divide-y'>
             {e.treatmentideas.map((e:any)=>{
-              return <div key={e.label}>{e.label}</div>
+              return <li key={e.label}>{e.label}</li>
             })}
+            </ol>
             </div>
             
             
@@ -239,9 +243,11 @@ const [fancylist,setlist]=useState([1,2,3])
            <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
            <div>Potential treatment ideas</div>
            {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
-           {e.treatmentideas.map((e:any)=>{
-             return <div key={e.label}>{e.label}</div>
-           })}
+           <ol className='list-decimal grid grid-cols-1 divide-y'>
+            {e.treatmentideas.map((e:any)=>{
+              return <li key={e.label}>{e.label}</li>
+            })}
+            </ol>
            </div>
            
            
