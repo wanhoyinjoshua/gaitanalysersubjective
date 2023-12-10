@@ -10,7 +10,7 @@
       "whole": false,
       "rom": false,
       "value": 0,
-      "img_id": "5026"
+      "img_id": "0338"
     },
     {
       "label": "Swing phase ensuring heel strike maintaining dorsiflexion then lowering forefoot to the floor",
@@ -22,7 +22,7 @@
       "whole": false,
       "rom": false,
       "value": 1,
-      "img_id": "5026"
+      "img_id": "0265"
     },
     {
       "label": "Walking emphasising walking with heel strike at Initial Contact",
@@ -34,7 +34,7 @@
       "whole": false,
       "rom": false,
       "value": 2,
-      "img_id": "5026"
+      "img_id": "0265"
     },
     {
       "label": "Use of footprints/small circles for heel contact overground or markers on treadmill",
@@ -46,7 +46,7 @@
       "whole": false,
       "rom": false,
       "value": 3,
-      "img_id": "5026"
+      "img_id": "0511"
     },
     {
       "label": "Soleus: Sitting - pushing heel off the ground (make sure not compensating with hip flexors to lift their thigh)",
@@ -58,7 +58,7 @@
       "whole": false,
       "rom": false,
       "value": 4,
-      "img_id": "5026"
+      "img_id": "0676"
     },
     {
       "label": "Gastrocs in standing on a reverse wedge with back against wall and lower heels down to floor to fatigue",
@@ -70,7 +70,7 @@
       "whole": false,
       "rom": false,
       "value": 5,
-      "img_id": "5026"
+      "img_id": "0264"
     },
     {
       "label": "Back against wall, move body forwards away \r\nfrom wall by dorsiflexing at ankles – increase body weight on affected leg (eg scales to monitor)",
@@ -82,7 +82,7 @@
       "whole": false,
       "rom": false,
       "value": 6,
-      "img_id": "5026"
+      "img_id": "0608"
     },
     {
       "label": "Step intact leg forward systematically increasing step lengths (again can use back against wall to promote forward translation)–make sure that weight moves forward on affected leg while stepping (can use scales under forefoot only to give feedback on weight translation onto forefoot)",
@@ -94,7 +94,7 @@
       "whole": false,
       "rom": false,
       "value": 7,
-      "img_id": "5026"
+      "img_id": "1043"
     },
     {
       "label": "Walking with visual/auditory cues to increase step length",
@@ -106,7 +106,7 @@
       "whole": true,
       "rom": false,
       "value": 8,
-      "img_id": "5026"
+      "img_id": "0506"
     },
     {
       "label": "Walking on treadmill with visual/auditory cues",
@@ -118,7 +118,7 @@
       "whole": false,
       "rom": false,
       "value": 9,
-      "img_id": "5026"
+      "img_id": "1088"
     },
     {
       "label": "Plantarflex in lying against resistance (wall, end of bed, tilt-table preferably with feedback eg scales, pressure monitor)",
@@ -130,7 +130,7 @@
       "whole": false,
       "rom": false,
       "value": 10,
-      "img_id": "5026"
+      "img_id": "0337"
     },
     {
       "label": "Standing with back to the wall, affected leg on a dorsiflexion wedge and intact leg on a block. Person instructed to raise heel rapidly. Remember to ask person to keep back on wall and avoid unloading affected leg",
@@ -142,7 +142,7 @@
       "whole": false,
       "rom": false,
       "value": 11,
-      "img_id": "5026"
+      "img_id": "0671"
     },
     {
       "label": "Practise plantarflexing in standing, : verbal cueing to emphasise eccentric control and to switch rapidly between eccentric and concentric activity.",
@@ -154,7 +154,7 @@
       "whole": false,
       "rom": false,
       "value": 12,
-      "img_id": "5026"
+      "img_id": "1303"
     },
     {
       "label": "Step intact foot forward, use scales under affected fore-foot (to make sure weight is translated into forefoot and pushing into plantar flexion)",
@@ -166,7 +166,7 @@
       "whole": false,
       "rom": false,
       "value": 13,
-      "img_id": "5026"
+      "img_id": "0600"
     },
     {
       "label": "Step intact leg forward and up onto block to ensure need to plantarflex in SLS on affected leg",
@@ -178,7 +178,7 @@
       "whole": false,
       "rom": false,
       "value": 14,
-      "img_id": "5026"
+      "img_id": "0600"
     },
     {
       "label": "Walking training using cueing strategies to increase step length",
@@ -190,7 +190,7 @@
       "whole": false,
       "rom": false,
       "value": 15,
-      "img_id": "5026"
+      "img_id": "0511"
     },
     {
       "label": "Increased speed of walking to demand increased plantarflexor activity for push off",
@@ -202,7 +202,7 @@
       "whole": false,
       "rom": false,
       "value": 16,
-      "img_id": "5026"
+      "img_id": "1049"
     },
     {
       "label": "Verbal cues regarding the timing of push-off (e.g. the affected heel should be off the ground before the other foot touches the ground",
@@ -214,7 +214,7 @@
       "whole": false,
       "rom": false,
       "value": 17,
-      "img_id": "5026"
+      "img_id": "0506"
     },
     {
       "label": "Person standing with back to wall with intact leg on block. Person instructed to flex affected knee and extend back to wall",
@@ -226,7 +226,7 @@
       "whole": false,
       "rom": false,
       "value": 18,
-      "img_id": "5026"
+      "img_id": "6147"
     },
     {
       "label": "Stepping affected leg forward and flexing knee to target",
@@ -238,7 +238,7 @@
       "whole": false,
       "rom": false,
       "value": 19,
-      "img_id": "5026"
+      "img_id": "7001"
     },
     {
       "label": "Step off block with affected leg to increase amount of ground reaction force on landing, flex knee to target after landing",
@@ -250,7 +250,7 @@
       "whole": false,
       "rom": false,
       "value": 20,
-      "img_id": "5026"
+      "img_id": "0535"
     },
     {
       "label": "Person standing with back to wall with intact leg on block. Person instructed to flex affected knee and extend back to wall, adding wedge to put ankle into PF in order to make it more difficult for knee to maintain extension",
@@ -262,7 +262,7 @@
       "whole": false,
       "rom": false,
       "value": 21,
-      "img_id": "5026"
+      "img_id": "6147"
     },
     {
       "label": "Stepping intact leg forward (or onto a block) while maintaining knee extension on affected leg",
@@ -274,7 +274,7 @@
       "whole": false,
       "rom": false,
       "value": 22,
-      "img_id": "5026"
+      "img_id": "0267"
     },
     {
       "label": "Walking practice with verbal cues to keep affected knee in flexion (avoid hyperextension)",
@@ -286,7 +286,7 @@
       "whole": false,
       "rom": false,
       "value": 23,
-      "img_id": "5026"
+      "img_id": "0265"
     },
     {
       "label": "Stepping intact leg forward, ensuring that hip on affected leg moves into extension, use target if necessary",
@@ -298,7 +298,7 @@
       "whole": false,
       "rom": false,
       "value": 24,
-      "img_id": "5026"
+      "img_id": "6046"
     },
     {
       "label": "Moving intact leg from behind affected leg and step wih intact leg forward, ensuring that hip on affected leg moves into extension, use target if necessary, this forces hip extensors to work from a flexed position",
@@ -310,7 +310,7 @@
       "whole": false,
       "rom": false,
       "value": 25,
-      "img_id": "5026"
+      "img_id": "0597"
     },
     {
       "label": "Stepping intact leg forward and up onto a block this forces the hip extensors to work harder (as well as the plantarflexors)",
@@ -322,7 +322,7 @@
       "whole": false,
       "rom": false,
       "value": 26,
-      "img_id": "5026"
+      "img_id": "0500"
     },
     {
       "label": "Walking with auditory cues to increase cadence",
@@ -334,7 +334,7 @@
       "whole": false,
       "rom": false,
       "value": 27,
-      "img_id": "5026"
+      "img_id": "1049"
     },
     {
       "label": "Stepping intact leg in different directions e.g. out vs. across midline to increase abduction and adduction",
@@ -346,7 +346,7 @@
       "whole": false,
       "rom": false,
       "value": 28,
-      "img_id": "5026"
+      "img_id": "1071"
     },
     {
       "label": "Person standing with back to wall and stepping intact leg on/off block with target for amount of lateral pelvic shift over stance leg",
@@ -358,7 +358,7 @@
       "whole": false,
       "rom": false,
       "value": 29,
-      "img_id": "5026"
+      "img_id": "1042"
     },
     {
       "label": "Person standing with back to wall with narrow BOS, step with intact leg on/off block with target for amount of lateral pelvic shift over stance leg",
@@ -370,7 +370,7 @@
       "whole": false,
       "rom": false,
       "value": 30,
-      "img_id": "5026"
+      "img_id": "1044"
     },
     {
       "label": "Walking with visual cues for base of support (BOS)",
@@ -382,7 +382,7 @@
       "whole": false,
       "rom": false,
       "value": 31,
-      "img_id": "5026"
+      "img_id": "0505"
     },
     {
       "label": "ROM for gastrocs, / AFO whilst walking ",
@@ -394,7 +394,7 @@
       "whole": false,
       "rom": true,
       "value": 32,
-      "img_id": "5026"
+      "img_id": "6156"
     },
     {
       "label": "Knee flexion exercises with skateboard / progressive resistance exercise if able",
@@ -406,7 +406,7 @@
       "whole": false,
       "rom": false,
       "value": 33,
-      "img_id": "5026"
+      "img_id": "0678"
     }
   ],
   "kinematic_deviations": [
