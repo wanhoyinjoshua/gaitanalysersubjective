@@ -93,7 +93,7 @@ const Analyser = (props) => {
 
         <View > 
        
-        {treatmentpdf.map(e=>(<View style={styles.section}> 
+        {treatmentpdf.map(e=>(<View key={e["deviation_pdf"]} style={styles.section}> 
               <View key={e["deviation_pdf"]}>
 
                 <Text>{JSON.stringify(e["deviation_pdf"])}</Text>
