@@ -58,7 +58,7 @@ const [fancylist,setlist]=useState([1,2,3])
 
     var othercount=0
 
-    props.list['impairments'].map((e:any)=>{
+    props.list['impairments'].forEach((e:any)=>{
       if(e.status==true){
         validcount+=1
 

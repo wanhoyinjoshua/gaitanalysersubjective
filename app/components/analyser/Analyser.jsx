@@ -156,7 +156,7 @@ const Analyser = (props) => {
           var treatment_pdf={"deviation_pdf":e["kinematic"]["label"],"treatment_pdf":[]}
          
             
-          e['impairments'].map(async (e)=>{
+          e['impairments'].forEach(async (e)=>{
             if(e.status==true){
               
             for (let i = 0; i <= e.treatmentideas.length-1; i++) {
