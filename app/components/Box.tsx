@@ -375,13 +375,13 @@ className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 
 
 
 
-<div className="sm:flex sm:justify-between sm:gap-4">
-  <div>
+<div className="w-full sm:flex sm:justify-between sm:gap-4 ">
+  <div className='w-full'>
     
 
-    <div className="flow-root rounded-lg border border-gray-100 py-3 shadow-sm">
-<dl className="-my-3 divide-y divide-gray-100 text-sm">
-<div className="w-full  px-2 py-16 sm:px-0">
+    <div className="flow-root rounded-lg border border-gray-100 py-3 shadow-sm w-full">
+<dl className="-my-3 divide-y divide-gray-100 text-lg w-full">
+<div className="w-full max-w-lg  px-2 py-16 sm:px-0">
 
   
     <Tab.Group>
