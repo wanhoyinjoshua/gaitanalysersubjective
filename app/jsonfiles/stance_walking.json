@@ -417,7 +417,8 @@
       "part": true,
       "whole": false,
       "rom": false,
-      "value": 34
+      "value": 34,
+      "img_id": "0063"
     },
     {
       "label": "Calf strengthening in gravity eliminated position ( side lying ) ",
@@ -429,7 +430,7 @@
       "whole": false,
       "rom": false,
       "value": 35,
-      "img_id": null
+      "img_id": "0262"
     },
     {
       "label": "Resistance training for knee flexors with therabands, apply principles of progressive resistance training to strengthen",
@@ -440,7 +441,8 @@
       "part": true,
       "whole": false,
       "rom": false,
-      "value": 36
+      "value": 36,
+      "img_id": "0688"
     },
     {
       "label": "Interventions to attempt to lengthen knee flexors using the following principles, positioning, sustained stretching , loading in a lengthened position , note that current evidence do not clearly support interventiosn to increase muscle length",
@@ -451,7 +453,8 @@
       "part": true,
       "whole": false,
       "rom": true,
-      "value": 37
+      "value": 37,
+      "img_id": "0684"
     },
     {
       "label": "Hip abdcution in gravity eliminated position, aim for large number of successful repititions as mechanism of strengthening is via recruitment of motor units, consider using tactile cues for movement targets to provide augmebnted feedback for successful repetition.",
@@ -462,7 +465,8 @@
       "part": true,
       "whole": false,
       "rom": false,
-      "value": 38
+      "value": 38,
+      "img_id": "0263"
     },
     {
       "label": "hip abduction in side lying against gravity , apply principles of progressive resistance exercises.",
@@ -473,7 +477,8 @@
       "part": true,
       "whole": false,
       "rom": false,
-      "value": 39
+      "value": 39,
+      "img_id": "1000"
     },
     {
       "label": "Practice eccentric control of knee extension by forcing the knee flexors to work eccentrically",
@@ -495,7 +500,8 @@
       "part": true,
       "whole": false,
       "rom": true,
-      "value": 41
+      "value": 41,
+      "img_id": "6161"
     },
     {
       "label": "Interventions that may or may not address sensory / proprioception impairments ( mirror therapy, exposing limb to different textures ) noted there is unsifficient evidence to be used routinely in a clinical setting",
