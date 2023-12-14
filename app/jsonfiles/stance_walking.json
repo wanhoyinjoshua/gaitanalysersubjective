@@ -51,7 +51,7 @@
     {
       "label": "Soleus: Sitting - pushing heel off the ground (make sure not compensating with hip flexors to lift their thigh)",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -123,7 +123,7 @@
     {
       "label": "Plantarflex in lying against resistance (wall, end of bed, tilt-table preferably with feedback eg scales, pressure monitor)",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -135,7 +135,7 @@
     {
       "label": "Standing with back to the wall, affected leg on a dorsiflexion wedge and intact leg on a block. Person instructed to raise heel rapidly. Remember to ask person to keep back on wall and avoid unloading affected leg",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": true,
       "part": true,
@@ -147,7 +147,7 @@
     {
       "label": "Practise plantarflexing in standing, : verbal cueing to emphasise eccentric control and to switch rapidly between eccentric and concentric activity.",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 2,
       "coordination": true,
       "part": true,
@@ -159,7 +159,7 @@
     {
       "label": "Step intact foot forward, use scales under affected fore-foot (to make sure weight is translated into forefoot and pushing into plantar flexion)",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 2,
       "coordination": false,
       "part": true,
