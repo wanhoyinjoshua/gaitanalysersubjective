@@ -144,7 +144,7 @@
       "value": 12
     },
     {
-      "label": "Stregthening for weak - parlaysed ankle dorsiflexors - Aim for high volume of successful repetiions, consider using tactile cues/ augmented feedback to faciliatte learning. E.g ankle dorsiflexion in gravity eliminated positions / use electrical stimulation",
+      "label": "Stregthening for weak - parlaysed ankle dorsiflexors - Aim for high volume of successful repetiions, consider using tactile cues/ augmented feedback to faciliate learning. E.g ankle dorsiflexion in gravity eliminated positions / use electrical stimulation",
       "body": 0,
       "level": 0,
       "strength": 1,
@@ -166,6 +166,30 @@
       "rom": false,
       "value": 14,
       "img_id": "0258"
+    },
+    {
+      "label": "Strengthening paralysed - very weak hip flexors, gravity eliminated positions and aim for high volumes of successful repetitions",
+      "body": 0,
+      "level": 0,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 15,
+      "img_id": "0686"
+    },
+    {
+      "label": "Strengthening weak hip flexors , apply principles of progressive resistance training to improve strength. e.g using thera band to apply resistance to hip flexion in sitting / standing, or simply use the force of gravity if muscle is weak. ",
+      "body": 0,
+      "level": 0,
+      "strength": 0,
+      "coordination": false,
+      "part": false,
+      "whole": false,
+      "rom": false,
+      "value": 16,
+      "img_id": "1127"
     }
   ],
   "kinematic_deviations": [
@@ -229,7 +253,13 @@
         5,
         6
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "ankle_dorsiflexion"
+      ],
+      "class": [
+        "coor"
+      ]
     },
     {
       "impairment": "Decreased ability to maintain DF with knee extension",
@@ -247,15 +277,30 @@
         5,
         6
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "ankle_dorsiflexion"
+      ],
+      "class": [
+        "coor"
+      ]
     },
     {
       "impairment": "Decreased sensation in ankle ",
-      "kinematic_deviations": [],
+      "kinematic_deviations": [
+        0,
+        3
+      ],
       "testing": "",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "ankle_dorsiflexion"
+      ],
+      "class": [
+        "other"
+      ]
     },
     {
       "impairment": "Decreased passive ankle dorsiflexion",
@@ -267,7 +312,13 @@
       "treatment": [
         12
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "ankle_dorsiflexion"
+      ],
+      "class": [
+        "rom"
+      ]
     },
     {
       "impairment": "Decreased strength hip flexors",
@@ -282,9 +333,17 @@
         8,
         9,
         10,
-        5
+        5,
+        16,
+        15
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_flexion"
+      ],
+      "class": [
+        "str"
+      ]
     },
     {
       "impairment": "Decreased ability to rapidly flex hip",
@@ -298,7 +357,13 @@
         8,
         10
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_flexion"
+      ],
+      "class": [
+        "coor"
+      ]
     },
     {
       "impairment": "Decreased sensation in the hip",
@@ -322,7 +387,13 @@
         10,
         9
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_flexion"
+      ],
+      "class": [
+        "str"
+      ]
     },
     {
       "impairment": "Decreased strength in knee flexors in slow walker",
@@ -334,7 +405,13 @@
       "treatment": [
         11
       ],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "knee_flexion"
+      ],
+      "class": [
+        "str"
+      ]
     },
     {
       "impairment": "Decreased ability to rapidly flex hip and allow knee to flex freely",
@@ -344,7 +421,14 @@
       "testing": "Test ability to flex hip rapidly with knee flexion",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_flexion",
+        "knee_flexion"
+      ],
+      "class": [
+        "coor"
+      ]
     },
     {
       "impairment": "Decreased eccentric strength hip extensors to decelerate hip flexion",
@@ -354,7 +438,13 @@
       "testing": "MMT –hip extensors eccentrically",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_extension"
+      ],
+      "class": [
+        "str"
+      ]
     },
     {
       "impairment": "Decreased eccentric strength in knee flexors to decelerate knee extension",
@@ -364,7 +454,13 @@
       "testing": "Knee flexors eccentrically: supine, standing",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "knee_flexion"
+      ],
+      "class": [
+        "str"
+      ]
     },
     {
       "impairment": "Decreased ability to decelerate hip flexion and decelerate knee prior to heel strike",
@@ -374,7 +470,13 @@
       "testing": "Test ability to control hip flex hip with knee extension",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "physio_movements": [
+        "hip_extension"
+      ],
+      "class": [
+        "coor"
+      ]
     }
   ]
 }
