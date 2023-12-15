@@ -51,7 +51,7 @@
     {
       "label": "Soleus: Sitting - pushing heel off the ground (make sure not compensating with hip flexors to lift their thigh)",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -123,7 +123,7 @@
     {
       "label": "Plantarflex in lying against resistance (wall, end of bed, tilt-table preferably with feedback eg scales, pressure monitor)",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -135,7 +135,7 @@
     {
       "label": "Standing with back to the wall, affected leg on a dorsiflexion wedge and intact leg on a block. Person instructed to raise heel rapidly. Remember to ask person to keep back on wall and avoid unloading affected leg",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": true,
       "part": true,
@@ -147,7 +147,7 @@
     {
       "label": "Practise plantarflexing in standing, : verbal cueing to emphasise eccentric control and to switch rapidly between eccentric and concentric activity.",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 2,
       "coordination": true,
       "part": true,
@@ -159,7 +159,7 @@
     {
       "label": "Step intact foot forward, use scales under affected fore-foot (to make sure weight is translated into forefoot and pushing into plantar flexion)",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -407,6 +407,112 @@
       "rom": false,
       "value": 33,
       "img_id": "0678"
+    },
+    {
+      "label": "Electrical stimulation on calf muscles +/- mental practice in supine / sitting ",
+      "body": 0,
+      "level": 0,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 34,
+      "img_id": "0063"
+    },
+    {
+      "label": "Calf strengthening in gravity eliminated position ( side lying ) ",
+      "body": 0,
+      "level": 0,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 35,
+      "img_id": "0262"
+    },
+    {
+      "label": "Resistance training for knee flexors with therabands, apply principles of progressive resistance training to strengthen",
+      "body": 0,
+      "level": 1,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 36,
+      "img_id": "0688"
+    },
+    {
+      "label": "Interventions to attempt to lengthen knee flexors using the following principles, positioning, sustained stretching , loading in a lengthened position , note that current evidence do not clearly support interventiosn to increase muscle length",
+      "body": 0,
+      "level": 0,
+      "strength": 0,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": true,
+      "value": 37,
+      "img_id": "0684"
+    },
+    {
+      "label": "Hip abdcution in gravity eliminated position, aim for large number of successful repititions as mechanism of strengthening is via recruitment of motor units, consider using tactile cues for movement targets to provide augmebnted feedback for successful repetition.",
+      "body": 0,
+      "level": 0,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 38,
+      "img_id": "0263"
+    },
+    {
+      "label": "hip abduction in side lying against gravity , apply principles of progressive resistance exercises.",
+      "body": 0,
+      "level": 1,
+      "strength": 1,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 39,
+      "img_id": "1000"
+    },
+    {
+      "label": "Practice eccentric control of knee extension by forcing the knee flexors to work eccentrically",
+      "body": 0,
+      "level": 2,
+      "strength": 2,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 40
+    },
+    {
+      "label": "Interventions to attempt to lengthen hip flexors using the following principles, positioning, sustained stretching , loading in a lengthened position , note that current evidence do not clearly support interventiosn to increase muscle length",
+      "body": 0,
+      "level": 0,
+      "strength": 0,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": true,
+      "value": 41,
+      "img_id": "6161"
+    },
+    {
+      "label": "Interventions that may or may not address sensory / proprioception impairments ( mirror therapy, exposing limb to different textures ) noted there is unsifficient evidence to be used routinely in a clinical setting",
+      "body": 0,
+      "level": 0,
+      "strength": 0,
+      "coordination": false,
+      "part": true,
+      "whole": false,
+      "rom": false,
+      "value": 42
     }
   ],
   "kinematic_deviations": [
@@ -495,7 +601,9 @@
       ],
       "testing": "proprioception test / sensation test ",
       "category": 0,
-      "treatment": [],
+      "treatment": [
+        42
+      ],
       "body": 0,
       "physio_movements": [
         "ankle_dorsiflexion"
@@ -602,7 +710,9 @@
         11,
         13,
         16,
-        14
+        14,
+        35,
+        34
       ],
       "body": 0,
       "physio_movements": [
@@ -642,7 +752,8 @@
       "testing": "MMT – Knee flexors concentrically with knee in almost full extension (consider closed vs open chain)",
       "category": 0,
       "treatment": [
-        33
+        33,
+        36
       ],
       "body": 0,
       "physio_movements": [
@@ -678,7 +789,9 @@
       ],
       "testing": "Passive ROM to check for mm length changes/knee joint stiffness",
       "category": 0,
-      "treatment": [],
+      "treatment": [
+        37
+      ],
       "body": 0,
       "physio_movements": [
         "knee_flexion"
@@ -801,7 +914,9 @@
       ],
       "testing": "Muscle length hip flexors/ hip joint stiffness",
       "category": 0,
-      "treatment": [],
+      "treatment": [
+        41
+      ],
       "body": 0,
       "physio_movements": [
         "hip_extension"
@@ -818,7 +933,13 @@
       ],
       "testing": "MMT of hip abductors side lying/supine",
       "category": 0,
-      "treatment": [],
+      "treatment": [
+        38,
+        39,
+        28,
+        30,
+        29
+      ],
       "body": 0,
       "physio_movements": [
         "hip_abduction"
@@ -903,7 +1024,9 @@
       ],
       "testing": "MMT hamstrings eccentric strength ",
       "category": 0,
-      "treatment": [],
+      "treatment": [
+        40
+      ],
       "body": 0,
       "physio_movements": [
         "knee_flexion"
