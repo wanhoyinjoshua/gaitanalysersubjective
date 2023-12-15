@@ -102,7 +102,7 @@ const Analyser = (props) => {
 
                   <View key={JSON.stringify(e)}style={styles.tableRow}>
                     <View style={styles.tableCol}> 
-                <Image style={styles.image} src={`/assets/Ex${e["img_id"]}.jpg`}></Image> 
+                <Image style={styles.image} src={`/assets/Exvv${e["img_id"]}.jpg`}></Image> 
               </View> 
               <View style={styles.tableCol}> 
                 
