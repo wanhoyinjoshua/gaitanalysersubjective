@@ -167,7 +167,7 @@ const Graph = (props) => {
 
       zoomingEnabled={false}
       userZoomingEnabled={false}
-      panningEnabled={false}
+      panningEnabled={true}
       
       
       />;
