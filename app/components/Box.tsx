@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react'
 import { Tab } from '@headlessui/react'
 import { Disclosure,Transition  } from '@headlessui/react'
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@react-pdf/renderer';
-
+import Graph from './Graph/Graph'
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
@@ -360,6 +360,11 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
    {rom>=0&&<div>
      please consider the effect of muscle stiffness in your treatment and see if any equipment will be of utlity.
      </div>}
+     <div className='h-48 w-full'>
+     <Graph></Graph>
+     
+     </div>
+    
     
 
  </div>
@@ -437,7 +442,9 @@ className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 
               'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
             )}
           >
+             
             {e.component()}
+
           </Tab.Panel>
         ))}
       </Tab.Panels>
