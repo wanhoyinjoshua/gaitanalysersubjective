@@ -65,7 +65,12 @@ const Graph = () => {
             }
           },
       ]
-  return <CytoscapeComponent stylesheet={stylesheet}  elements={elements} className="w-full h-full"/>;
+
+      const layout={
+        name: 'preset',
+        padding: 10
+      }
+  return <CytoscapeComponent layout={layout} stylesheet={stylesheet}  elements={elements} className="w-full h-full"/>;
 
 };
 
