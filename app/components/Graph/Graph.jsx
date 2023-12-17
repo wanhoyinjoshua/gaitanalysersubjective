@@ -13,21 +13,21 @@ const Graph = (props) => {
         setData(calGraphdata(props.data))
         var realdata=calGraphdata(props.data)
         setElement([
-            { data: { id: 'one', label: 'Strength #' }, position: { x: 50, y: 100 },classes: `${realdata["true_str_impairment_count"]>0?"active":"strike"}`},
+            { data: { id: 'one', label: 'Strength #' }, position: { x: 50, y: 100 },classes: `${realdata["true_str_impairment_count"]>0?"active":"strike"}`,key:1},
             { data: { id: 'two', label: 'Deviation' }, position: { x: 550, y: 100 } },
-            { data: { id: 'three', label: 'Sensation #' }, position: { x: 50, y: 50 },classes: `${realdata["true_sensation_impairment_count"]>0?"active":"strike"}` },
-            { data: { id: 'four', label: 'Coordination #' }, position: { x: 300, y: 50 },classes: `${realdata["true_coor_impairment_count"]>0?"active":"strike"}` },
-            { data: { id: 'five', label: 'ROM #' }, position: { x: 300, y: 150 },classes: `${realdata["true_rom_impairment_count"]>0?"active":"strike"}`  },
-            { data: { id: 'six', label: 'Compensation' }, position: { x: 550, y: 150 },classes: `${realdata["true_comp_impairment_count"]>0?"active":"strike"}`  },
-            { data: { source: 'one', target: 'two', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_str_impairment_count"]>0?"active_arr":"strike_arr"}` },
-            { data: { source: 'four', target: 'two', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_coor_impairment_count"]>0?"active_arr":"strike_arr"}`  },
-            { data: { source: 'one', target: 'four', label: 'Edge from Node1 to Node2', "arrow": "tee" }, classes: `${realdata["true_str_impairment_count"]>0?"active_arr":"strike_arr"}`},
-            { data: { source: 'four', target: 'one', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_coor_impairment_count"]>0?"active_arr":"strike_arr"}` },
-            { data: { source: 'three', target: 'one', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_sensation_impairment_count"]>0?"active_arr":"strike_arr"}`},
-            { data: { source: 'three', target: 'four', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_sensation_impairment_count"]>0?"active_arr":"strike_arr"}`},
-            { data: { source: 'five', target: 'one', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_rom_impairment_count"]>0?"active_arr":"strike_arr"}`},
-            { data: { source: 'five', target: 'two', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_rom_impairment_count"]>0?"active_arr":"strike_arr"}`},
-            { data: { source: 'six', target: 'two', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_comp_impairment_count"]>0?"active_arr":"strike_arr"}`},
+            { data: { id: 'three', label: 'Sensation #' }, position: { x: 50, y: 50 },classes: `${realdata["true_sensation_impairment_count"]>0?"active":"strike"}` ,key:1},
+            { data: { id: 'four', label: 'Coordination #' }, position: { x: 300, y: 50 },classes: `${realdata["true_coor_impairment_count"]>0?"active":"strike"}`,key:1 },
+            { data: { id: 'five', label: 'ROM #' }, position: { x: 300, y: 150 },classes: `${realdata["true_rom_impairment_count"]>0?"active":"strike"}` ,key:1 },
+            { data: { id: 'six', label: 'Compensation' }, position: { x: 550, y: 150 },classes: `${realdata["true_comp_impairment_count"]>0?"active":"strike"}` ,key:1 },
+            { data: { source: 'one', target: 'two', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_str_impairment_count"]>0?"active_arr":"strike_arr"}` ,key:1},
+            { data: { source: 'four', target: 'two', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_coor_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1  },
+            { data: { source: 'one', target: 'four', label: 'Edge from Node1 to Node2', "arrow": "tee" }, classes: `${realdata["true_str_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
+            { data: { source: 'four', target: 'one', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_coor_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1 },
+            { data: { source: 'three', target: 'one', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_sensation_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
+            { data: { source: 'three', target: 'four', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_sensation_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
+            { data: { source: 'five', target: 'one', label: 'Edge from Node1 to Node2' },classes: `${realdata["true_rom_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
+            { data: { source: 'five', target: 'two', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_rom_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
+            { data: { source: 'six', target: 'two', label: 'Edge from Node1 to Node2' }, classes: `${realdata["true_comp_impairment_count"]>0?"active_arr":"strike_arr"}`,key:1},
             
             
             
