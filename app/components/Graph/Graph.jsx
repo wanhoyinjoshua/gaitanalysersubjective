@@ -7,7 +7,9 @@ const Graph = (props) => {
     const [element,setElement]=useState()
 
     useEffect(()=>{
+        if (props && props.data){
 
+        
         console.log("shiadhisodfjsoidji")
         console.log(props)
         setData(calGraphdata(props.data))
@@ -34,7 +36,7 @@ const Graph = (props) => {
             
             
          ])
-
+        }
         
 
     },[])
