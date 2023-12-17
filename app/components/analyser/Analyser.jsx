@@ -374,14 +374,8 @@ const Analyser = (props) => {
 
     function findendofstrimp(list){
 
-      var index=list.lastIndexOf(element => element["class"].includes("eccentric_str"));
-      if(index==-1){
-
-        return index
-
-      }else{
-        return index
-      }
+      var index=list.lastIndexOf(element => element["class"].includes("concentric_str"));
+      return index
 
 
       
@@ -390,38 +384,22 @@ const Analyser = (props) => {
 
     function getpotentialimpairments(){
         var selectedimpairment=[]
-        impairmentlist.forEach((element,index) =>{
+        var concentric_list=impairmentlist.filter(element=>element["class"].includes("concentric_str"))
+        var eccentric_list=impairmentlist.filter(element=>element["class"].includes("eccentric_str"))
+        var coord_list=impairmentlist.filter(element=>element["class"].includes("coor"))
+        var sortedlist=[...concentric_list,...eccentric_list,...coord_list]
+        var others_list=impairmentlist.filter((element) => !sortedlist.includes(element));
+        var newlist=sortedlist.concat(others_list)
+        console.log(newlist)
+        newlist.forEach((element,index) =>{
             const values = element["kinematic_deviations"];
             console.log(values)
             if (values){
                 const filteredValues = values.filter(value => selected_observations.includes(value));
                 const strLevel = element["str_lvl"] ?? -1;
                 if (filteredValues.length > 0) {
-                  if(element["class"].includes("eccentric_str")){
-                    selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
+                  selectedimpairment.push({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
 
-                  }
-                  else if(element["class"].includes("concentric_str")){
-                    var index=findendofstrimp(selectedimpairment)
-
-                    if(index==-1){
-                      selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
-
-
-                    }
-                    else{
-                     const element= {"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel}
-                      selectedimpairment.splice(index, 0, element);
-
-                    }
-
-
-                  }
-                  
-                  else{
-                    selectedimpairment.push({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"]})
-
-                  }
                     
                 }
             }

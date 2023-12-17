@@ -32,6 +32,7 @@ const Box = (props:any) => {
   const [part,setPart]=useState(-1)
   const [whole,setWhole]=useState(-1)
   const [nil,setNil]=useState(true)
+  const [graphdata,setGraphData]=useState<any>()
   const dict:any={
     "1":"Paralysed",
     "2":"Very Weak",
@@ -66,7 +67,7 @@ const [fancylist,setlist]=useState([1,2,3])
     var othercount=0
 
     props.list['impairments'].forEach((e:any)=>{
-      console.log(e)
+    
       if(e.status==true){
         validcount+=1
 
@@ -87,16 +88,23 @@ const [fancylist,setlist]=useState([1,2,3])
     return [strengthcount,coorcount,finalother]
 
   }
+  function returnTrueimpairmentcount(list:any){
+    return list.filter((e:any) =>e.class.status==true).length
+
+  }
+ 
   useEffect(()=>{
     //maybe on effect
     
+    console.log(props.list)
+
     props.list['impairments'].forEach((e:any)=>{
       if(e.status==true){
         setNil(false)
       for (let i = 0; i <= e.treatmentideas.length-1; i++) {
        
         if(e.treatmentideas[i]&&e.treatmentideas[i].strength!=0){
-          console.log("shishi")
+          
           setStrength((prev)=>{
             return prev+1
         })
@@ -104,7 +112,7 @@ const [fancylist,setlist]=useState([1,2,3])
 
         }
         if(e.treatmentideas[i]&&e.treatmentideas[i].coordination==true){
-          console.log("shishi")
+         
           setCoordination((prev)=>{
             return prev+1
         })
@@ -113,7 +121,7 @@ const [fancylist,setlist]=useState([1,2,3])
         }
 
         if(e.treatmentideas[i]&&e.treatmentideas[i]['rom']==true){
-          console.log("shishi")
+        
           setROM((prev)=>{
             return prev+1
         })
@@ -122,7 +130,7 @@ const [fancylist,setlist]=useState([1,2,3])
         }
         
         if(e.treatmentideas[i]&&e.treatmentideas[i].part==true){
-          console.log("shishi")
+
           setPart((prev)=>{
             return prev+1
         })
@@ -130,7 +138,7 @@ const [fancylist,setlist]=useState([1,2,3])
 
         }
         if(e.treatmentideas[i]&&e.treatmentideas[i].whole==true){
-          console.log("shishi")
+   
           setWhole((prev)=>{
             return prev+1
         })
@@ -291,18 +299,7 @@ const [fancylist,setlist]=useState([1,2,3])
     return classes.filter(Boolean).join(' ')
   }
 
-  const handleConvert = async () => {
-    const webpUrl = 'https://www.physiotherapyexercises.com/ExerciseImages/Drawings_Webp/Ex5026.webp'; // Replace with your WebP image URL
 
-    try {
-      const response = await axios.get("/api/word");
-      console.log(response.data.message)
-      setImagelink(response.data.message)
-    } catch (error) {
-      console.error('Error converting WebP image:', error);
-      alert('Error converting WebP image. Check console for details.');
-    }
-  };
 
 
   
@@ -361,7 +358,7 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
      please consider the effect of muscle stiffness in your treatment and see if any equipment will be of utlity.
      </div>}
      <div className='h-48 w-full'>
-     <Graph></Graph>
+     <Graph data={props.list['impairments']}></Graph>
      
      </div>
     
