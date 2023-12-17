@@ -84,67 +84,8 @@ const Analyser = (props) => {
     const [treatmentpdf,setTreatmentpdf]= useState([])
     //ankle =0
     //genere = 0 is strength 1 is coordination, 2 is part task , 3 is whole task 
-    const MyDoc = () => (
-      <Document>
-        <Page size="A4" style={styles.page}>
-        <Text style={styles.header} fixed>
-        ~ exercises selected from www.physiotherapyexercises.com ~
-      </Text>
-
-        <View > 
-       
-        {treatmentpdf.map(e=>(<View key={e["deviation_pdf"]} style={styles.section}> 
-              <View key={e["deviation_pdf"]}>
-
-                <Text>{JSON.stringify(e["deviation_pdf"])}</Text>
-                <View style={styles.table}>
-                {e.treatment_pdf.map(e=>(
-
-                  <View key={JSON.stringify(e)}style={styles.tableRow}>
-                    <View style={styles.tableCol}> 
-                <Image style={styles.image} src={`/assets/Exvv${e["img_id"]}.jpg`}></Image> 
-              </View> 
-              <View style={styles.tableCol}> 
-                
-                <Text style={styles.tableCell}>{JSON.stringify(e.label)}</Text> 
-              </View> 
-                  </View>
-
-
-                ))}
-                </View>
-              
-
-
-              </View>
-         
-              
-            
-               </View>))}
-      </View>
-         
-         
-          
-      <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
-        `${pageNumber} / ${totalPages}`
-      )} fixed />
-            
-          
-          
-        </Page>
-      </Document>
-    );
-    const handleConvert = async () => {
-      
-      try {
-        const response = await axios.get("/api/word");
-        console.log(response.data.message)
-        return response.data.message
-      } catch (error) {
-        console.error('Error converting WebP image:', error);
-        alert('Error converting WebP image. Check console for details.');
-      }
-    };
+   
+   
     useEffect(()=>{
         setKinematic(props.json["kinematic_deviations"])
         setImpairmentlist(props.json["impairments"])
@@ -805,10 +746,7 @@ const Analyser = (props) => {
           </p>
         </div>
         <div className="ml-4 mt-4 flex-shrink-0">
-        <PDFDownloadLink document={<MyDoc  />} fileName="exercises_for_stance_walking.pdf">
-      {({ blob, url, loading, error }) => (loading ? 'Loading document...' : <div className="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Download exercises now!</div>)}
-     
-    </PDFDownloadLink>
+       
     <br></br>
           <a
           href='/version'
