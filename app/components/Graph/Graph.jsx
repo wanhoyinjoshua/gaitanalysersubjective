@@ -11,9 +11,19 @@ const Graph = () => {
         { data: { id: 'five', label: 'Node 5' }, position: { x: 300, y: 150 } },
         { data: { id: 'six', label: 'Node 6' }, position: { x: 550, y: 150 } },
         { data: { source: 'one', target: 'two', label: 'Edge from Node1 to Node2' } },
-        { data: { source: 'two', target: 'one', label: 'Edge from Node1 to Node2' } },
-        { data: { source: 'three', target: 'two', label: 'Edge from Node1 to Node2', "arrow": "tee" }, classes: 'custom-node',},
-        { data: { source: 'three', target: 'one', label: 'Edge from Node1 to Node2' }, classes: 'custom-node',}
+        { data: { source: 'four', target: 'two', label: 'Edge from Node1 to Node2' } },
+        { data: { source: 'one', target: 'four', label: 'Edge from Node1 to Node2', "arrow": "tee" }, classes: 'custom-node',},
+        { data: { source: 'four', target: 'one', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        { data: { source: 'three', target: 'one', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        { data: { source: 'three', target: 'four', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        { data: { source: 'five', target: 'one', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        { data: { source: 'five', target: 'two', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        { data: { source: 'six', target: 'two', label: 'Edge from Node1 to Node2' }, classes: 'custom-node'},
+        
+        
+        
+        
+        
      ];
      const stylesheet=[
         {
