@@ -182,7 +182,7 @@ const Graph = (props) => {
         name: 'preset',
         padding: 10
       }
-      if(element){return <CytoscapeComponent layout={layout} stylesheet={stylesheet}  elements={element} className="w-full h-full"
+      if(element){return <CytoscapeComponent key={"1"} layout={layout} stylesheet={stylesheet}  elements={element} className="w-full h-full"
 
       zoomingEnabled={false}
       userZoomingEnabled={false}
