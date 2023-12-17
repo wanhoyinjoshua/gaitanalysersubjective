@@ -187,7 +187,7 @@ const Analyser = (props) => {
       
         
         console.log('page is relaoding')
-        if(selectedimpairment&&selectedimpairment[impairmentcount]&&selectedimpairment[impairmentcount]["class"]&&selectedimpairment[impairmentcount]["class"].includes("str")){
+        if(selectedimpairment&&selectedimpairment[impairmentcount]&&selectedimpairment[impairmentcount]["class"]&&(selectedimpairment[impairmentcount]["class"].includes("eccentric_str")||selectedimpairment[impairmentcount]["class"].includes("concentric_str"))){
           //then display
           
           console.log("hihih")
@@ -223,11 +223,15 @@ const Analyser = (props) => {
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
+      newlist[impairmentcount]["str_lvl"]=1
+
       console.log(newlist)
      
       
       for (let i = impairmentcount+1; i < newlist.length; i++) {
-        if(newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])){
+        var coorcondition=newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])
+        var eccen_str_condition=newlist[i]["class"].includes("eccentric_str")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])
+        if(coorcondition || eccen_str_condition){
 
           //then set as false
           skipped.push(newlist[i])
@@ -262,10 +266,14 @@ const Analyser = (props) => {
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
-     
+      newlist[impairmentcount]["str_lvl"]=2
+      
       
       for (let i = impairmentcount+1; i < newlist.length; i++) {
-        if(newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])){
+        var coorcondition=newlist[i]["class"].includes("coor")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])
+        var eccen_str_condition=newlist[i]["class"].includes("eccentric_str")&&newlist[i]["physio_movements"].includes(newlist[impairmentcount]["physio_movements"][0])
+      
+        if(coorcondition ||eccen_str_condition){
 
           //then set as false
           skipped.push(newlist[i])
@@ -298,6 +306,7 @@ const Analyser = (props) => {
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
+      newlist[impairmentcount]["str_lvl"]=3
      
      
       
@@ -327,6 +336,7 @@ const Analyser = (props) => {
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
+      newlist[impairmentcount]["str_lvl"]=4
      
       skipped.push(newlist[impairmentcount])
       newlist.splice(impairmentcount,1)
@@ -362,7 +372,21 @@ const Analyser = (props) => {
 
     }
 
- 
+    function findendofstrimp(list){
+
+      var index=list.lastIndexOf(element => element["class"].includes("eccentric_str"));
+      if(index==-1){
+
+        return index
+
+      }else{
+        return index
+      }
+
+
+      
+
+    }
 
     function getpotentialimpairments(){
         var selectedimpairment=[]
@@ -371,12 +395,30 @@ const Analyser = (props) => {
             console.log(values)
             if (values){
                 const filteredValues = values.filter(value => selected_observations.includes(value));
-        
+                const strLevel = element["str_lvl"] ?? -1;
                 if (filteredValues.length > 0) {
-                  if(element["class"].includes("str")){
-                    selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"]})
+                  if(element["class"].includes("eccentric_str")){
+                    selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
 
-                  }else{
+                  }
+                  else if(element["class"].includes("concentric_str")){
+                    var index=findendofstrimp(selectedimpairment)
+
+                    if(index==-1){
+                      selectedimpairment.unshift({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
+
+
+                    }
+                    else{
+                     const element= {"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel}
+                      selectedimpairment.splice(index, 0, element);
+
+                    }
+
+
+                  }
+                  
+                  else{
                     selectedimpairment.push({"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"],"class":element["class"],"physio_movements":element["physio_movements"]})
 
                   }
@@ -612,6 +654,12 @@ const Analyser = (props) => {
                      //return
                      //convert selectedimpairment to a list of kinematic deviations with imapirments
                      console.log("hi")
+                    
+                     var newlist=[...selectedimpairment]
+                     newlist[impairmentcount]["status"]=true
+                     console.log("lastone")
+                     console.log(newlist)
+                     setSelectedImpairment([...newlist])
                      setTestingPhase(false)
                      console.log(getfinalist())
                      setInsightsPhase(true)
@@ -635,6 +683,7 @@ const Analyser = (props) => {
                      //return
                      //convert selectedimpairment to a list of kinematic deviations with imapirments
                      console.log("hi")
+                    
                      setTestingPhase(false)
                      console.log(getfinalist())
                      setInsightsPhase(true)

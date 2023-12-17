@@ -32,6 +32,13 @@ const Box = (props:any) => {
   const [part,setPart]=useState(-1)
   const [whole,setWhole]=useState(-1)
   const [nil,setNil]=useState(true)
+  const dict:any={
+    "1":"Paralysed",
+    "2":"Very Weak",
+    "3":"Weak",
+    "4":"Strong"
+
+  }
 const [fancylist,setlist]=useState([1,2,3])
   const MyDoc = () => (
     <Document>
@@ -59,11 +66,12 @@ const [fancylist,setlist]=useState([1,2,3])
     var othercount=0
 
     props.list['impairments'].forEach((e:any)=>{
+      console.log(e)
       if(e.status==true){
         validcount+=1
 
       }
-      if(e.status==true && e["class"].includes("str")){
+      if(e.status==true && (e["class"].includes("concentric_str")||e["class"].includes("eccentric_str"))){
         strengthcount+=1
       }
       if(e.status==true && e["class"].includes("coor")){
@@ -147,19 +155,24 @@ const [fancylist,setlist]=useState([1,2,3])
     return(
       props.list['impairments'].map((e:any)=>{
         
-        if(e&&e["class"]&&e["class"].includes("str")){
+        if(e&&e["class"]&&(e["class"].includes("eccentric_str")||e["class"].includes("concentric_str"))){
           //need to somehow store the treatment ideas to this shit and then geenrate
           if(e.status==true){
             return (
               <div key={e[0]}>
                 
                 
-            <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
+            <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong>-{dict[`${e["str_lvl"].toString()}`]}</dd>
+            
             <div>Potential treatment ideas</div>
             {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
             <ol className='list-decimal grid grid-cols-1 divide-y'>
-            {e.treatmentideas.map((e:any)=>{
-              return <li key={e.label}>{e.label}</li>
+            {e.treatmentideas.filter((a: any) => a["level"]==e["str_lvl"]).map((e:any)=>{
+              
+                return <li key={e.label}>{e.label}</li>
+
+              
+              
             })}
             </ol>
             </div>
@@ -196,6 +209,7 @@ const [fancylist,setlist]=useState([1,2,3])
                 
             <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong></dd>
             <div>Potential treatment ideas</div>
+            
             {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
             <ol className='list-decimal grid grid-cols-1 divide-y'>
             {e.treatmentideas.map((e:any)=>{
@@ -228,7 +242,7 @@ const [fancylist,setlist]=useState([1,2,3])
     return(
       props.list['impairments'].map((e:any)=>{
        
-        if(e&&e["class"]&&(e["class"].includes("str") || e["class"].includes("coor"))){
+        if(e&&e["class"]&&(e["class"].includes("concentric_str")||e["class"].includes("eccentric_str") || e["class"].includes("coor"))){
          return
   
        

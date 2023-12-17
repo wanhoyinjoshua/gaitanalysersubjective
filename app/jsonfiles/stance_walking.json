@@ -3,7 +3,7 @@
     {
       "label": "Ankle dorsiflexion eccentrically in sitting with/without electrical stimulation",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -15,7 +15,7 @@
     {
       "label": "Swing phase ensuring heel strike maintaining dorsiflexion then lowering forefoot to the floor",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -27,7 +27,7 @@
     {
       "label": "Walking emphasising walking with heel strike at Initial Contact",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": false,
@@ -39,7 +39,7 @@
     {
       "label": "Use of footprints/small circles for heel contact overground or markers on treadmill",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 1,
       "coordination": false,
       "part": false,
@@ -51,7 +51,7 @@
     {
       "label": "Soleus: Sitting - pushing heel off the ground (make sure not compensating with hip flexors to lift their thigh)",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -63,7 +63,7 @@
     {
       "label": "Gastrocs in standing on a reverse wedge with back against wall and lower heels down to floor to fatigue",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -123,7 +123,7 @@
     {
       "label": "Plantarflex in lying against resistance (wall, end of bed, tilt-table preferably with feedback eg scales, pressure monitor)",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -135,7 +135,7 @@
     {
       "label": "Standing with back to the wall, affected leg on a dorsiflexion wedge and intact leg on a block. Person instructed to raise heel rapidly. Remember to ask person to keep back on wall and avoid unloading affected leg",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 1,
       "coordination": true,
       "part": true,
@@ -147,7 +147,7 @@
     {
       "label": "Practise plantarflexing in standing, : verbal cueing to emphasise eccentric control and to switch rapidly between eccentric and concentric activity.",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 2,
       "coordination": true,
       "part": true,
@@ -159,7 +159,7 @@
     {
       "label": "Step intact foot forward, use scales under affected fore-foot (to make sure weight is translated into forefoot and pushing into plantar flexion)",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -171,7 +171,7 @@
     {
       "label": "Step intact leg forward and up onto block to ensure need to plantarflex in SLS on affected leg",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": true,
       "part": true,
@@ -195,7 +195,7 @@
     {
       "label": "Increased speed of walking to demand increased plantarflexor activity for push off",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": false,
@@ -255,7 +255,7 @@
     {
       "label": "Person standing with back to wall with intact leg on block. Person instructed to flex affected knee and extend back to wall, adding wedge to put ankle into PF in order to make it more difficult for knee to maintain extension",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 2,
       "coordination": true,
       "part": true,
@@ -291,7 +291,7 @@
     {
       "label": "Stepping intact leg forward, ensuring that hip on affected leg moves into extension, use target if necessary",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -303,7 +303,7 @@
     {
       "label": "Moving intact leg from behind affected leg and step wih intact leg forward, ensuring that hip on affected leg moves into extension, use target if necessary, this forces hip extensors to work from a flexed position",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -315,7 +315,7 @@
     {
       "label": "Stepping intact leg forward and up onto a block this forces the hip extensors to work harder (as well as the plantarflexors)",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -399,7 +399,7 @@
     {
       "label": "Knee flexion exercises with skateboard / progressive resistance exercise if able",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -411,7 +411,7 @@
     {
       "label": "Electrical stimulation on calf muscles +/- mental practice in supine / sitting ",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -423,7 +423,7 @@
     {
       "label": "Calf strengthening in gravity eliminated position ( side lying ) ",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -435,7 +435,7 @@
     {
       "label": "Resistance training for knee flexors with therabands, apply principles of progressive resistance training to strengthen",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -459,7 +459,7 @@
     {
       "label": "Hip abdcution in gravity eliminated position, aim for large number of successful repititions as mechanism of strengthening is via recruitment of motor units, consider using tactile cues for movement targets to provide augmebnted feedback for successful repetition.",
       "body": 0,
-      "level": 0,
+      "level": 1,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -471,7 +471,7 @@
     {
       "label": "hip abduction in side lying against gravity , apply principles of progressive resistance exercises.",
       "body": 0,
-      "level": 1,
+      "level": 2,
       "strength": 1,
       "coordination": false,
       "part": true,
@@ -483,7 +483,7 @@
     {
       "label": "Practice eccentric control of knee extension by forcing the knee flexors to work eccentrically",
       "body": 0,
-      "level": 2,
+      "level": 3,
       "strength": 2,
       "coordination": false,
       "part": true,
@@ -570,7 +570,7 @@
         "ankle_dorsiflexion"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     },
     {
@@ -650,7 +650,7 @@
         "ankle_plantarflexion"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     },
     {
@@ -719,7 +719,7 @@
         "ankle_plantarflexion"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -760,7 +760,7 @@
         "knee_flexion"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -817,7 +817,7 @@
         "knee_extension"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -858,7 +858,7 @@
         "hip_extension"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -879,7 +879,7 @@
         "hip_flexion"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     },
     {
@@ -945,7 +945,7 @@
         "hip_abduction"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -1032,7 +1032,7 @@
         "knee_flexion"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     }
   ]
