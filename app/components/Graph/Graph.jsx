@@ -4,12 +4,12 @@ import CytoscapeComponent from 'react-cytoscapejs';
 
 const Graph = () => {
     const elements = [
-        { data: { id: 'one', label: 'Node 1' }, position: { x: 50, y: 100 } },
-        { data: { id: 'two', label: 'Node 2' }, position: { x: 550, y: 100 } },
-        { data: { id: 'three', label: 'Node 3' }, position: { x: 50, y: 50 } },
-        { data: { id: 'four', label: 'Node 4 ' }, position: { x: 300, y: 50 } },
-        { data: { id: 'five', label: 'Node 5' }, position: { x: 300, y: 150 } },
-        { data: { id: 'six', label: 'Node 6' }, position: { x: 550, y: 150 } },
+        { data: { id: 'one', label: 'Strength #' }, position: { x: 50, y: 100 } },
+        { data: { id: 'two', label: 'Deviation' }, position: { x: 550, y: 100 } },
+        { data: { id: 'three', label: 'Sensation #' }, position: { x: 50, y: 50 } },
+        { data: { id: 'four', label: 'Coordination #' }, position: { x: 300, y: 50 } },
+        { data: { id: 'five', label: 'ROM #' }, position: { x: 300, y: 150 } },
+        { data: { id: 'six', label: 'Compensation' }, position: { x: 550, y: 150 } },
         { data: { source: 'one', target: 'two', label: 'Edge from Node1 to Node2' } },
         { data: { source: 'four', target: 'two', label: 'Edge from Node1 to Node2' } },
         { data: { source: 'one', target: 'four', label: 'Edge from Node1 to Node2', "arrow": "tee" }, classes: 'custom-node',},
