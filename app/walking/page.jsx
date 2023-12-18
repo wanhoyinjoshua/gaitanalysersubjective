@@ -9,7 +9,7 @@ import * as icon from '@coreui/icons';
 
 
 
-const page = () => {
+const Page = () => {
   const [view,setView]=useState([
     { name: 'Stance', href: '#', current: true },
     { name: 'Swing', href: '#', current: false },
@@ -89,4 +89,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
