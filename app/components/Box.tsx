@@ -357,10 +357,12 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
    {rom>=0&&<div>
      please consider the effect of muscle stiffness in your treatment and see if any equipment will be of utlity.
      </div>}
+     {/*
      <div className='h-48 w-full'>
      <Graph data={props.list['impairments']}></Graph>
      
      </div>
+   */}
     
     
 

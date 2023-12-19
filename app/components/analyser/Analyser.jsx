@@ -8,6 +8,7 @@ import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@
 
 import Box from '../Box'
 
+
 const styles = StyleSheet.create({
   page: {
     paddingTop: 35,
@@ -82,6 +83,9 @@ const Analyser = (props) => {
     const [subgroup,setSubgroup]=useState()
     const [skippedImpairments,setSkippedimpairments]=useState([])
     const [treatmentpdf,setTreatmentpdf]= useState([])
+    const [eccentric,setEccentric]=useState(false)
+    const [previmpairmentlist,setPrev]=useState()
+    const [skiplist,setPrevSkipList]=useState()
     //ankle =0
     //genere = 0 is strength 1 is coordination, 2 is part task , 3 is whole task 
    
@@ -130,14 +134,24 @@ const Analyser = (props) => {
         console.log('page is relaoding')
         if(selectedimpairment&&selectedimpairment[impairmentcount]&&selectedimpairment[impairmentcount]["class"]&&(selectedimpairment[impairmentcount]["class"].includes("eccentric_str")||selectedimpairment[impairmentcount]["class"].includes("concentric_str"))){
           //then display
-          
-          console.log("hihih")
+          if(selectedimpairment[impairmentcount]["class"].includes("eccentric_str")){
+            setEccentric(true)
+            setMuscletestingbutton(false)
+          }
+          else{
+            console.log("hihih")
           setMuscletestingbutton(true)
+          setEccentric(false)
+
+          }
+          
 
 
         }
         else{
           setMuscletestingbutton(false)
+          setEccentric(false)
+
 
         }
 
@@ -158,9 +172,14 @@ const Analyser = (props) => {
       }
      
     }
+    function savebackup(implist,skiplist){
+      setPrev([...implist])
+      setPrevSkipList([...skiplist])
+    }
     function isGroup1(){
       //need to delete the all coor impairments from the impairment count onwards
       //and then from the current impairment dig into the treatment and set all difficulty to beginner  
+      savebackup(selectedimpairment,skippedImpairments)
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
@@ -204,6 +223,7 @@ const Analyser = (props) => {
 
     function isGroup2(){
       //need to delete the
+      savebackup(selectedimpairment,skippedImpairments)
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
@@ -244,6 +264,7 @@ const Analyser = (props) => {
     }
 
     function isGroup3(){
+      savebackup(selectedimpairment,skippedImpairments)
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
@@ -274,6 +295,7 @@ const Analyser = (props) => {
     }
 
     function isGroup4(){
+      savebackup(selectedimpairment,skippedImpairments)
       var newlist=[...selectedimpairment]
       var skipped=[...skippedImpairments]
       newlist[impairmentcount]["status"]=true
@@ -566,9 +588,9 @@ const Analyser = (props) => {
                         </div>
                         </div>
                         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                        {muscletestingbutton==false&&
+                        {muscletestingbutton==false&&eccentric==false&&
                          <section>
-                         <button className="inline-flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onClick={()=>{
+                         <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
                  if(impairmentcount+1==selectedimpairment.length){
                      //return
                      //convert selectedimpairment to a list of kinematic deviations with imapirments
@@ -587,6 +609,7 @@ const Analyser = (props) => {
                      
                      return
                  }
+                 savebackup(selectedimpairment,skippedImpairments)
                  var newlist=[...selectedimpairment]
                  newlist[impairmentcount]["status"]=true
                  console.log(newlist)
@@ -611,6 +634,7 @@ const Analyser = (props) => {
                      
                      return
                  }
+                 savebackup(selectedimpairment,skippedImpairments)
                  Setimpairmentcount((prev)=>{
                      return prev+1
                  })
@@ -621,10 +645,65 @@ const Analyser = (props) => {
                         
                         
                         }
+                        {
+                          eccentric&& <section>
+                          <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                  if(impairmentcount+1==selectedimpairment.length){
+                      //return
+                      //convert selectedimpairment to a list of kinematic deviations with imapirments
+                      console.log("hi")
+                     
+                      var newlist=[...selectedimpairment]
+                      newlist[impairmentcount]["status"]=true
+                      console.log("lastone")
+                      console.log(newlist)
+                      setSelectedImpairment([...newlist])
+                      setTestingPhase(false)
+                      console.log(getfinalist())
+                      setInsightsPhase(true)
+                      setFinalist([...getfinalist()])
+  
+                      
+                      return
+                  }
+                  savebackup(selectedimpairment,skippedImpairments)
+                  var newlist=[...selectedimpairment]
+                  newlist[impairmentcount]["status"]=true
+                  console.log(newlist)
+                  setSelectedImpairment([...newlist])
+                  Setimpairmentcount((prev)=>{
+                      return prev+1
+                  })
+                  
+  
+              }}>Unable to control eccentric movements slowly</button>
+                <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
+                  if(impairmentcount+1==selectedimpairment.length){
+                      //return
+                      //convert selectedimpairment to a list of kinematic deviations with imapirments
+                      console.log("hi")
+                      newlist[impairmentcount]["status"]=false
+                      setTestingPhase(false)
+                      console.log(getfinalist())
+                      setInsightsPhase(true)
+                      setFinalist([...getfinalist()])
+  
+                      
+                      return
+                  }
+                  savebackup(selectedimpairment,skippedImpairments)
+                  Setimpairmentcount((prev)=>{
+                      return prev+1
+                  })
+  
+              }}>Able to control eccentric movements slowly</button>
+  
+                          </section>
+                        }
 
                         {muscletestingbutton&&
                         <section className='flex flex-col'>
-                          <button className="inline-flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onClick={()=>{
+                          <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
                  if(impairmentcount+1==selectedimpairment.length){
                      //return
                      //convert selectedimpairment to a list of kinematic deviations with imapirments
@@ -723,6 +802,8 @@ const Analyser = (props) => {
            
           
              <button onClick={()=>{
+              setImpairmentlist([...previmpairmentlist])
+              setSkippedimpairments([...skiplist])
                 Setimpairmentcount((prev)=>{
                     return prev-1
                 })

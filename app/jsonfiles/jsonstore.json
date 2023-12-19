@@ -234,7 +234,7 @@
         "ankle_dorsiflexion"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -299,7 +299,7 @@
         "ankle_dorsiflexion"
       ],
       "class": [
-        "other"
+        "sensation"
       ]
     },
     {
@@ -342,7 +342,7 @@
         "hip_flexion"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -374,7 +374,10 @@
       "testing": "Tactile sensation tests Proprioception tests",
       "category": 0,
       "treatment": [],
-      "body": 0
+      "body": 0,
+      "class": [
+        "sensation"
+      ]
     },
     {
       "impairment": "Decreased strength hip flexors to rapidly flex hip",
@@ -392,7 +395,7 @@
         "hip_flexion"
       ],
       "class": [
-        "str"
+        "coor"
       ]
     },
     {
@@ -410,7 +413,7 @@
         "knee_flexion"
       ],
       "class": [
-        "str"
+        "concentric_str"
       ]
     },
     {
@@ -443,7 +446,7 @@
         "hip_extension"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     },
     {
@@ -459,7 +462,7 @@
         "knee_flexion"
       ],
       "class": [
-        "str"
+        "eccentric_str"
       ]
     },
     {

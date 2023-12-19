@@ -5,7 +5,8 @@ import * as icon from '@coreui/icons';
 import json from "../jsonfiles/jsonstore.json"
 import Walking_stance from '../components/analyser/Walking_stance'
 import Analyser from "../components/analyser/Analyser"
-
+import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
+import walkingjson from "../jsonfiles/stance_walking.json"
 const Page = () => {
 
   const actions = [
@@ -47,10 +48,37 @@ const Page = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
+  const importFromExcel = (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      console.error('No file selected');
+      return;
+    }
+    ExcelToJSON({
+      file,
+    }).then(parsedData => {
+      console.log(parsedData);
+      // Handle the parsed data as needed
+    });
+  };
 
 
   return(
     <div>
+      <button onClick={()=>{
+        var data=walkingjson
+        console.log(
+          JSONToExcel({
+            data: data,
+            fileName: 'exported_data',
+          }
+  
+          )
+
+        )
+        
+      }}>excel</button>
+      <input type="file" onChange={importFromExcel} />
        <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
       {actions.map((action, actionIdx) => (
         <div
