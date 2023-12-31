@@ -88,7 +88,14 @@ const Analyser = (props) => {
     const [skiplist,setPrevSkipList]=useState()
     //ankle =0
     //genere = 0 is strength 1 is coordination, 2 is part task , 3 is whole task 
-   
+   function id_2_object(id,list){
+    const filtered = list.filter( x => 
+      x.id==id
+    );
+
+    return filtered
+
+   }
    
     useEffect(()=>{
         setKinematic(props.json["kinematic_deviations"])
@@ -473,8 +480,8 @@ const Analyser = (props) => {
     </div>
       <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
         {kinematic_deviation.map((e,index)=>(
-             <label key={e} htmlFor= {`${e.label}_${index}`}>
-          <div key={e} className="relative flex items-start py-4">
+             <label key={index} htmlFor= {`${e.label}_${index}`}>
+          <div key={index} className="relative flex items-start py-4">
             <div className={` min-w-0 flex-1 text-sm leading-6`}>
               <div className={`p-5 ${selected_observations.includes(index)?"bg-green-50":""} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
              {selected_observations.includes(index)?<CIcon icon={icon.cilCheckCircle} size="xxl" className="h-6 w-6"/>:null}

@@ -2,9 +2,12 @@
 import React, { useState } from 'react'
 import CIcon from '@coreui/icons-react';
 import Analyser from '../components/analyser/Analyser';
+import Analyser2 from "../components/analyser/Analyser copy"
 import json from "../jsonfiles/jsonstore.json"
 import stancejson from "../jsonfiles/stance_walking.json"
 import jsonstore from '../jsonfiles/jsonstore.json'
+import test_swing from '../jsonfiles/test_swing.json'
+import test_stance from "../jsonfiles/test_stance.json"
 import * as icon from '@coreui/icons';
 
 
@@ -80,7 +83,8 @@ const Page = () => {
        </div>
    
        <div className={view[0].current==false?"pt-12":"hidden"}>
-       <Analyser  key="component1" json={jsonstore}></Analyser>
+       
+       <Analyser2   key="componen1" json={test_swing}></Analyser2 >
 
        </div>
     

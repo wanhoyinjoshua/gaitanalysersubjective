@@ -7,6 +7,8 @@ import Walking_stance from '../components/analyser/Walking_stance'
 import Analyser from "../components/analyser/Analyser"
 import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
 import walkingjson from "../jsonfiles/stance_walking.json"
+import swingjson from "../jsonfiles/jsonstore.json"
+import { read, utils, writeFile } from 'xlsx';
 const Page = () => {
 
   const actions = [
@@ -62,15 +64,73 @@ const Page = () => {
     });
   };
 
+  const exportData = (data) => {
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(data)
+    )}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "data.json";
+
+    link.click();
+  };
+
+  const handlefile=async (e)=>{
+    const file=e.target.files[0];
+    const data=await file.arrayBuffer()
+    
+    const workbook=read(data)
+    console.log(workbook)
+    const ws = workbook.Sheets[workbook.SheetNames[2]]; // get the first worksheet
+    const treatment_ws= workbook.Sheets[workbook.SheetNames[0]]
+    const kinematic_deviation_ws= workbook.Sheets[workbook.SheetNames[1]]
+    const final_data = utils.sheet_to_json(ws);
+    const treatment_final_data=utils.sheet_to_json(treatment_ws);
+    const kinematic_deviation_final_data=utils.sheet_to_json(kinematic_deviation_ws);
+  console.log(final_data)
+  var newtreatmemt= treatment_final_data.map((row)=>{
+    var newid={...row}
+    newid["id"]=row.__rowNum__+1
+    return newid
+  })
+  var newkinematic=kinematic_deviation_final_data.map((row)=>{
+    var newid={...row}
+    newid["id"]=row.__rowNum__+1
+    return newid
+  })
+
+  var newimpairment=final_data.map((row)=>{
+    var newid={...row}
+    console.log(newid)
+    newid["kinematic_deviations"]=JSON.parse(row["kinematic_deviations"])
+    newid["treatment"]=JSON.parse(row["treatment"])
+    newid["physio_movements"]=JSON.parse(row["physio_movements"])
+    newid["class"]=JSON.parse(row["class"])
+
+    return newid
+  })
+
+
+
+  const exitobject={
+    "treatments":newtreatmemt,
+    "kinematic_deviations":newkinematic,
+    "impairments":newimpairment
+
+  }
+  exportData(exitobject)
+
+  }
+
 
   return(
     <div>
       <button onClick={()=>{
-        var data=walkingjson
+        var data=swingjson
         console.log(
           JSONToExcel({
             data: data,
-            fileName: 'exported_data',
+            fileName: 'exported_data_swing',
           }
   
           )
@@ -78,7 +138,7 @@ const Page = () => {
         )
         
       }}>excel</button>
-      <input type="file" onChange={importFromExcel} />
+      <input type="file" onChange={(e)=>{handlefile(e)}} />
        <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
       {actions.map((action, actionIdx) => (
         <div
