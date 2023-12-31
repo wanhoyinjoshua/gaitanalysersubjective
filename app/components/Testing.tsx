@@ -3,6 +3,7 @@ import {useState,useEffect} from "react"
 import { testing_props,impairment } from '../interface/interface';
 import ButtonPanel from './ButtonPanel';
 import Concentric_ButtonPanel from "./Concentric_ButtonPanel"
+import { Josefin_Sans } from 'next/font/google';
 const Testing = (props:testing_props) => {
     /*
     This component is responsible for 
@@ -37,6 +38,7 @@ const Testing = (props:testing_props) => {
     console.log(isconcentrictest())
     console.log(iseccentrictest())
     console.log(isdefaulttest())
+    console.log(skippedImpairments)
         if(isconcentrictest()){
             setButtonstates(prevState => ({
                 ...prevState,
@@ -101,6 +103,7 @@ const Testing = (props:testing_props) => {
           );
           //arrange impairments here
           console.log(selectedimpairment)
+          
   
           return selectedimpairment
          
@@ -156,6 +159,11 @@ const Testing = (props:testing_props) => {
 <p className="mt-1 text-sm text-gray-500">
 Testing
 
+<br></br>
+<br>
+</br>
+
+
 </p>
 
 
@@ -190,6 +198,8 @@ Testing
                 
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3 className="text-base font-semibold leading-6 text-gray-900">
+                    {console.log(props)}
+
                     {selectedimpairment[impairmentcount]["key"]}
                     </h3>
                     <div className="mt-2">
@@ -209,9 +219,12 @@ Testing
                  impairmentcount={impairmentcount}
                  length_impairments={selectedimpairment.length}
                  selectedimpairment={selectedimpairment}
+                 skippedimpairments={skippedImpairments}
                  setObservationinparent={next}
                  setSelectedImpairment={setSelectedImpairment}
                  setimpairmentcount={setimpairmentcount}
+                 exportselectedimpairments={props.setSelected_impairment}
+                 exportskippedimpairments={props.setSkipped}
                  
                  ></ButtonPanel>
                 
@@ -226,9 +239,13 @@ Testing
                   impairmentcount={impairmentcount}
                   length_impairments={selectedimpairment.length}
                   selectedimpairment={selectedimpairment}
+                  skippedimpairments={skippedImpairments}
                   setObservationinparent={next}
                   setSelectedImpairment={setSelectedImpairment}
                   setimpairmentcount={setimpairmentcount}
+                  exportselectedimpairments={props.setSelected_impairment}
+                  exportskippedimpairments={props.setSkipped}
+                 
                   
                   ></ButtonPanel>
                  
@@ -249,6 +266,8 @@ Testing
                    setSelectedImpairment={setSelectedImpairment}
                    setimpairmentcount={setimpairmentcount}
                    treatmentlist={props.treatmentlist}
+                   exportselectedimpairments={props.setSelected_impairment}
+                   exportskippedimpairments={props.setSkipped}
                   
                    
                    ></Concentric_ButtonPanel>

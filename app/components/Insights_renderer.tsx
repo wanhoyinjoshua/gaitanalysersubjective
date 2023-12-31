@@ -338,7 +338,8 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
 <a href="#">
   <h3 className="mt-0.5 text-lg font-medium text-gray-900">
   
-      {props.list["kinematic"]["label"]}
+      {props.list["kinematic"][0]["label"]}
+     
     
   </h3>
 </a>

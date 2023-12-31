@@ -166,59 +166,6 @@ const Analyser2 = (props) => {
 
     
 
-    function getfinalist(){
-        //have list of objects like this 
-        //[{"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"]}]
-        //I need to find per kinematic deviation, what is the impairment list...
-        //this time creating an object might make sense
-        // use selected observation and then loop through it, then include the impairments 
-        var finallist=[]
-        selected_observations.forEach((element)=>{
-            //element is the index of the original observation list 
-            var finalised_kinematic_deviation={"kinematic":kinematic_deviation.filter(x=>x.id==element)}
-            var identifiedimpairments=[]
-            var newselectedimpairment= selectedimpairment.concat(skippedImpairments)
-            newselectedimpairment.forEach((impairment)=>{
-                if(impairment["kinematic_deviations"].includes(element)){
-                    console.log(impairment["treatment"])
-                    var treatmentideas=[]
-                    impairment['treatment'].forEach((e,index)=>{
-                        
-                        console.log(treatmentlist[e])
-                        treatmentideas.push(treatmentlist.filter(x=>x.id==element))
-
-                    })
-                    impairment["treatmentideas"]=treatmentideas
-
-                    //impairment["treatment"]=impairment["treatment"].map((e)=>{return treatmentlist[e]})
-                    
-                    if(impairment["status"]==true){
-                      identifiedimpairments.unshift(impairment,1)
-
-                    }
-                    
-                    else{
-                      identifiedimpairments.push(impairment)
-
-                    }
-                    
-
-
-
-                }
-
-            })
-
-            
-            finalised_kinematic_deviation["impairments"]=identifiedimpairments
-            
-            finallist.push(finalised_kinematic_deviation)
-        })
-        
-        setTestingPhase(false)
-        setInsightsPhase(true)
-        return finallist
-        }
     
     
     
@@ -243,7 +190,12 @@ const Analyser2 = (props) => {
         <Testing
         impairmentlist={props.json["impairments"]}
         selected_deviations={selected_observations}
+        setSelected_impairment={setSelectedImpairment}
+        selectedimpairment={selectedimpairment}
         setObservationinparent={setStage}
+        setSkipped={setSkippedimpairments}
+        skippedimpairments={skippedImpairments}
+        
         treatmentlist={props.json["treatments"]}
         
         ></Testing>
@@ -253,10 +205,10 @@ const Analyser2 = (props) => {
     {stagesController["3"]&&finalist&&
     <Insights
     selected_observations={selected_observations}
-    kinematic_deviation:any,
-    selectedimpairment:any,
-    skippedImpairments:any,
-    treatmentlist:any
+    kinematic_deviation={props.json["kinematic_deviations"]}
+    selectedimpairment={selectedimpairment}
+    skippedImpairments={skippedImpairments}
+    treatmentlist={props.json["treatments"]}
     ></Insights>}
         
     

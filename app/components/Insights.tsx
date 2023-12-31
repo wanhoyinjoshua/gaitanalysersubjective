@@ -9,6 +9,7 @@ const Insights = (props:insights_props) => {
         //I need to find per kinematic deviation, what is the impairment list...
         //this time creating an object might make sense
         // use selected observation and then loop through it, then include the impairments 
+        console.log(props)
         var finallist:any=[]
         props.selected_observations.forEach((element:any)=>{
             //element is the index of the original observation list 
@@ -66,6 +67,7 @@ const Insights = (props:insights_props) => {
       <p className="mt-1 text-sm text-gray-500">
         insights
       </p>
+      
     </div>
     <div className="ml-4 mt-4 flex-shrink-0">
    
@@ -78,7 +80,7 @@ const Insights = (props:insights_props) => {
         }}
         className=""
       >
-        Analyse again hhh
+        Analyse again
       </a>
       
     </div>
@@ -90,7 +92,7 @@ const Insights = (props:insights_props) => {
             <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
   
 </div>
-        {JSON.stringify(insight)}
+        
           
             <Insights_renderer list={insight} ></Insights_renderer>
 

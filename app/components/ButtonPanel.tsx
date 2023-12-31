@@ -3,7 +3,7 @@ import { buttonpanel_props } from '../interface/interface'
 const ButtonPanel = (props:buttonpanel_props) => {
 
 const lasttest=props.impairmentcount+1==props.length_impairments
-window.alert(`${JSON.stringify(props.impairmentcount)}/${props.length_impairments}`)
+
 console.log(props)
 function next(){
     var newstage={
@@ -21,9 +21,15 @@ function handleyes(){
         //return
         //convert selectedimpairment to a list of kinematic deviations with imapirments
         //setSelectedImpairment([...newlist])
-        window.alert("hihi")
+        props.setSelectedImpairment([...newlist])
+        props.exportselectedimpairments([...newlist])
+        props.exportskippedimpairments([...props.skippedimpairments])
+
+        
         next()
 
+        //need to set the selected impairments in the parent testing component...
+        
        // setFinalist([...getfinalist()])
 
         
@@ -41,8 +47,10 @@ function handleno(){
         //return
         //convert selectedimpairment to a list of kinematic deviations with imapirments
         window.alert("hihi")
+        props.exportskippedimpairments([...props.skippedimpairments])
        
         next()
+        
         //setFinalist([...getfinalist()])
 
         

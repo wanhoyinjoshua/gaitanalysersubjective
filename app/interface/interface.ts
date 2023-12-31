@@ -32,6 +32,10 @@ export interface obervation_props{
 
 export interface testing_props{
     impairmentlist:impairment[],
+    setSkipped:any,
+    setSelected_impairment:any,
+    selectedimpairment:any,
+    skippedimpairments:any,
     treatmentlist:any,
     selected_deviations:number[],
     setObservationinparent:any
@@ -51,13 +55,17 @@ export interface buttonpanel_props{
     setSelectedImpairment:any,
     setSkippedimpairments?:any,
     skippedimpairments?:any,
-    treatmentlist?:any
+    treatmentlist?:any,
+    exportselectedimpairments?:any
+    exportskippedimpairments?:any,
+    
 }
 
 export interface insights_props{
     selected_observations:any,
     kinematic_deviation:any,
     selectedimpairment:any,
+    
     skippedImpairments:any,
     treatmentlist:any
     
