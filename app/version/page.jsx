@@ -64,9 +64,33 @@ const Page = () => {
     });
   };
 
+  function jsonifydata(data){
+
+    var newdata=data
+    newdata['kinematic_deviations'].forEach((deviation)=>{
+      deviation['possible_impairments']=JSON.parse(deviation['possible_impairments'])
+
+    })
+
+    newdata['impairments'].forEach((imp)=>{
+      imp['treatment']=JSON.parse(imp['treatment'])
+      imp['physio_movements']=JSON.parse(imp['physio_movements'])
+      imp['class']=JSON.parse(imp['class'])
+
+    }
+    )
+    
+    return newdata
+
+
+  }
+
   const exportData = (data) => {
+    
+    var newdata= jsonifydata(data)
+    console.log(newdata)
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-      JSON.stringify(data)
+      JSON.stringify(newdata)
     )}`;
     const link = document.createElement("a");
     link.href = jsonString;
@@ -88,6 +112,8 @@ const Page = () => {
     const treatment_final_data=utils.sheet_to_json(treatment_ws);
     const kinematic_deviation_final_data=utils.sheet_to_json(kinematic_deviation_ws);
   console.log(final_data)
+
+/*
   var newtreatmemt= treatment_final_data.map((row)=>{
     var newid={...row}
     newid["id"]=row.__rowNum__+1
@@ -109,13 +135,14 @@ const Page = () => {
 
     return newid
   })
+  */
 
 
 
   const exitobject={
-    "treatments":newtreatmemt,
-    "kinematic_deviations":newkinematic,
-    "impairments":newimpairment
+    "treatments":treatment_final_data,
+    "kinematic_deviations":kinematic_deviation_final_data,
+    "impairments":final_data
 
   }
   exportData(exitobject)

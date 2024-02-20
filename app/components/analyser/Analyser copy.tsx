@@ -1,5 +1,8 @@
 
 import React, { useState, useEffect ,useRef} from 'react';
+import { createContext } from 'react';
+import { useContext } from 'react';
+import { importedJsonfileContext} from './Context';
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
 import Observation from "../Observation"
@@ -11,7 +14,7 @@ import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@
 import Box from '../Box'
 import Insights from '../Insights';
 
-
+/*
 const styles = StyleSheet.create({
   page: {
     paddingTop: 35,
@@ -69,9 +72,24 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
 });
+*/
+export interface jsonprops{
+  treatments:any;
+  kinematic_deviations:any;
+  impairments:any
 
 
-const Analyser2 = (props) => {
+}
+export interface props{
+  json:jsonprops
+}
+
+const Analyser2 = (props:props) => {
+  //creating the context i need with the props.
+  const json:jsonprops=props.json
+  
+  
+
     const [kinematic_deviation,setKinematic]=useState([])
     const [stagesController,setStage]=useState({
       "1":true,
@@ -88,8 +106,8 @@ const Analyser2 = (props) => {
     const [insightsphase,setInsightsPhase]=useState(false)
     const[finalist,setFinalist]=useState([])
 
-    const [skippedImpairments,setSkippedimpairments]=useState([])
-    const [treatmentpdf,setTreatmentpdf]= useState([])
+    const [skippedImpairments,setSkippedimpairments]=useState<any>([])
+    const [treatmentpdf,setTreatmentpdf]= useState<any>([])
 
     const [previmpairmentlist,setPrev]=useState()
     const [skiplist,setPrevSkipList]=useState()
@@ -99,13 +117,15 @@ const Analyser2 = (props) => {
    
     useEffect(()=>{
        
-        var hhh=[]
+        var hhh:any=[]
         console.log(finalist)
-        {finalist&& finalist.forEach((e)=>{
-          var treatment_pdf={"deviation_pdf":e["kinematic"]["label"],"treatment_pdf":[]}
+        console.log(context.selectedimpairment)
+        console.log(context.skippedimpairments)
+        {finalist&& finalist.forEach((e:any)=>{
+          var treatment_pdf:any={"deviation_pdf":e["kinematic"]["label"],"treatment_pdf":[]}
          
             
-          e['impairments'].forEach(async (e)=>{
+          e['impairments'].forEach(async (e:any)=>{
             if(e.status==true){
               
             for (let i = 0; i <= e.treatmentideas.length-1; i++) {
@@ -141,7 +161,7 @@ const Analyser2 = (props) => {
        
 
     },[props,impairmentcount,selectedimpairment,,finalist])
-   
+   /*
     function addpdf(event){
       console.log("hihsihsihsihsihishyeehahahahahh")
       if(treatmentpdf.length==1){
@@ -160,12 +180,24 @@ const Analyser2 = (props) => {
       setPrev([...implist])
       setPrevSkipList([...skiplist])
     }
+    */
 
+    
 
   
 
     
+var context={
+  
+  json:props.json,
+  selected_observations:selected_observations,
+    selectedimpairment:selectedimpairment,
+    skippedimpairments:skippedImpairments
 
+
+
+
+}
     
     
     
@@ -174,42 +206,48 @@ const Analyser2 = (props) => {
 
   return (
     <div>
+      {JSON.stringify(context.selectedimpairment)}
+      {JSON.stringify(context.skippedimpairments)}
+
+    {props.json&&
+        <importedJsonfileContext.Provider value={context}>
+
+        {stagesController["1"]&&
+           <Observation 
+          
+           setSelectedDeviation_id={setObservations}
+           setObservationinparent={setStage}
+    
+           ></Observation>
+    }
+           
+            
+           
+            {stagesController["2"]&&
+            <Testing
+           
+           
+            setSelected_impairment={setSelectedImpairment}
+           
+            setObservationinparent={setStage}
+            setSkipped={setSkippedimpairments}
+           
+            
+        
+            
+            ></Testing>
+           
+           }
+    
+        {stagesController["3"]&&finalist&&
+        <Insights
+        
+        ></Insights>}
+    
+        </importedJsonfileContext.Provider>}
+
       
-         {stagesController["1"]&&
-       <Observation 
-       kinematic_deviation={props.json["kinematic_deviations"]} 
-       setSelectedDeviation_id={setObservations}
-       setObservationinparent={setStage}
-
-       ></Observation>
-}
-       
-        
-       
-        {stagesController["2"]&&
-        <Testing
-        impairmentlist={props.json["impairments"]}
-        selected_deviations={selected_observations}
-        setSelected_impairment={setSelectedImpairment}
-        selectedimpairment={selectedimpairment}
-        setObservationinparent={setStage}
-        setSkipped={setSkippedimpairments}
-        skippedimpairments={skippedImpairments}
-        
-        treatmentlist={props.json["treatments"]}
-        
-        ></Testing>
-       
-       }
-
-    {stagesController["3"]&&finalist&&
-    <Insights
-    selected_observations={selected_observations}
-    kinematic_deviation={props.json["kinematic_deviations"]}
-    selectedimpairment={selectedimpairment}
-    skippedImpairments={skippedImpairments}
-    treatmentlist={props.json["treatments"]}
-    ></Insights>}
+      
         
     
        

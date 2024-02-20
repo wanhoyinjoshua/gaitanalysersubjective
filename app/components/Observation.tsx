@@ -3,9 +3,15 @@ import { useState,useEffect } from 'react'
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
 import { obervation_props } from '../interface/interface';
+import { useContext } from 'react';
+import {importedJsonfileContext} from './analyser/Context'
+import { json } from 'stream/consumers';
+
 
 
 const Observation = (props:obervation_props) => {
+  const context = useContext(importedJsonfileContext);
+  
     /*
     This component is responsible for 
     1,displaying the observation selection screen
@@ -50,6 +56,7 @@ const Observation = (props:obervation_props) => {
       <h3 className="text-base font-semibold leading-6 text-gray-900">Step 1 </h3>
       <p className="mt-1 text-sm text-gray-500">
         Observations
+        
       </p>
     </div>
     <div className="ml-4 mt-4 flex-shrink-0">
@@ -64,7 +71,7 @@ const Observation = (props:obervation_props) => {
   </div>
 </div>
   <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
-    {props.kinematic_deviation.map((deviation,index)=>(
+    {context.json.kinematic_deviations.map((deviation:any,index:any)=>(
          <label key={index} htmlFor= {`${deviation.label}_${index}`}>
       <div key={index} className="relative flex items-start py-4">
         <div className={` min-w-0 flex-1 text-sm leading-6`}>

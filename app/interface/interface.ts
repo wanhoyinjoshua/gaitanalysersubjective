@@ -24,7 +24,7 @@ export interface StageController{
 }
 
 export interface obervation_props{
-    kinematic_deviation:kinematic_deviation[],
+    
     setSelectedDeviation_id:any;
     setObservationinparent:React.Dispatch<React.SetStateAction<StageController>>
 
@@ -44,9 +44,8 @@ export interface testing_props{
 }
 
 export interface buttonpanel_props{
-    isEccentric:boolean,
-    isConcentric:boolean,
-    isDefault:boolean,
+    buttonstate:any,
+   
     impairmentcount:number,
     length_impairments:number,
     selectedimpairment:any,

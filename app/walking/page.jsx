@@ -7,6 +7,7 @@ import json from "../jsonfiles/jsonstore.json"
 import stancejson from "../jsonfiles/stance_walking.json"
 import jsonstore from '../jsonfiles/jsonstore.json'
 import test_swing from '../jsonfiles/test_swing.json'
+import revised_test_swing_17_02_2024 from "../jsonfiles/revised_test_swing_17_02_2024.json"
 import test_stance from "../jsonfiles/test_stance.json"
 import * as icon from '@coreui/icons';
 
@@ -84,7 +85,7 @@ const Page = () => {
    
        <div className={view[0].current==false?"pt-12":"hidden"}>
        
-       <Analyser2   key="componen1" json={test_swing}></Analyser2 >
+       <Analyser2   key="componen1" json={revised_test_swing_17_02_2024}></Analyser2 >
 
        </div>
     

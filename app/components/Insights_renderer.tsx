@@ -175,7 +175,8 @@ const [fancylist,setlist]=useState([1,2,3])
             <div>Potential treatment ideas</div>
             {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
             <ol className='list-decimal grid grid-cols-1 divide-y'>
-            {e.treatmentideas.filter((a: any) => a["level"]==e["str_lvl"]).map((e:any)=>{
+          
+            {e.treatmentideas.map((e:any)=>{
               
                 return <li key={e.label}>{e.label}</li>
 

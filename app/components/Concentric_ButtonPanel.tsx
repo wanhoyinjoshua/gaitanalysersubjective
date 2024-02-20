@@ -114,7 +114,7 @@ function isGroup(group:number){
       }
       else{
         //ddo not include 
-        newlist[props.impairmentcount]["treatment"].splice(treatment_id,1)
+        JSON.parse(newlist[props.impairmentcount]["treatment"]).splice(treatment_id,1)
       }
 
 
@@ -132,7 +132,7 @@ function isGroup(group:number){
 
   
 
-   if(props.isConcentric){
+   if(props.buttonstate.basic_muscle_testing){
         return(
             <section className='flex flex-col'>
               

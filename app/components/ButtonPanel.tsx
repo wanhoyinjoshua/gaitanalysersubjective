@@ -21,10 +21,11 @@ function handleyes(){
         //return
         //convert selectedimpairment to a list of kinematic deviations with imapirments
         //setSelectedImpairment([...newlist])
+        window.alert(JSON.stringify([...newlist]))
         props.setSelectedImpairment([...newlist])
         props.exportselectedimpairments([...newlist])
         props.exportskippedimpairments([...props.skippedimpairments])
-
+        console.log([...newlist])
         
         next()
 
@@ -43,10 +44,9 @@ function handleyes(){
 
 }
 function handleno(){
+    var newlist=[...props.selectedimpairment]
     if(lasttest){
-        //return
-        //convert selectedimpairment to a list of kinematic deviations with imapirments
-        window.alert("hihi")
+        
         props.exportskippedimpairments([...props.skippedimpairments])
        
         next()
@@ -64,7 +64,7 @@ function handleno(){
 }
 
 
-    if(props.isDefault){
+    if(props.buttonstate.default){
         return (<section>
         <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" 
         onClick={()=>{
@@ -80,7 +80,7 @@ function handleno(){
                      </section>)
 
     }
-    else if(props.isEccentric){
+    else if(props.buttonstate.eccentric_muscle_testing){
         return(
         <section>
         <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" 
@@ -98,6 +98,9 @@ function handleno(){
         </section>
         )
     }
+
+   
+
     
      
   

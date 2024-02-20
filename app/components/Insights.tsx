@@ -1,31 +1,65 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useContext } from 'react'
 import {insights_props} from"../interface/interface"
 import Insights_renderer from './Insights_renderer'
-const Insights = (props:insights_props) => {
+import {importedJsonfileContext} from './analyser/Context'
+const Insights = (props:any) => {
+  const context = useContext(importedJsonfileContext);
     function getfinalist(){
         //have list of objects like this 
-        //[{"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"]}]
+        //[{"id":.,"status":false,"key":element["impairment"],"kinematic_deviations":filteredValues,"testing":element["testing"],"category":element["category"],"treatment":element["treatment"],"body":element["body"]}]
         //I need to find per kinematic deviation, what is the impairment list...
         //this time creating an object might make sense
         // use selected observation and then loop through it, then include the impairments 
         console.log(props)
+
         var finallist:any=[]
-        props.selected_observations.forEach((element:any)=>{
+
+        context.selected_observations.forEach((element:any)=>{
             //element is the index of the original observation list 
-            var finalised_kinematic_deviation:any={"kinematic":props.kinematic_deviation.filter((x:any)=>x.id==element)}
+            // need to find 
+            var finalised_kinematic_deviation:any={"kinematic":context.json.kinematic_deviations.filter((x:any)=>x.id==element)}
+           
+            var allpossibleimpairments=finalised_kinematic_deviation["kinematic"][0]["possible_impairments"]
+        
+            var newselectedimpairment= context.selectedimpairment.concat(context.skippedimpairments)
+          
+            var deviation_impaairment:any=[]
+            allpossibleimpairments.forEach((impairment_id:any)=>{
+              var filtered= newselectedimpairment.filter((e:any)=>{
+               
+                
+                return e["id"]==impairment_id
+
+
+              })
+           
+              deviation_impaairment.push(filtered[0])
+              
+
+            })
+
+
+
             var identifiedimpairments:any=[]
-            var newselectedimpairment= props.selectedimpairment.concat(props.skippedImpairments)
-            newselectedimpairment.forEach((impairment:any)=>{
-                if(impairment["kinematic_deviations"].includes(element)){
-                    console.log(impairment["treatment"])
+
+           
+            
+            deviation_impaairment.forEach((impairment:any)=>{
+               
+                   
                     var treatmentideas:any=[]
-                    impairment['treatment'].forEach((e:any)=>{
+                    if(impairment['treatment']){
+                      impairment['treatment'].forEach((e:any)=>{
                         
                        
-                        treatmentideas.push(props.treatmentlist.filter((x:any)=>x.id==element))
+                        treatmentideas.push(context.json.treatments.filter((x:any)=>x.id==e)[0])
 
                     })
+                      
+
+                    }
+                   
                     impairment["treatmentideas"]=treatmentideas
 
                     //impairment["treatment"]=impairment["treatment"].map((e)=>{return treatmentlist[e]})
@@ -43,7 +77,7 @@ const Insights = (props:insights_props) => {
 
 
 
-                }
+                
 
             })
 
