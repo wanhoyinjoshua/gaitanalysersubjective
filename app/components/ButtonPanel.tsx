@@ -1,7 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
 import { buttonpanel_props } from '../interface/interface'
+import {importedJsonfileContext} from './analyser/Context'
+import {  ButtonTesting } from '../utils/ButtonTesting'
 const ButtonPanel = (props:buttonpanel_props) => {
-
+var ButtonTest=new ButtonTesting()
+const context= useContext(importedJsonfileContext)
 const lasttest=props.impairmentcount+1==props.length_impairments
 
 console.log(props)
@@ -11,7 +15,8 @@ function next(){
         "2":false,
         "3":true
     }
-    props.setObservationinparent({...newstage})
+    context.setStage({...newstage})
+    //props.setObservationinparent({...newstage})
 
 }
 function handleyes(){
@@ -21,11 +26,12 @@ function handleyes(){
         //return
         //convert selectedimpairment to a list of kinematic deviations with imapirments
         //setSelectedImpairment([...newlist])
-        window.alert(JSON.stringify([...newlist]))
+       
         props.setSelectedImpairment([...newlist])
-        props.exportselectedimpairments([...newlist])
-        props.exportskippedimpairments([...props.skippedimpairments])
-        console.log([...newlist])
+        context.setSelectedImpairment([...newlist])
+        //props.exportselectedimpairments()
+        context.setSkippedimpairments([...props.skippedimpairments])
+        //props.exportskippedimpairments([...props.skippedimpairments])
         
         next()
 
@@ -37,18 +43,20 @@ function handleyes(){
         return
     }
     //savebackup(selectedimpairment,skippedImpairments)
+    context.setSelectedImpairment([...newlist])
     props.setSelectedImpairment([...newlist])
-    props.setimpairmentcount((prev:any)=>{
-        return prev+1
-    })
+
+    var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
+    props.setimpairmentcount(targetcount)
+
 
 }
 function handleno(){
     var newlist=[...props.selectedimpairment]
     if(lasttest){
         
-        props.exportskippedimpairments([...props.skippedimpairments])
-       
+        //props.exportskippedimpairments([...props.skippedimpairments])
+        context.setSkippedimpairments([...props.skippedimpairments])
         next()
         
         //setFinalist([...getfinalist()])
@@ -57,9 +65,8 @@ function handleno(){
         return
     }
     //savebackup(selectedimpairment,skippedImpairments)
-    props.setimpairmentcount((prev:any)=>{
-        return prev+1
-    })
+    var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
+    props.setimpairmentcount(targetcount)
 
 }
 

@@ -23,7 +23,8 @@ const Testing = (props:any) => {
 
     */
     const context = useContext(importedJsonfileContext);
-  
+    //context.setSelectedImpairment([...getpotentialimpairments()])
+    console.log(context.selectedimpairment)
     const [selectedimpairment,setSelectedImpairment]=useState([...getpotentialimpairments()])
     const [skippedImpairments,setSkippedimpairments]=useState(context.skippedimpairments)
     const [impairmentcount,setimpairmentcount]=useState(0)
@@ -35,6 +36,8 @@ const Testing = (props:any) => {
 
 
     })
+    //another idea is to create a copy of the impairmentlist and only display the filter?
+    
    useEffect(()=>{
     
     console.log(context.selected_observations.values)
@@ -76,8 +79,8 @@ const Testing = (props:any) => {
       
       
 
-   },[isdefaulttest(),isconcentrictest(),iseccentrictest(),impairmentcount])
-
+   },[isdefaulttest(),isconcentrictest(),iseccentrictest()])
+   
     function getpotentialimpairments(){
         function filterdeviation(){
 
@@ -98,9 +101,14 @@ const Testing = (props:any) => {
                 allimpairments=[...allimpairments,...element["possible_impairments"]]
                
             });
+            var unique= new Set(allimpairments)
+            var vvv:any= Array.from(unique)
            
 
-            return allimpairments
+            
+           
+
+            return vvv
 
         }
 
@@ -184,7 +192,7 @@ const Testing = (props:any) => {
                   //const filteredValues = values.filter((value:any) => context.selected_observations.includes(value));
                   const strLevel = element["str_lvl"] ?? -1;
             
-                    selectedimpairment.push({"id":element["id"],"status":false,"key":element["impairment"],"testing":element["testing"],"treatment":element["treatment"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel})
+                    selectedimpairment.push({"id":element["id"],"status":false,"key":element["impairment"],"testing":element["testing"],"treatment":element["treatment"],"class":element["class"],"physio_movements":element["physio_movements"],"str_lvl":strLevel,"skip_status":false})
   
                       
                   
@@ -206,6 +214,8 @@ const Testing = (props:any) => {
   
       }
     
+
+      
     
     
     function next(){
@@ -214,7 +224,7 @@ const Testing = (props:any) => {
             "2":false,
             "3":true
         }
-        props.setObservationinparent({...newstage})
+        context.setStage({...newstage})
     }
     function isdefaulttest(){
         if (iseccentrictest() || isconcentrictest()){
@@ -241,8 +251,7 @@ const Testing = (props:any) => {
     <section className=' '>
     <div>
     <div className="-space-y-px rounded-md bg-white px-5">
-{JSON.stringify(selectedimpairment)}
-{JSON.stringify(skippedImpairments)}
+
 <fieldset>
 <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
 <div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
@@ -290,7 +299,7 @@ Testing
                 
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3 className="text-base font-semibold leading-6 text-gray-900">
-                    {console.log(props)}
+                    
 
                     {selectedimpairment[impairmentcount]["key"]}
                     </h3>
@@ -315,8 +324,7 @@ Testing
                  setObservationinparent={next}
                  setSelectedImpairment={setSelectedImpairment}
                  setimpairmentcount={setimpairmentcount}
-                 exportselectedimpairments={props.setSelected_impairment}
-                 exportskippedimpairments={props.setSkipped}
+                
                  
                  ></ButtonPanel>
                 
@@ -335,8 +343,7 @@ Testing
                    setSelectedImpairment={setSelectedImpairment}
                    setimpairmentcount={setimpairmentcount}
                    treatmentlist={context.json.treatments}
-                   exportselectedimpairments={props.setSelected_impairment}
-                   exportskippedimpairments={props.setSkipped}
+                   
                   
                    
                    ></Concentric_ButtonPanel>

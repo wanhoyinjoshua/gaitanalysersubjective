@@ -149,6 +149,55 @@ const Page = () => {
 
   }
 
+  const handlefile2=async (e)=>{
+    const file=e.target.files[0];
+    const data=await file.arrayBuffer()
+    
+    const workbook=read(data)
+    console.log(workbook)
+    
+    const treatment_ws= workbook.Sheets[workbook.SheetNames[0]]
+    
+    
+    const treatment_final_data=utils.sheet_to_json(treatment_ws);
+
+
+/*
+  var newtreatmemt= treatment_final_data.map((row)=>{
+    var newid={...row}
+    newid["id"]=row.__rowNum__+1
+    return newid
+  })
+  var newkinematic=kinematic_deviation_final_data.map((row)=>{
+    var newid={...row}
+    newid["id"]=row.__rowNum__+1
+    return newid
+  })
+
+  var newimpairment=final_data.map((row)=>{
+    var newid={...row}
+    console.log(newid)
+    newid["kinematic_deviations"]=JSON.parse(row["kinematic_deviations"])
+    newid["treatment"]=JSON.parse(row["treatment"])
+    newid["physio_movements"]=JSON.parse(row["physio_movements"])
+    newid["class"]=JSON.parse(row["class"])
+
+    return newid
+  })
+  */
+
+
+
+  const exitobject={
+    "data":treatment_final_data
+  }
+  exportData(exitobject)
+
+  }
+
+
+
+
 
   return(
     <div>

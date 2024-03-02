@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState,useEffect } from 'react'
 import { Tab } from '@headlessui/react'
 import { Disclosure,Transition  } from '@headlessui/react'
+import { Insights } from '../utils/Insights'
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@react-pdf/renderer';
 import Graph from './Graph/Graph'
 const styles = StyleSheet.create({
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
 
 
 const Insights_renderer = (props:any) => {
+  var outputobject=new Insights(props)
   const [body,setBody]=useState(-1)
   const [strength,setStrength]=useState(-1)
   const [coordination,setCoordination]=useState(-1)
@@ -40,24 +42,7 @@ const Insights_renderer = (props:any) => {
     "4":"Strong"
 
   }
-const [fancylist,setlist]=useState([1,2,3])
-  const MyDoc = () => (
-    <Document>
-      <Page size="A4" style={styles.page}>
-       
-       
-        
-          {fancylist.map(e=>(<View key={imglink} style={styles.section}>
-            <Image key={imglink} src={imglink}></Image>
-        </View>))}
-          
-        
-        
-      </Page>
-    </Document>
-  );
-  
-  
+
   function countimpairmenttype(){
     var validcount=0
     var strengthcount=0
@@ -88,15 +73,12 @@ const [fancylist,setlist]=useState([1,2,3])
     return [strengthcount,coorcount,finalother]
 
   }
-  function returnTrueimpairmentcount(list:any){
-    return list.filter((e:any) =>e.class.status==true).length
-
-  }
+ 
  
   useEffect(()=>{
     //maybe on effect
     
-    console.log(props.list)
+    console.log(categories)
 
     props.list['impairments'].forEach((e:any)=>{
       if(e.status==true){
@@ -165,7 +147,7 @@ const [fancylist,setlist]=useState([1,2,3])
         
         if(e&&e["class"]&&(e["class"].includes("eccentric_str")||e["class"].includes("concentric_str"))){
           //need to somehow store the treatment ideas to this shit and then geenrate
-          if(e.status==true){
+          if(e.status==true||e["skip_status"]==true){
             return (
               <div key={e[0]}>
                 
@@ -290,11 +272,7 @@ const [fancylist,setlist]=useState([1,2,3])
    
   }
 
-  let [categories] = useState<any>({
-    Strength: {component:strengthimpairment,number:countimpairmenttype()[0]},
-    Coordination: {component:coorimpairment,number:countimpairmenttype()[1]},
-    Others: {component:musclelengthimpairment,number:countimpairmenttype()[2]}
-  })
+  let [categories] = useState<any>(outputobject.ProduceFinalState())
 
   function classNames(...classes:any) {
     return classes.filter(Boolean).join(' ')
@@ -339,7 +317,7 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
 <a href="#">
   <h3 className="mt-0.5 text-lg font-medium text-gray-900">
   
-      {props.list["kinematic"][0]["label"]}
+      {props.list["kinematic"]["label"]}
      
     
   </h3>
@@ -444,7 +422,7 @@ className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 
             )}
           >
              
-            {e.component()}
+            {e.component}
 
           </Tab.Panel>
         ))}

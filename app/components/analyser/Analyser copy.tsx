@@ -160,7 +160,7 @@ const Analyser2 = (props:props) => {
 
        
 
-    },[props,impairmentcount,selectedimpairment,,finalist])
+    },[props,impairmentcount,selectedimpairment,finalist])
    /*
     function addpdf(event){
       console.log("hihsihsihsihsihishyeehahahahahh")
@@ -191,8 +191,15 @@ var context={
   
   json:props.json,
   selected_observations:selected_observations,
-    selectedimpairment:selectedimpairment,
-    skippedimpairments:skippedImpairments
+  selectedimpairment:selectedimpairment,
+  skippedimpairments:skippedImpairments,
+  setSelectedImpairment:setSelectedImpairment,
+  setSkippedimpairments:setSkippedimpairments,
+  setObservations:setObservations,
+  setStage:setStage
+
+
+  
 
 
 
@@ -208,10 +215,11 @@ var context={
     <div>
       {JSON.stringify(context.selectedimpairment)}
       {JSON.stringify(context.skippedimpairments)}
-
+      {JSON.stringify(context.selected_observations)}
+      
     {props.json&&
         <importedJsonfileContext.Provider value={context}>
-
+          
         {stagesController["1"]&&
            <Observation 
           

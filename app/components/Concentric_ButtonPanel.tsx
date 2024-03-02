@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { buttonpanel_props } from '../interface/interface'
+import {importedJsonfileContext} from './analyser/Context'
+import { ButtonTesting } from '../utils/ButtonTesting'
 const Concentric_ButtonPanel = (props:buttonpanel_props) => {
-
+  var ButtonTest=new ButtonTesting()
+const context = useContext(importedJsonfileContext)
 const lasttest=props.impairmentcount+1==props.length_impairments
 
-console.log(props)
 function next(){
     var newstage={
         "1":false,
         "2":false,
         "3":true
     }
-    props.setObservationinparent({...newstage})
+    context.setStage({...newstage})
+    //props.setObservationinparent({...newstage})
 
 }
-function generatefinallist(){
 
-}
 
 function util_include_coor(newlist:any,i:any){
 
@@ -41,10 +42,12 @@ function isGroup(group:number){
     //need to delete the all coor impairments from the impairment count onwards
     //and then from the current impairment dig into the treatment and set all difficulty to beginner  
     if(lasttest){
-        window.alert(`${JSON.stringify(props.impairmentcount)}/${props.length_impairments}`)
+        //window.alert(`${JSON.stringify(props.impairmentcount)}/${props.length_impairments}`)
         props.setSelectedImpairment([...newlist])
-        props.exportselectedimpairments([...newlist])
-        props.exportskippedimpairments([...skipped])
+        context.setSelectedImpairment([...newlist])
+       // props.exportselectedimpairments([...newlist])
+       context.setSkippedimpairments([...skipped])
+       // props.exportskippedimpairments([...skipped])
         next()
         
                  
@@ -89,15 +92,19 @@ function isGroup(group:number){
       if(conditional){
 
         //then set as false
+        
         skipped.push(newlist[i])
+        newlist[i]["skip_status"]=true
+       
         console.log("skipped")
         console.log(newlist[i])
-        newlist.splice(i,1)
+        //newlist.splice(i,1)
         
       }
       
     }
-    props.setSkippedimpairments([...skipped])
+    context.setSkippedimpairments([...skipped])
+    //props.setSkippedimpairments([...skipped])
 
     //loop through the treatment stage:
     //for group 1,2 you want to find level 1 /2 
@@ -106,7 +113,7 @@ function isGroup(group:number){
     for(let i = 0; i < newlist[props.impairmentcount]["treatment"].length; i++){
     //need to change here to be based on id 
     var treatment_id=newlist[props.impairmentcount]["treatment"][i]
-    var finalselectedimpairment=[]
+    //var finalselectedimpairment=[]
       var treatmenttagret=props.treatmentlist.filter((x:any)=>x.id==treatment_id)
       //new implemntation
       if(treatmenttagret&&treatmenttagret["level"]==group && treatmenttagret["strength"]!=0){
@@ -114,7 +121,7 @@ function isGroup(group:number){
       }
       else{
         //ddo not include 
-        JSON.parse(newlist[props.impairmentcount]["treatment"]).splice(treatment_id,1)
+        newlist[props.impairmentcount]["treatment"].splice(treatment_id,1)
       }
 
 
@@ -123,10 +130,14 @@ function isGroup(group:number){
 
     }
     //problem is it is not updating, but replacing
-    props.setSelectedImpairment([...newlist])
-    props.setimpairmentcount((prev: number)=>{
-        return prev+1
-    })
+
+
+    
+    context.setSelectedImpairment([...newlist])
+    //props.setSelectedImpairment([...newlist])
+    var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
+    //window.alert(targetcount)
+    props.setimpairmentcount(targetcount)
 
   }
 

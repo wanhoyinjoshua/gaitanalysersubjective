@@ -32,14 +32,15 @@ const Observation = (props:obervation_props) => {
    const [selected_observations,setObservations]=useState<number[]>([])
    
    function finshObservation(){
-  
-    props.setSelectedDeviation_id([...selected_observations])
+    context.setObservations([...selected_observations])
+    //props.setSelectedDeviation_id([...selected_observations])
     var newstage={
         "1":false,
         "2":true,
         "3":false
     }
-    props.setObservationinparent({...newstage})
+    context.setStage({...newstage})
+    //props.setObservationinparent({...newstage})
     //I can commit this to localstorage and have it persist and use useeffect to retreive the state
 
 

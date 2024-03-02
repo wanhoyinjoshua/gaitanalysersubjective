@@ -11,6 +11,10 @@ interface props{
     selected_observations:number[]
     selectedimpairment:any
     skippedimpairments:any
+    setSelectedImpairment:any
+  setSkippedimpairments:any,
+  setObservations:any,
+  setStage:any
   }
 export const importedJsonfileContext = createContext<props>({
   json:{treatments:[],
@@ -18,7 +22,13 @@ export const importedJsonfileContext = createContext<props>({
     impairments:[]},
     selected_observations:[],
     selectedimpairment:[],
-    skippedimpairments:[]
+    skippedimpairments:[],
+    setSelectedImpairment:null,
+  setSkippedimpairments:null,
+  setObservations:null,
+  setStage:null
+
+
 
 
 });
