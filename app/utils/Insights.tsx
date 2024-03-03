@@ -21,6 +21,18 @@ export class Insights{
   }
 
   
+
+  isOthers(e:any){
+    const isStr=e&&e["class"]&&(e["class"].includes("eccentric_str")||e["class"].includes("concentric_str"))
+    const isCoor=e&&e["class"]&&e["class"].includes("coor")
+    if(isStr==false&&isCoor==false){
+        return true
+    }
+    else{
+        return false
+    }
+   
+  }
   isStr(e:any){
     return e&&e["class"]&&(e["class"].includes("eccentric_str")||e["class"].includes("concentric_str"))
 
@@ -28,10 +40,6 @@ export class Insights{
   isCoor(e:any){
     return e&&e["class"]&&e["class"].includes("coor")
 
-  }
-  isOthers(e:any){
-   return true
-  
   }
 
   isEmpty(){
@@ -106,6 +114,7 @@ export class Insights{
   }
 
   getOthersImpCount(){
+    
     return this.props.list['impairments'].filter((e:any)=>this.isOthers(e)).length
 
 

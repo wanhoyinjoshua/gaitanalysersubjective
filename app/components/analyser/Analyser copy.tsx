@@ -213,10 +213,7 @@ var context={
 
   return (
     <div>
-      {JSON.stringify(context.selectedimpairment)}
-      {JSON.stringify(context.skippedimpairments)}
-      {JSON.stringify(context.selected_observations)}
-      
+     
     {props.json&&
         <importedJsonfileContext.Provider value={context}>
           

@@ -68,8 +68,8 @@ const Page = () => {
               <span
                 aria-hidden="true"
                 className={classNames(
-                  tab.current ? 'bg-indigo-500' : 'bg-transparent',
-                  'absolute inset-x-0 bottom-0 h-0.5'
+                  tab.current ? 'bg-mq-lightred' : 'bg-transparent',
+                  'absolute inset-x-0 bottom-0 h-3'
                 )}
               />
             </a>

@@ -277,7 +277,7 @@ Testing
 <div className=''>
 <div className="overflow-hidden rounded-full bg-gray-200">
 
-  <div className="h-2 rounded-full bg-indigo-600 transition-width duration-300 ease-in-out" style={{ width: `${Math.round((impairmentcount/selectedimpairment.length)*100)}%` }} />
+  <div className="h-2 rounded-full bg-mq-lightred transition-width duration-300 ease-in-out" style={{ width: `${Math.round((impairmentcount/selectedimpairment.length)*100)}%` }} />
 </div>
 </div>
 <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">

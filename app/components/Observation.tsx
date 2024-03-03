@@ -48,35 +48,41 @@ const Observation = (props:obervation_props) => {
 
 
   return (
-    <div className="-space-y-px rounded-md bg-white px-5">
+    <div className="rounded-md bg-white ">
 
     <fieldset>
-    <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-  <div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
-    <div className="ml-4 mt-4">
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Step 1 </h3>
-      <p className="mt-1 text-sm text-gray-500">
+    <div className="border-b border-gray-200 bg-white  py-5 ">
+  <div className=" -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
+    <div className="mt-4">
+      <h3 className="text-base font-semibold leading-6 text-white">Step 1 </h3>
+      <p className="mt-1 text-sm text-white">
         Observations
+        <br></br>
+        Select the kinematic deviations identified during the gait cycle, you can select as many as you like.
         
       </p>
     </div>
+
+
     <div className="ml-4 mt-4 flex-shrink-0">
       <button
         type="button"
         onClick={()=>{finshObservation()}}
-        className="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="relative inline-flex items-center rounded-md bg-mq-lightred px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mq-darkred"
       >
         Done!
       </button>
     </div>
+
+
   </div>
 </div>
-  <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
+  <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 ">
     {context.json.kinematic_deviations.map((deviation:any,index:any)=>(
          <label key={index} htmlFor= {`${deviation.label}_${index}`}>
       <div key={index} className="relative flex items-start py-4">
         <div className={` min-w-0 flex-1 text-sm leading-6`}>
-          <div className={`p-5 ${selected_observations.includes(deviation.id)?"bg-green-50":""} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
+          <div className={`p-5 ${selected_observations.includes(deviation.id)?"bg-mq-lightred/10":""} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
          {selected_observations.includes(deviation.id)?<CIcon icon={icon.cilCheckCircle} size="xxl" className="h-6 w-6"/>:null}
             {deviation.label} 
             {deviation.id}
