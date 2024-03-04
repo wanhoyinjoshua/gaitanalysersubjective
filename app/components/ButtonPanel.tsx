@@ -47,6 +47,7 @@ function handleyes(){
     props.setSelectedImpairment([...newlist])
 
     var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
+    props.setBackupcount(props.impairmentcount)
     props.setimpairmentcount(targetcount)
 
 

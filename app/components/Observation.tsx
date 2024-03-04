@@ -6,6 +6,7 @@ import { obervation_props } from '../interface/interface';
 import { useContext } from 'react';
 import {importedJsonfileContext} from './analyser/Context'
 import { json } from 'stream/consumers';
+import Breadcrumbs from './Breadcrumbs';
 
 
 
@@ -48,12 +49,13 @@ const Observation = (props:obervation_props) => {
 
 
   return (
-    <div className="rounded-md bg-white ">
+    <div className="rounded-md  ">
 
     <fieldset>
-    <div className="border-b border-gray-200 bg-white  py-5 ">
+    <div className="border-b border-gray-200   py-5 ">
   <div className=" -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
     <div className="mt-4">
+      <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
       <h3 className="text-base font-semibold leading-6 text-white">Step 1 </h3>
       <p className="mt-1 text-sm text-white">
         Observations
@@ -77,12 +79,12 @@ const Observation = (props:obervation_props) => {
 
   </div>
 </div>
-  <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 ">
+  <div className=" mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 ">
     {context.json.kinematic_deviations.map((deviation:any,index:any)=>(
          <label key={index} htmlFor= {`${deviation.label}_${index}`}>
       <div key={index} className="relative flex items-start py-4">
         <div className={` min-w-0 flex-1 text-sm leading-6`}>
-          <div className={`p-5 ${selected_observations.includes(deviation.id)?"bg-mq-lightred/10":""} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
+          <div className={`p-5 ${selected_observations.includes(deviation.id)?"bg-mq-lightred/10":"bg-white"} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
          {selected_observations.includes(deviation.id)?<CIcon icon={icon.cilCheckCircle} size="xxl" className="h-6 w-6"/>:null}
             {deviation.label} 
             {deviation.id}

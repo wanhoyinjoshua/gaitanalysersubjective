@@ -212,7 +212,7 @@ var context={
           
 
   return (
-    <div>
+    <div className='mt-6 px-28 '>
      
     {props.json&&
         <importedJsonfileContext.Provider value={context}>
@@ -222,6 +222,7 @@ var context={
           
            setSelectedDeviation_id={setObservations}
            setObservationinparent={setStage}
+           stageController={stagesController}
     
            ></Observation>
     }

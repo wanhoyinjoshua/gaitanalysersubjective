@@ -26,7 +26,8 @@ export interface StageController{
 export interface obervation_props{
     
     setSelectedDeviation_id:any;
-    setObservationinparent:React.Dispatch<React.SetStateAction<StageController>>
+    setObservationinparent:React.Dispatch<React.SetStateAction<StageController>>,
+    stageController:any
 
 }
 
@@ -57,6 +58,7 @@ export interface buttonpanel_props{
     treatmentlist?:any,
     exportselectedimpairments?:any
     exportskippedimpairments?:any,
+    setBackupcount:any
     
 }
 

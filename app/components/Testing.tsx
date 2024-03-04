@@ -22,12 +22,14 @@ const Testing = (props:any) => {
     
 
     */
+   
     const context = useContext(importedJsonfileContext);
     //context.setSelectedImpairment([...getpotentialimpairments()])
     console.log(context.selectedimpairment)
     const [selectedimpairment,setSelectedImpairment]=useState([...getpotentialimpairments()])
     const [skippedImpairments,setSkippedimpairments]=useState(context.skippedimpairments)
     const [impairmentcount,setimpairmentcount]=useState(0)
+    const [backupimpairmentcount,setBackupcount]=useState(0)
     const [buttonstates,setButtonstates]=useState({
         default:true,
         basic_muscle_testing:false,
@@ -37,7 +39,18 @@ const Testing = (props:any) => {
 
     })
     //another idea is to create a copy of the impairmentlist and only display the filter?
-    
+    function reverse(){
+        setSelectedImpairment((previous) => {
+            
+            return previous;
+        })
+        setimpairmentcount(backupimpairmentcount)
+        context.setSelectedImpairment((previous:any)=>{
+
+            return previous;
+
+        })
+    }
    useEffect(()=>{
     
     console.log(context.selected_observations.values)
@@ -313,7 +326,9 @@ Testing
                 </div>
                 
                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                
+                <button onClick={reverse}>
+                    back
+                </button>
                 {(buttonstates.default==true||buttonstates.eccentric_muscle_testing==true)&&
                  <ButtonPanel
                  buttonstate={buttonstates}
@@ -324,6 +339,7 @@ Testing
                  setObservationinparent={next}
                  setSelectedImpairment={setSelectedImpairment}
                  setimpairmentcount={setimpairmentcount}
+                 setBackupcount={setBackupcount}
                 
                  
                  ></ButtonPanel>
@@ -343,6 +359,7 @@ Testing
                    setSelectedImpairment={setSelectedImpairment}
                    setimpairmentcount={setimpairmentcount}
                    treatmentlist={context.json.treatments}
+                   setBackupcount={setBackupcount}
                    
                   
                    

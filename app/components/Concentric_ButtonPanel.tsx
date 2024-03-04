@@ -137,6 +137,7 @@ function isGroup(group:number){
     //props.setSelectedImpairment([...newlist])
     var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
     //window.alert(targetcount)
+    props.setBackupcount(props.impairmentcount)
     props.setimpairmentcount(targetcount)
 
   }

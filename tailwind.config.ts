@@ -19,7 +19,8 @@ const config: Config = {
         'mq-darkred':'#76232f',
         'mq-black':'#000000',
         'mq-grey':'#373a36',
-        'mq-lightgrey':'#373a36'
+        'mq-lightgrey':'#373a36',
+        "mq-rice":"#edebe5"
         
       }
     },
