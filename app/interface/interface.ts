@@ -47,7 +47,7 @@ export interface testing_props{
 export interface buttonpanel_props{
     buttonstate:any,
    
-    impairmentcount:number,
+    impairmentcount:any,
     length_impairments:number,
     selectedimpairment:any,
     setObservationinparent:any,
@@ -58,7 +58,8 @@ export interface buttonpanel_props{
     treatmentlist?:any,
     exportselectedimpairments?:any
     exportskippedimpairments?:any,
-    setBackupcount:any
+    setBackupcount:any,
+    backupcount:any
     
 }
 

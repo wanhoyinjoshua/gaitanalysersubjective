@@ -237,6 +237,7 @@ var context={
            
             setObservationinparent={setStage}
             setSkipped={setSkippedimpairments}
+            stageController={stagesController}
            
             
         
@@ -247,6 +248,7 @@ var context={
     
         {stagesController["3"]&&finalist&&
         <Insights
+        stageController={stagesController}
         
         ></Insights>}
     

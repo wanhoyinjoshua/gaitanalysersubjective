@@ -5,6 +5,8 @@ import ButtonPanel from './ButtonPanel';
 import Concentric_ButtonPanel from "./Concentric_ButtonPanel"
 import { Josefin_Sans } from 'next/font/google';
 import {importedJsonfileContext} from './analyser/Context'
+import Breadcrumbs from './Breadcrumbs';
+import { PlusIcon,BackwardIcon } from '@heroicons/react/20/solid'
 const Testing = (props:any) => {
     /*
     This component is responsible for 
@@ -29,7 +31,7 @@ const Testing = (props:any) => {
     const [selectedimpairment,setSelectedImpairment]=useState([...getpotentialimpairments()])
     const [skippedImpairments,setSkippedimpairments]=useState(context.skippedimpairments)
     const [impairmentcount,setimpairmentcount]=useState(0)
-    const [backupimpairmentcount,setBackupcount]=useState(0)
+    const [backupimpairmentcount,setBackupcount]=useState([0])
     const [buttonstates,setButtonstates]=useState({
         default:true,
         basic_muscle_testing:false,
@@ -40,16 +42,16 @@ const Testing = (props:any) => {
     })
     //another idea is to create a copy of the impairmentlist and only display the filter?
     function reverse(){
-        setSelectedImpairment((previous) => {
-            
-            return previous;
-        })
-        setimpairmentcount(backupimpairmentcount)
-        context.setSelectedImpairment((previous:any)=>{
-
-            return previous;
-
-        })
+       
+        //the array represents the current state, last index is current...
+        //need to shave off the last index and go the the last one by default 
+        var backup:any= backupimpairmentcount
+        backup.pop()
+       
+       setBackupcount([...backup])
+       
+       setimpairmentcount(backup[backup.length-1])
+       
     }
    useEffect(()=>{
     
@@ -267,25 +269,26 @@ const Testing = (props:any) => {
 
 <fieldset>
 <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-<div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
-<div className="ml-4 mt-4">
-<h3 className="text-base font-semibold leading-6 text-gray-900">Step 2 </h3>
-<p className="mt-1 text-sm text-gray-500">
-Testing
+<div className="border-b border-gray-200   py-5 ">
+  <div className=" -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
+    <div className="mt-4">
+      <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
+      <h3 className="text-base font-semibold leading-6 text-white">Step 2 </h3>
+      <p className="mt-1 text-sm text-white">
+        Testing
+        <br></br>
+        Please select the most appropriate option for each impairment according to your testing results.
+        
+      </p>
+    </div>
 
-<br></br>
-<br>
-</br>
 
+   
 
-</p>
-
-
-
+  </div>
 </div>
 
 
-</div>
 </div>
 <div className=''>
 <div className="overflow-hidden rounded-full bg-gray-200">
@@ -297,6 +300,7 @@ Testing
 
 </div>
 </fieldset>
+<div className='flex justify-center '>
 <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full max-w-lg sm:p-6">
                 <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
                 <button
@@ -308,9 +312,19 @@ Testing
                    
                 </button>
                 </div>
+                
+                <button
+                onClick={reverse}
+                    type="button"
+                    className="rounded-full bg-mq-lightred p-2 text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                    <BackwardIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
                 <div className="sm:flex sm:items-start">
+              
                 
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+
                     <h3 className="text-base font-semibold leading-6 text-gray-900">
                     
 
@@ -325,10 +339,9 @@ Testing
                 </div>
                 </div>
                 
-                <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                <button onClick={reverse}>
-                    back
-                </button>
+                
+                <div className="mt-5 sm:mt-4 sm:flex sm:flex-row">
+                
                 {(buttonstates.default==true||buttonstates.eccentric_muscle_testing==true)&&
                  <ButtonPanel
                  buttonstate={buttonstates}
@@ -340,6 +353,7 @@ Testing
                  setSelectedImpairment={setSelectedImpairment}
                  setimpairmentcount={setimpairmentcount}
                  setBackupcount={setBackupcount}
+                 backupcount={backupimpairmentcount}
                 
                  
                  ></ButtonPanel>
@@ -360,6 +374,7 @@ Testing
                    setimpairmentcount={setimpairmentcount}
                    treatmentlist={context.json.treatments}
                    setBackupcount={setBackupcount}
+                   backupcount={backupimpairmentcount}
                    
                   
                    
@@ -374,6 +389,9 @@ Testing
                 
                 </div>
             </div>
+
+</div>
+
 
 
 
