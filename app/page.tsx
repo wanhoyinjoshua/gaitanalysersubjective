@@ -8,7 +8,7 @@ const navigation = [
     { name: 'Contacts', href: '#' },
   ]
   
-const page = () => {
+const Page = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -212,4 +212,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

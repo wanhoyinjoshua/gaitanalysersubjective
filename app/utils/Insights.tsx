@@ -60,7 +60,7 @@ export class Insights{
           //need to somehow store the treatment ideas to this shit and then geenrate
           if(e.status!=true){
            
-            return <div>
+            return <div key={e[0]}>
               
                 <dd key={e[0]}className="font-medium text-red-500 line-through ">
                 {e["key"]}</dd>
@@ -94,9 +94,9 @@ export class Insights{
                   
               <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong>-{this.dict[`${e["str_lvl"].toString()}`]}</dd>
               
-              <div>Potential treatment ideas</div>
+              <div key={e[0]}>Potential treatment ideas</div>
               {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
-              <ol className='list-decimal grid grid-cols-1 divide-y'>
+              <ol key={e[0]}className='list-decimal grid grid-cols-1 divide-y'>
                
               {e.treatmentideas.map((treatment:any)=>{
                 if(e.str_lvl!=-1||e.str_lvl!=-1){
