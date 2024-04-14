@@ -97,10 +97,23 @@ export class Insights{
               <div>Potential treatment ideas</div>
               {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
               <ol className='list-decimal grid grid-cols-1 divide-y'>
-            
-              {e.treatmentideas.map((e:any)=>{
+               
+              {e.treatmentideas.map((treatment:any)=>{
+                if(e.str_lvl!=-1||e.str_lvl!=-1){
+                  //paralaysed
+                  if(treatment.level<=e.str_lvl){
+                    return <li key={treatment.label}>{treatment.label}</li>
+
+                  }
+
+                }
+                else{
+                  return <li key={treatment.label}>{treatment.label}</li>
+
+                }
+               
                 
-                  return <li key={e.label}>{e.label}</li>
+                  
   
                 
                 

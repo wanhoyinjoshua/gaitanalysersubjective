@@ -269,9 +269,7 @@ const Testing = (props:any) => {
    
   return (
     <section className=' '>
-    {backupimpairmentcount}
-    <br></br>
-    {impairmentcount}
+    
     <div>
     <div className="-space-y-px rounded-md bg-mq-rice">
 

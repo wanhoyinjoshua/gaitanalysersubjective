@@ -68,6 +68,7 @@ const Page = () => {
 
     var newdata=data
     newdata['kinematic_deviations'].forEach((deviation)=>{
+      console.log(deviation['possible_impairments'])
       deviation['possible_impairments']=JSON.parse(deviation['possible_impairments'])
 
     })

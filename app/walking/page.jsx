@@ -10,6 +10,7 @@ import test_swing from '../jsonfiles/test_swing.json'
 import revised_test_swing_17_02_2024 from "../jsonfiles/revised_test_swing_17_02_2024.json"
 import test_stance from "../jsonfiles/test_stance.json"
 import * as icon from '@coreui/icons';
+import stance_final_15042024 from "../jsonfiles/stance_final_15042024.json"
 
 
 
@@ -79,14 +80,13 @@ const Page = () => {
     </div>
       </section>
        <div className={view[0].current==true?"pt-12":"hidden"}>
-       <Analyser2  key="component1" json={stancejson}></Analyser2>
+       <Analyser2  key="component1" json={stance_final_15042024}></Analyser2>
 
        </div>
    
        <div className={view[0].current==false?"pt-12":"hidden"}>
        
-       <Analyser2   key="componen1" json={revised_test_swing_17_02_2024}></Analyser2 >
-
+       <div>in progress</div>
        </div>
     
 

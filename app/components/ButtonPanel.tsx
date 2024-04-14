@@ -49,6 +49,7 @@ function handleyes(){
     var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
     var newcount=props.backupcount
     if(props.impairmentcount==0){
+        
 
     }else{
         newcount.push(props.impairmentcount)
