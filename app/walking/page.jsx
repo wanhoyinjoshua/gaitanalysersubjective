@@ -79,7 +79,7 @@ const Page = () => {
     </div>
       </section>
        <div className={view[0].current==true?"pt-12":"hidden"}>
-       <Analyser  key="component1" json={stancejson}></Analyser>
+       <Analyser2  key="component1" json={stancejson}></Analyser2>
 
        </div>
    

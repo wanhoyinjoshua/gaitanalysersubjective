@@ -52,6 +52,33 @@ export class Insights{
     }
   }
 
+  getNilImp(type:string){
+    return(
+      this.props.list['impairments'].map((e:any)=>{
+        
+        if(this.newdict[`${type}`](e)){
+          //need to somehow store the treatment ideas to this shit and then geenrate
+          if(e.status!=true){
+           
+            return <div>
+              
+                <dd key={e[0]}className="font-medium text-red-500 line-through ">
+                {e["key"]}</dd>
+              
+            </div>
+          
+          }
+
+        
+
+
+        }
+       
+      })
+    )
+
+  }
+
 
   getImp(type:string){
     //return a list of element to display 
@@ -86,8 +113,7 @@ export class Insights{
   
             }
             else{
-              return <dd key={e[0]}className="font-medium text-red-500 line-through ">
-              {e["key"]}</dd>
+              return 
             }
   
           
@@ -103,19 +129,19 @@ export class Insights{
   }
   getStrImpCount(){
 
-    return this.props.list['impairments'].filter((e:any)=>this.isStr(e)).length
+    return this.props.list['impairments'].filter((e:any)=>this.isStr(e)&&e.status==true).length
 
   }
 
   getCoorImpCount(){
-    return this.props.list['impairments'].filter((e:any)=>this.isCoor(e)).length
+    return this.props.list['impairments'].filter((e:any)=>this.isCoor(e)&&e.status==true).length
 
 
   }
 
   getOthersImpCount(){
     
-    return this.props.list['impairments'].filter((e:any)=>this.isOthers(e)).length
+    return this.props.list['impairments'].filter((e:any)=>this.isOthers(e)&&e.status==true).length
 
 
   }
@@ -170,7 +196,7 @@ export class Insights{
 
   ProduceFinalState(){
     return {
-        Strength: {component:this.getImp("str"),number:this.getStrImpCount()},
+        Strength: {component:this.getImp("str"),componentnil:this.getNilImp("str"),number:this.getStrImpCount()},
         Coordination: {component:this.getImp("coor"),number:this.getCoorImpCount()},
         Others: {component:this.getImp("others"),number:this.getOthersImpCount()}
       }

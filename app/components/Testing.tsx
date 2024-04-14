@@ -45,12 +45,17 @@ const Testing = (props:any) => {
        
         //the array represents the current state, last index is current...
         //need to shave off the last index and go the the last one by default 
-        var backup:any= backupimpairmentcount
-        backup.pop()
+        
+     
+            var backup:any= backupimpairmentcount
+            backup.pop()
+           
+           setBackupcount([...backup])
+           
+           setimpairmentcount(backup[backup.length-1])
+
+        
        
-       setBackupcount([...backup])
-       
-       setimpairmentcount(backup[backup.length-1])
        
     }
    useEffect(()=>{
@@ -264,13 +269,16 @@ const Testing = (props:any) => {
    
   return (
     <section className=' '>
+    {backupimpairmentcount}
+    <br></br>
+    {impairmentcount}
     <div>
-    <div className="-space-y-px rounded-md bg-white px-5">
+    <div className="-space-y-px rounded-md bg-mq-rice">
 
-<fieldset>
-<div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+
+<div className="border-b border-gray-200 bg-mq-rice ">
 <div className="border-b border-gray-200   py-5 ">
-  <div className=" -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
+  <div className=" mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
     <div className="mt-4">
       <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
       <h3 className="text-base font-semibold leading-6 text-white">Step 2 </h3>
@@ -299,7 +307,7 @@ const Testing = (props:any) => {
 <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
 
 </div>
-</fieldset>
+
 <div className='flex justify-center '>
 <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full max-w-lg sm:p-6">
                 <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
@@ -316,7 +324,8 @@ const Testing = (props:any) => {
                 <button
                 onClick={reverse}
                     type="button"
-                    className="rounded-full bg-mq-lightred p-2 text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    disabled={backupimpairmentcount.length==1&&backupimpairmentcount[0]==impairmentcount}
+                    className={`${backupimpairmentcount.length==1&&backupimpairmentcount[0]==impairmentcount?"opacity-10":""} rounded-full bg-mq-lightred p-2 text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
                 >
                     <BackwardIcon className="h-5 w-5" aria-hidden="true" />
                 </button>

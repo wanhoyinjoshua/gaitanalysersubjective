@@ -44,11 +44,11 @@ const Breadcrumbs = (props:any) => {
 
                     }
                     else{
-                        window.alert("unable")
+                        window.alert("Please complete previous stages before moving forwards.")
                     }
                 }}
                 
-                className={`ml-4 text-sm font-medium ${page.current?"text-mq-lightred":"text-gray-400"} ${page.current?"hover:text-white":"hover:text-gray-700"} `}
+                className={`ml-4 text-sm font-medium ${page.current?"text-mq-lightred":"text-gray-400 "} ${page.current?"hover:text-white cursor-pointer":"hover:text-white cursor-pointer cursor-not-allowed"} `}
                 aria-current={page.current ? 'page' : undefined}
               >
                 {page.name}

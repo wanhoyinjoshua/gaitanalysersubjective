@@ -30,7 +30,7 @@ const Observation = (props:obervation_props) => {
     check if output is a list with numbers / or is it correctly selecting the lists.
 
     */
-   const [selected_observations,setObservations]=useState<number[]>([])
+   const [selected_observations,setObservations]=useState<number[]>(context.selected_observations)
    
    function finshObservation(){
     context.setObservations([...selected_observations])
@@ -53,7 +53,7 @@ const Observation = (props:obervation_props) => {
 
     <fieldset>
     <div className="border-b border-gray-200   py-5 ">
-  <div className=" -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
+  <div className="mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
     <div className="mt-4">
       <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
       <h3 className="text-base font-semibold leading-6 text-white">Step 1 </h3>

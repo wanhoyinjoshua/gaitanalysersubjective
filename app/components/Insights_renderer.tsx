@@ -286,71 +286,71 @@ const Insights_renderer = (props:any) => {
 <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-white px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-red-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
                 <section>
          
     
-<article
-className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
->
-<span className="inline-block rounded bg-blue-600 p-2 text-white">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-    <path
-      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-    />
-  </svg>
-</span>
+                  <article
+                  className=" p-4 shadow-sm transition  sm:p-6"
+                  >
+                  <span className="inline-block rounded bg-blue-600 p-2 text-white">
+                  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  >
+                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path
+                  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                  />
+                  <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                  />
+                  </svg>
+                  </span>
 
-<a href="#">
-  <h3 className="mt-0.5 text-lg font-medium text-gray-900">
-  
-      {props.list["kinematic"]["label"]}
-     
-    
-  </h3>
-</a>
+                  <a href="#">
+                  <h3 className="mt-0.5 text-lg font-medium text-gray-900">
 
-<p className="mt-2  text-sm/relaxed text-gray-500">
-<div>
- 
- {nil==true?<div>It appears no impairments can sufficiently explain this kinematic deviation, please focus on whole task activity as much as possible!</div>:<div></div>}
-
-{nil ==true?null: categories["Strength"]["number"]==0&&categories["Coordination"]["number"]==0?<div>It appears that neither strength / coordination based exercise will target this impairment, please consider other subtle impairments, eg proprioception, sensation</div>:
-<div>
-   It appears that {categories["Strength"]["number"]>=categories["Coordination"]["number"]?"a strength based exercise program":"coordination based"}
-   / {part>=whole?"part task":"whole task"} training
-   will be most beneficial for this kinematic deviation.
-   </div>}
-   {rom>=0&&<div>
-     please consider the effect of muscle stiffness in your treatment and see if any equipment will be of utlity.
-     </div>}
-     {/*
-     <div className='h-48 w-full'>
-     <Graph data={props.list['impairments']}></Graph>
-     
-     </div>
-   */}
-    
-    
-
- </div>
-</p>
+                  {props.list["kinematic"]["label"]}
 
 
-</article>
+                  </h3>
+                  </a>
+
+                  <p className="mt-2  text-sm/relaxed text-gray-500">
+                  <div>
+
+                  {nil==true?<div>It appears no impairments can sufficiently explain this kinematic deviation, please focus on whole task activity as much as possible!</div>:<div></div>}
+
+                  {nil ==true?null: categories["Strength"]["number"]==0&&categories["Coordination"]["number"]==0?<div>It appears that neither strength / coordination based exercise will target this impairment, please consider other subtle impairments, eg proprioception, sensation</div>:
+                  <div>
+                  It appears that {categories["Strength"]["number"]>=categories["Coordination"]["number"]?"a strength based exercise program":"coordination based"}
+                  / {part>=whole?"part task":"whole task"} training
+                  will be most beneficial for this kinematic deviation.
+                  </div>}
+                  {rom>=0&&<div>
+                  please consider the effect of muscle stiffness in your treatment and see if any equipment will be of utlity.
+                  </div>}
+                  {/*
+                  <div className='h-48 w-full'>
+                  <Graph data={props.list['impairments']}></Graph>
+
+                  </div>
+                  */}
+
+
+
+                  </div>
+                  </p>
+
+
+                  </article>
                 </section>
                 
                 <div className={`${
@@ -385,7 +385,7 @@ className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 
 
     <div className="flow-root rounded-lg border border-gray-100 py-3 shadow-sm w-full">
 <dl className="-my-3 divide-y divide-gray-100 text-lg w-full">
-<div className="w-full max-w-lg  px-2 py-16 sm:px-0">
+<div className="w-full  px-2 py-16 sm:px-0">
 
   
     <Tab.Group>
@@ -423,6 +423,22 @@ className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 
           >
              
             {e.component}
+            <br></br>
+             {/* 
+
+              {e.componentnil&&
+            <div>
+               <strong>
+              Eliminated impairments
+            </strong>
+            {e.componentnil}
+
+            </div>
+            }
+             
+             */}
+           
+           
 
           </Tab.Panel>
         ))}
