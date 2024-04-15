@@ -95,7 +95,7 @@ function isGroup(group:number){
         
         skipped.push(newlist[i])
         newlist[i]["skip_status"]=true
-       
+      
         console.log("skipped")
         console.log(newlist[i])
         //newlist.splice(i,1)
@@ -103,6 +103,7 @@ function isGroup(group:number){
       }
       
     }
+    console.log(newlist)
     context.setSkippedimpairments([...skipped])
     //props.setSkippedimpairments([...skipped])
 
@@ -129,6 +130,7 @@ function isGroup(group:number){
      
 
     }
+    
     //problem is it is not updating, but replacing
 
 

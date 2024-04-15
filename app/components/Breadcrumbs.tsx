@@ -22,7 +22,8 @@ const Breadcrumbs = (props:any) => {
       ]
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol role="list" className="flex items-center space-x-4">
+      <ol role="list" className="flex flex-wrap items-center space-x-4">
+        <div>
         <li>
           <div>
             <a href="/version" className="text-gray-400 hover:text-gray-500">
@@ -31,6 +32,8 @@ const Breadcrumbs = (props:any) => {
             </a>
           </div>
         </li>
+        </div>
+        <div className='flex flex-row'>
         {pages.map((page) => (
            
           <li key={page.name}>
@@ -56,6 +59,8 @@ const Breadcrumbs = (props:any) => {
             </div>
           </li>
         ))}
+        </div>
+        
       </ol>
     </nav>
   )

@@ -212,7 +212,7 @@ var context={
           
 
   return (
-    <div className='mt-6 px-28 '>
+    <div className='mt-3 md:mt-6 lg:mt-6  px-0 md:px-20 lg:px-28 '>
      
     {props.json&&
         <importedJsonfileContext.Provider value={context}>

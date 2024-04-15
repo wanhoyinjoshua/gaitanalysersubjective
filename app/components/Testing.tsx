@@ -48,11 +48,23 @@ const Testing = (props:any) => {
         
      
             var backup:any= backupimpairmentcount
+            setimpairmentcount(backup[backup.length-1])
             backup.pop()
+           if(backup.length==0){
+            setBackupcount([0])
+
+           }
+           else{
+            setBackupcount([...backup])
+
+           }
+           //to reset the status so folks can go backwards
+           for(let i=backup[backup.length-1];i<selectedimpairment.length;i++){
+            selectedimpairment[i].skip_status=false
+           }
+          
            
-           setBackupcount([...backup])
            
-           setimpairmentcount(backup[backup.length-1])
 
         
        
@@ -221,7 +233,7 @@ const Testing = (props:any) => {
           
           );
           //arrange impairments here
-          console.log(selectedimpairment)
+          
           
   
           return selectedimpairment
@@ -269,6 +281,10 @@ const Testing = (props:any) => {
    
   return (
     <section className=' '>
+        {backupimpairmentcount}
+
+        <br></br>
+        {impairmentcount}
     
     <div>
     <div className="-space-y-px rounded-md bg-mq-rice">
@@ -404,6 +420,21 @@ const Testing = (props:any) => {
 
 </div>
 <div>
+
+    Skipped impairments:
+    <ol>
+
+   
+    {selectedimpairment.map((e)=>{
+        if(e.skip_status==true)
+            {
+                return <li key={JSON.stringify(e.key)}>{e.key}</li>
+
+            }
+      
+
+    })}
+     </ol>
    
    
    
