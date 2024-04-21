@@ -111,6 +111,7 @@ const Analyser2 = (props:props) => {
 
     const [previmpairmentlist,setPrev]=useState()
     const [skiplist,setPrevSkipList]=useState()
+    const [skipperq,setSkipperq]=useState({})
     //ankle =0
     //genere = 0 is strength 1 is coordination, 2 is part task , 3 is whole task 
 
@@ -196,7 +197,11 @@ var context={
   setSelectedImpairment:setSelectedImpairment,
   setSkippedimpairments:setSkippedimpairments,
   setObservations:setObservations,
-  setStage:setStage
+  setStage:setStage,
+  testingeliminatedhx:skipperq,
+  setSkipperq:setSkipperq
+  
+  
 
 
   

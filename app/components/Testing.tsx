@@ -7,6 +7,7 @@ import { Josefin_Sans } from 'next/font/google';
 import {importedJsonfileContext} from './analyser/Context'
 import Breadcrumbs from './Breadcrumbs';
 import { PlusIcon,BackwardIcon } from '@heroicons/react/20/solid'
+import { Disclosure } from '@headlessui/react'
 const Testing = (props:any) => {
     /*
     This component is responsible for 
@@ -48,10 +49,41 @@ const Testing = (props:any) => {
         
      
             var backup:any= backupimpairmentcount
+           
+
             setimpairmentcount(backup[backup.length-1])
+            var resetitemslist=[]
+            try{
+ 
+                 resetitemslist=context.testingeliminatedhx[`${backup[backup.length-1]}`]
+         
+ 
+             
+            
+ 
+            }
+            catch{
+             resetitemslist=[]
+ 
+            }
+            if(resetitemslist==null||resetitemslist.length==0){
+ 
+            }else{
+             resetitemslist.forEach((element:any)=> {
+                 
+                 selectedimpairment[element].skip_status=false
+     
+     
+                 
+                });
+ 
+            }
             backup.pop()
            if(backup.length==0){
+            
             setBackupcount([0])
+            backup=[]
+            
 
            }
            else{
@@ -59,9 +91,11 @@ const Testing = (props:any) => {
 
            }
            //to reset the status so folks can go backwards
-           for(let i=backup[backup.length-1];i<selectedimpairment.length;i++){
-            selectedimpairment[i].skip_status=false
-           }
+          
+          
+           
+           
+           
           
            
            
@@ -281,11 +315,7 @@ const Testing = (props:any) => {
    
   return (
     <section className=' '>
-        {backupimpairmentcount}
-
-        <br></br>
-        {impairmentcount}
-    
+        
     <div>
     <div className="-space-y-px rounded-md bg-mq-rice">
 
@@ -317,6 +347,26 @@ const Testing = (props:any) => {
 
   <div className="h-2 rounded-full bg-mq-lightred transition-width duration-300 ease-in-out" style={{ width: `${Math.round((impairmentcount/selectedimpairment.length)*100)}%` }} />
 </div>
+<Disclosure>
+      <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+      Skipped impairments {`(${selectedimpairment.filter((e)=>{return e.skip_status==true}).length})`}
+      </Disclosure.Button>
+      <Disclosure.Panel className="text-gray-500">
+      {selectedimpairment.map((e)=>{
+        if(e.skip_status==true)
+            {
+                return <li key={JSON.stringify(e.key)}>{e.key}</li>
+
+            }
+      
+
+    })
+    
+    
+    }
+    {selectedimpairment.filter((e)=>{return e.skip_status==true}).length==0?<div>No skipped impairments</div>:<div></div>}
+      </Disclosure.Panel>
+    </Disclosure>
 </div>
 <div className="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
 
@@ -344,6 +394,7 @@ const Testing = (props:any) => {
                     <BackwardIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
                 <div className="sm:flex sm:items-start">
+                
               
                 
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -421,19 +472,12 @@ const Testing = (props:any) => {
 </div>
 <div>
 
-    Skipped impairments:
+
+    
     <ol>
 
    
-    {selectedimpairment.map((e)=>{
-        if(e.skip_status==true)
-            {
-                return <li key={JSON.stringify(e.key)}>{e.key}</li>
-
-            }
-      
-
-    })}
+   
      </ol>
    
    

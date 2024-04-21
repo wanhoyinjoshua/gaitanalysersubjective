@@ -66,7 +66,7 @@ function isGroup(group:number){
 
     console.log(newlist)
    
-    
+    var elimlistindex:any=[]
     for (let i = props.impairmentcount+1; i < newlist.length; i++) {
      var include_coord=util_include_coor(newlist,i)
      var same_physio_movement=util_same_physiomovement(newlist,i,props.impairmentcount)
@@ -95,6 +95,7 @@ function isGroup(group:number){
         
         skipped.push(newlist[i])
         newlist[i]["skip_status"]=true
+        elimlistindex.push(i)
       
         console.log("skipped")
         console.log(newlist[i])
@@ -139,6 +140,29 @@ function isGroup(group:number){
     //props.setSelectedImpairment([...newlist])
     var targetcount= ButtonTest.Find_display_index(newlist,props.impairmentcount)
     //window.alert(targetcount)
+
+
+    function sethistory(index:any,elimindex:Number[]){
+      var tempq=context.testingeliminatedhx
+      if(elimindex.length==0){
+        tempq[`${index}`]=[]
+       
+        context.setSkipperq(tempq)
+        
+      }else{
+        tempq[`${index}`]=elimindex
+       
+        context.setSkipperq(tempq)
+      }
+      
+     
+          
+  
+   
+  
+  }
+
+  sethistory(props.impairmentcount,elimlistindex)
     var newcount=props.backupcount
     if(props.impairmentcount==0){
 

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 export class Insights{
 
 
@@ -96,13 +97,26 @@ export class Insights{
               
               <div key={e[0]}>Potential treatment ideas</div>
               {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
-              <ol key={e[0]}className='list-decimal grid grid-cols-1 divide-y'>
+              <ol key={e[0]}className='list-decimal  divide-y'>
                
               {e.treatmentideas.map((treatment:any)=>{
                 if(e.str_lvl!=-1||e.str_lvl!=-1){
                   //paralaysed
                   if(treatment.level<=e.str_lvl){
-                    return <li key={treatment.label}>{treatment.label}</li>
+                    return <div key={treatment.label} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+                      
+
+                      <li className=""key={treatment.label}>{treatment.label}</li>
+                      <Image
+      src={"/images/walking_Tx1.png"}
+      alt="Picture of the author"
+      width={250} 
+      height={250} 
+      // blurDataURL="data:..." automatically provided
+      // placeholder="blur" // Optional blur-up while loading
+    />
+
+                      </div>
 
                   }
 

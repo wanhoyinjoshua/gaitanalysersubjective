@@ -19,6 +19,9 @@ function next(){
     //props.setObservationinparent({...newstage})
 
 }
+
+
+
 function handleyes(){
     var newlist=[...props.selectedimpairment]
     newlist[props.impairmentcount]["status"]=true
@@ -58,6 +61,7 @@ function handleyes(){
     
     props.setBackupcount([...newcount])
     props.setimpairmentcount(targetcount)
+   
 
 
 }
