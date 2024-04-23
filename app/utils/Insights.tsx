@@ -108,8 +108,8 @@ export class Insights{
 
                       <li className=""key={treatment.label}>{treatment.label}</li>
                       <Image
-      src={"/images/walking_Tx1.png"}
-      alt="Picture of the author"
+      src={`/${treatment.image}.png`||`/${treatment.image}.jpg`}
+      alt="No image available for this exercise."
       width={250} 
       height={250} 
       // blurDataURL="data:..." automatically provided
@@ -122,7 +122,20 @@ export class Insights{
 
                 }
                 else{
-                  return <li key={treatment.label}>{treatment.label}</li>
+                  return <div key={treatment.label} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+                      
+
+                  <li className=""key={treatment.label}>{treatment.label}</li>
+                  <Image
+  src={`/${treatment.image}.png`||`/${treatment.image}.jpg`}
+  alt="No image available for this exercise."
+  width={250} 
+  height={250} 
+  // blurDataURL="data:..." automatically provided
+  // placeholder="blur" // Optional blur-up while loading
+/>
+
+                  </div>
 
                 }
                
