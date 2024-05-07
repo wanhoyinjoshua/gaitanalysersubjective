@@ -5,7 +5,7 @@ import { Tab } from '@headlessui/react'
 import { Disclosure,Transition  } from '@headlessui/react'
 import { Insights } from '../utils/Insights'
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@react-pdf/renderer';
-import Graph from './Graph/Graph'
+import {Radar_Plot} from "../components/Graph/radarplot"
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
@@ -342,7 +342,15 @@ const Insights_renderer = (props:any) => {
                   <Graph data={props.list['impairments']}></Graph>
 
                   </div>
+                  Graph is to be inserted here
                   */}
+                  <div className="w-1/2">
+                  <Radar_Plot/>
+
+                  </div>
+                  
+
+                  
 
 
 

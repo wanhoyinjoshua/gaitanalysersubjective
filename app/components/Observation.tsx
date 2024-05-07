@@ -87,7 +87,7 @@ const Observation = (props:obervation_props) => {
           <div className={`p-5 ${selected_observations.includes(deviation.id)?"bg-mq-lightred/10":"bg-white"} cursor-pointer  select-none font-medium text-gray-900 rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}>
          {selected_observations.includes(deviation.id)?<CIcon icon={icon.cilCheckCircle} size="xxl" className="h-6 w-6"/>:null}
             {deviation.label} 
-            {deviation.id}
+            
           </div>
         </div>
         <div className="ml-3 flex h-6 items-center">

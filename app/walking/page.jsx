@@ -3,14 +3,11 @@ import React, { useState } from 'react'
 import CIcon from '@coreui/icons-react';
 import Analyser from '../components/analyser/Analyser';
 import Analyser2 from "../components/analyser/Analyser copy"
-import json from "../jsonfiles/jsonstore.json"
-import stancejson from "../jsonfiles/stance_walking.json"
-import jsonstore from '../jsonfiles/jsonstore.json'
-import test_swing from '../jsonfiles/test_swing.json'
-import revised_test_swing_17_02_2024 from "../jsonfiles/revised_test_swing_17_02_2024.json"
-import test_stance from "../jsonfiles/test_stance.json"
-import * as icon from '@coreui/icons';
+
+
 import stance_final_15042024 from "../jsonfiles/stance_final_15042024.json"
+import swing_json from "../jsonfiles/swing_data.json"
+import stance_json from "../jsonfiles/stance_data.json"
 
 
 
@@ -80,13 +77,14 @@ const Page = () => {
     </div>
       </section>
        <div className={view[0].current==true?"pt-12":"hidden"}>
-       <Analyser2  key="component1" json={stance_final_15042024}></Analyser2>
+       <Analyser2  key="component1" json={stance_json}></Analyser2>
 
        </div>
    
        <div className={view[0].current==false?"pt-12":"hidden"}>
        
-       <div>in progress</div>
+       <Analyser2  key="component1" json={swing_json}></Analyser2>
+
        </div>
     
 
