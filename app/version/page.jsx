@@ -6,10 +6,24 @@ import * as icon from '@coreui/icons';
 import Walking_stance from '../components/analyser/Walking_stance'
 import Analyser from "../components/analyser/Analyser"
 import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
-
+import Modal from "../components/modal/Modal"
+import Router from 'next/router';
 
 import { read, utils, writeFile } from 'xlsx';
+import { Route } from 'react-router-dom';
 const Page = () => {
+  const [modalopen,setModalopen]=useState(false)
+  const [confirm,setConfirm]=useState(false)
+  const [link,setLink]=useState('#')
+  function handleClick(href){
+    //if yes 
+    console.log("hihih")
+    setModalopen(true)
+    setLink(href)
+    
+
+    
+  }
 
   const actions = [
     {
@@ -230,11 +244,11 @@ const Page = () => {
           </div>
           <div className="mt-8">
             <h3 className="text-base font-semibold leading-6 text-gray-900">
-              <a href={action.href} className="focus:outline-none">
+              <button onClick={()=>{handleClick(action.href)}} href={action.href} className="focus:outline-none">
                 {/* Extend touch target to entire panel */}
                 <span className="absolute inset-0" aria-hidden="true" />
                 {action.title}
-              </a>
+              </button>
             </h3>
             <p className="mt-2 text-sm text-gray-500">
               {action.des}
@@ -251,6 +265,9 @@ const Page = () => {
         </div>
       ))}
     </div>
+
+    <Modal open={modalopen} link={link} setOpen={setModalopen}></Modal>
+    {JSON.stringify(modalopen)}
 
   
     </div>
