@@ -1,8 +1,10 @@
 'use client'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import { CheckIcon,BookOpenIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import Disclaimer_Content from './Disclaimer_Content'
+import Exclusion_liability from './Exclusion_liability'
 interface props{
     open:boolean;
     link:any;
@@ -45,30 +47,32 @@ export default function Example(props:props) {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                    <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-mq-rice">
+                    <BookOpenIcon className="h-6 w-6 text-mq-black" aria-hidden="true" />
                   </div>
-                  <div className="mt-3 text-center sm:mt-5">
+                    
+         
+                  <div className="mt-3 text-left sm:mt-5">
                     <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                      Payment successful
-                      {JSON.stringify(props)}
+                    Disclaimer Content
+                    
                     </Dialog.Title>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo
-                        pariatur iste dolorem animi vitae error totam. At sapiente aliquam accusamus facere veritatis.
-                      </p>
-                    </div>
+                   <Disclaimer_Content></Disclaimer_Content>
+                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                    Exclusion of Liability
+                    
+                    </Dialog.Title>
+                    <Exclusion_liability></Exclusion_liability>
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <Link
                   href={`${props.link}`}
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
+                    className="inline-flex w-full justify-center rounded-md bg-mq-lightred px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
                     
                   >
-                    Deactivate
+                    Continue
                   </Link>
                   <button
                     type="button"

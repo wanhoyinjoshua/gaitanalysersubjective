@@ -172,6 +172,53 @@ export class Insights{
     return this.props.list['impairments'].filter((e:any)=>this.isStr(e)&&e.status==true).length
 
   }
+  getImpPercentage(type:any){
+    const dict={
+      "str":this.isStr,
+      "coor":this.isCoor,
+      "others":this.isOthers
+    }
+    var target=dict[type as keyof typeof dict]
+    const allimpcount_positive=this.props.list['impairments'].filter((e:any)=>e.status==true).length
+    const target_count=this.props.list['impairments'].filter((e:any)=>target(e)&&e.status==true).length
+    const percentage=Math.floor((target_count/allimpcount_positive)*100)
+    return percentage
+  }
+
+  getImpstatement(){
+    const strper=this.getImpPercentage("str")
+    const coorper=this.getImpPercentage("coor")
+    const otherper=this.getImpPercentage("others")
+
+    if(strper>coorper && strper>otherper){
+      return "It appears addressing strength impairments might be most beneficial for this kinematic deviation"
+    }
+    else if(coorper>strper && coorper>otherper){
+      return "It appears addressing coordination impairments might be most beneficial for this kinematic deviation"
+
+    }
+    else if(otherper>strper && otherper>coorper){
+      return "It appears addressing subtle impairments such as sensation, range of movement etc might be most beneficial for this kinematic deviation"
+
+    }
+    else if(strper==coorper && strper>otherper){
+      return "It appears addressing both strength and coordination impairments might be beneficial for this kinematic deviation"
+
+    }
+    else if(strper==otherper && strper>coorper){
+      return "It appears addressing both strength and subtle impairments might be beneficial for this kinematic deviation"
+
+    }
+    else if(coorper==otherper && coorper>strper){
+      return "It appears addressing both strength and subtle impairments might be beneficial for this kinematic deviation"
+
+    }
+    else{
+      return "It appears addressing all impairments identified might be beneficial for this kinmeatic deviation"
+    }
+    
+
+  }
 
   getCoorImpCount(){
     return this.props.list['impairments'].filter((e:any)=>this.isCoor(e)&&e.status==true).length

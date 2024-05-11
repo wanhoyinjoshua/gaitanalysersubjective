@@ -6,8 +6,11 @@ import {importedJsonfileContext} from './analyser/Context'
 import { useGetInsight } from './Insights/hooks/useGetInsight'
 
 import Breadcrumbs from './Breadcrumbs'
+import Sideoverlay from './SideOverlay/Sideoverlay'
 const Insights = (props:any) => {
   const finalist= useGetInsight()
+
+  console.log(finalist)
 
 
     
@@ -45,19 +48,19 @@ const Insights = (props:any) => {
 </div>
     
   </div>
+  
 
     {finalist&&finalist.map((insight:any)=>{
 
-        return<div key={JSON.stringify(insight)}>
-            <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-  
-</div>
+        return<div className='mb-4' key={JSON.stringify(insight)}>
+           
         
           
             <Insights_renderer list={insight} ></Insights_renderer>
 
             </div>
     })}
+
     
     </div>
   )

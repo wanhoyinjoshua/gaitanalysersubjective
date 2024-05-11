@@ -25,7 +25,7 @@ const Page = () => {
   
   return (
     <div className='relative bg-mq-rice'>
-      <section className="fixed top-0 left-0 right-0 z-50 ">
+      <section className="fixed top-0 left-0 right-0 z-10 ">
       <div>
       
       <div className="block">

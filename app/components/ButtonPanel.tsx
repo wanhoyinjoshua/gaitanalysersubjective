@@ -7,6 +7,42 @@ const ButtonPanel = (props:buttonpanel_props) => {
 var ButtonTest=new ButtonTesting()
 const context= useContext(importedJsonfileContext)
 const lasttest=props.impairmentcount+1==props.length_impairments
+const buttontype=props.selectedimpairment[props.impairmentcount]["class"][0]
+const dict={
+    "coor":
+    {
+        "yes":" coor yes",
+        "no":" coor no"
+    },
+
+    "sensation":
+    {
+        "yes":"sensation eyes",
+        "no":"sensation no"
+    },
+
+    "rom":
+    {
+        "yes":"rom tees",
+        "no":"rom no"
+    },
+
+    "eccentric_str":
+    {
+        "yes":"ecentrci es",
+        "no":"eccentric no"
+    },
+
+    "ex_mus_ac":
+    {
+        "yes":"ex yes",
+        "no":"ex no"
+    },
+    
+
+
+}
+const message=dict[buttontype as keyof typeof dict]
 
 console.log(props)
 function next(){
@@ -95,41 +131,24 @@ function handleno(){
 }
 
 
-    if(props.buttonstate.default){
+   
         return (<section>
+           
         <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" 
         onClick={()=>{
             handleyes()
              
     
-         }}>Yes</button>
+         }}>
+           {message.yes}</button>
            <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={()=>{
              handleno()
     
-         }}>No</button>
+         }}>  {message.no}</button>
     
                      </section>)
 
-    }
-    else if(props.buttonstate.eccentric_muscle_testing){
-        return(
-        <section>
-        <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" 
-        onClick={()=>{
-       handleyes()
-
-
-        }}>Unable to control eccentric movements slowly</button>
-        <button  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" 
-        onClick={()=>{
-            handleno()
-
-        }}>Able to control eccentric movements slowly</button>
-
-        </section>
-        )
-    }
-
+    
    
 
     
