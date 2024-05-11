@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
+import Tutorial from './components/Tutorial'
 const navigation = [
     { name: 'Introduction', href: '#' },
     { name: 'Methodology', href: '#' },
@@ -208,6 +209,7 @@ const Page = () => {
             </div>
           </div>
         </main>
+        <Tutorial></Tutorial>
       </div>
     )
 }
