@@ -26,7 +26,7 @@ const Breadcrumbs = (props:any) => {
         <div>
         <li>
           <div>
-            <a href="/version" className="text-gray-400 hover:text-gray-500">
+            <a href="/activities" className="text-gray-400 hover:text-gray-500">
               <HomeIcon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
               <span className="sr-only">Home</span>
             </a>

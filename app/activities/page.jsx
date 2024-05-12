@@ -12,6 +12,7 @@ import { setWindow } from '../utils/storage/storage';
 import { isConsent } from '../utils/storage/storage';
 import { read, utils, writeFile } from 'xlsx';
 import { Route } from 'react-router-dom';
+import Header from '../components/Header/Header';
 const Page = () => {
   const [modalopen,setModalopen]=useState(false)
   const [confirm,setConfirm]=useState(false)
@@ -76,6 +77,7 @@ const Page = () => {
 
   return(
     <div>
+      <Header></Header>
       
     
        <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">

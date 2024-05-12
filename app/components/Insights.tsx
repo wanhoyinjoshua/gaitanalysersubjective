@@ -36,7 +36,7 @@ const Insights = (props:any) => {
       <button
       
         type="button"
-        onClick={()=>{window.location.href="version"}}
+        onClick={()=>{window.location.href="activities"}}
         className="relative inline-flex items-center rounded-md bg-mq-lightred px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mq-darkred"
       >
         Analyse Again
