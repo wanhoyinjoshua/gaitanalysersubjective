@@ -12,16 +12,23 @@ import { setWindow } from '../utils/storage/storage';
 import { isConsent } from '../utils/storage/storage';
 import { read, utils, writeFile } from 'xlsx';
 import { Route } from 'react-router-dom';
+
+import { useRouter } from 'next/navigation'
 import Header from '../components/Header/Header';
 const Page = () => {
   const [modalopen,setModalopen]=useState(false)
   const [confirm,setConfirm]=useState(false)
   const [link,setLink]=useState('#')
+  const router = useRouter()
+  
   function handleClick(href){
     //if yes 
+    /*
     console.log("hihih")
     setModalopen(true)
     setLink(href)
+    */
+    router.push(href)
     
 
     
