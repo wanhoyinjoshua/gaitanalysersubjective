@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
-
+import Image from 'next/image'
 import { Square3Stack3DIcon,BackwardIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 const navigation = [
@@ -57,11 +57,13 @@ const Header = () => {
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">MAST</span>
-                  <img
-                    className="h-8 w-auto"
-                    src="/Mast_2_cropped.svg"
-                    alt=""
+                  <Image
+                  src={"/Mast_2_cropped.svg"}
+                  width={32}
+                  height={32}
+                  alt='logo'
                   />
+                  
                 </a>
                 <button
                   type="button"

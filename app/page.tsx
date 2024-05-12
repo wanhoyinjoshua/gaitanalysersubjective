@@ -5,6 +5,7 @@ import Tutorial from './components/Tutorial'
 import Explanation from './components/Explanation'
 import { Square3Stack3DIcon,BackwardIcon } from '@heroicons/react/20/solid'
 import Header from './components/Header/Header'
+import Image from 'next/image'
 import Link from 'next/link'
 const navigation = [
     { name: 'Introduction', href: '#' },
@@ -83,47 +84,64 @@ const Page = () => {
                   <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                     <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                       <div className="relative">
-                        <img
-                          src="/reaching.png"
-                          alt=""
+                       
+                         <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
+                         src={"/reaching.png"}
+                         width={500}
+                         height={500}
+                         alt='logo'
+                         />
+                        
                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                       </div>
                     </div>
                     <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                       <div className="relative">
-                        <img
-                          src="/standreach.png"
-                          alt=""
+                      <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
+                         src={"/standreach.png"}
+                         width={500}
+                         height={500}
+                         alt='logo'
+                         />
+                       
                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                       </div>
                       <div className="relative">
-                        <img
-                          src="/stepping.png"
-                          alt=""
+                      <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
+                         src={"/stepping.png"}
+                         width={500}
+                         height={500}
+                         alt='logo'
+                         />
+                        
+                       
                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                       </div>
                     </div>
                     <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
                       <div className="relative">
-                        <img
-                          src="/STS.png"
-                          alt=""
+                      <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
+                         src={"/STS.png"}
+                         width={500}
+                         height={500}
+                         alt='logo'
+                         />
+                      
                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                       </div>
                       <div className="relative">
-                        <img
-                          src="/walking.png"
-                          alt=""
+                      <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
+                         src={"/walking.png"}
+                         width={500}
+                         height={500}
+                         alt='logo'
+                         />
+                       
                         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                       </div>
                     </div>
