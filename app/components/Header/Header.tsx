@@ -23,7 +23,7 @@ const Header = () => {
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-8 w-auto"
-                  src="/pictures/logo.svg"
+                  src="/images/logo.svg"
                   alt=""
                 />
               </a>
@@ -58,7 +58,7 @@ const Header = () => {
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">MAST</span>
                   <Image
-                  src={"/pictures/logo.svg"}
+                  src={"/images/logo.svg"}
                   width={32}
                   height={32}
                   alt='logo'
