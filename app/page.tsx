@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react'
 import Tutorial from './components/Tutorial'
 import Explanation from './components/Explanation'
 import { Square3Stack3DIcon,BackwardIcon } from '@heroicons/react/20/solid'
-
+import Link from 'next/link'
 const navigation = [
     { name: 'Introduction', href: '#' },
     { name: 'Methodology', href: '#' },
@@ -148,12 +148,12 @@ const Page = () => {
                       Description to be written, whatever you want folks to search up/ keywords etc etc
                     </p>
                     <div className="mt-10 flex items-center gap-x-6">
-                      <a
-                        href="/version"
+                      <Link
+                        href="/activities"
                         className="rounded-md bg-mq-lightred px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mq-darkred"
                       >
                         Get started
-                      </a>
+                      </Link>
                       <a href="#livedemo" className="text-sm font-semibold leading-6 text-gray-900">
                         Live demo <span aria-hidden="true">→</span>
                       </a>

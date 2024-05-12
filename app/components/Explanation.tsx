@@ -1,10 +1,10 @@
-import { ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon,EyeIcon,QueueListIcon,DocumentCheckIcon } from '@heroicons/react/20/solid'
+import { ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon,EyeIcon,QueueListIcon,DocumentCheckIcon ,FolderIcon} from '@heroicons/react/20/solid'
 
 const features = [
   {
     name: 'Identify kinematic deviations',
     description:
-      'The first stage involves selecting the kinematic deviation / missing essential components in the desired activity. This system can account for up to 4096 unique gait patterns based on combinations of kinematic deviations.',
+      'The first stage involves selecting the kinematic deviation / missing essential components in the desired activity. This system can account for up to 4096 unique gait patterns (functional or not) based on combinations of kinematic deviations.',
     href: '#',
     icon: EyeIcon,
   },
@@ -18,9 +18,16 @@ const features = [
   {
     name: 'Actionable insights',
     description:
-      'Appropriate and individualised exercises will then be generated based on the deviations and impairments tested positive.  ',
+      'Appropriate and individualised exercises will then be generated based on the deviations and impairments tested positive. This can then be downloaded as a pdf. ',
     href: '#',
     icon: DocumentCheckIcon,
+  },
+  {
+    name: 'Gait Classification',
+    description:
+      'This website allows you to capture the quality of any given gait with 4 letters (patterns of kinematic deviations). You can then store this code for future use. (for whatever use case you might come up with) ',
+    href: '#',
+    icon: FolderIcon,
   },
 ]
 
