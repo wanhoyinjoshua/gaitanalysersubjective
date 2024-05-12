@@ -87,7 +87,7 @@ const Page = () => {
                        
                          <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                         src={"/reaching.png"}
+                         src={"/images/reaching.png"}
                          width={500}
                          height={500}
                          alt='logo'
@@ -100,7 +100,7 @@ const Page = () => {
                       <div className="relative">
                       <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                         src={"/standreach.png"}
+                         src={"/images/standreach.png"}
                          width={500}
                          height={500}
                          alt='logo'
@@ -111,7 +111,7 @@ const Page = () => {
                       <div className="relative">
                       <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                         src={"/stepping.png"}
+                         src={"/images/stepping.png"}
                          width={500}
                          height={500}
                          alt='logo'
@@ -125,7 +125,7 @@ const Page = () => {
                       <div className="relative">
                       <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                         src={"/STS.png"}
+                         src={"/images/STS.png"}
                          width={500}
                          height={500}
                          alt='logo'
@@ -136,7 +136,7 @@ const Page = () => {
                       <div className="relative">
                       <Image
                           className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                         src={"/walking.png"}
+                         src={"/images/walking.png"}
                          width={500}
                          height={500}
                          alt='logo'
