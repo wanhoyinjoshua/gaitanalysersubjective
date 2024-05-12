@@ -7,11 +7,16 @@ import { useContext } from 'react';
 import {importedJsonfileContext} from './analyser/Context'
 import { json } from 'stream/consumers';
 import Breadcrumbs from './Breadcrumbs';
-
+import { useInView } from "react-intersection-observer";
+import { PlusIcon,CheckIcon } from '@heroicons/react/20/solid';
 
 
 const Observation = (props:obervation_props) => {
   const context = useContext(importedJsonfileContext);
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
   
     /*
     This component is responsible for 
@@ -50,6 +55,7 @@ const Observation = (props:obervation_props) => {
 
   return (
     <div className="rounded-md  ">
+       
 
     <fieldset>
     <div className="border-b border-gray-200   py-5 ">
@@ -68,11 +74,12 @@ const Observation = (props:obervation_props) => {
 
     <div className="ml-4 mt-4 flex-shrink-0">
       <button
+      ref={ref}
         type="button"
         onClick={()=>{finshObservation()}}
         className="relative inline-flex items-center rounded-md bg-mq-lightred px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mq-darkred"
       >
-        Done!
+        Complete
       </button>
     </div>
 
@@ -80,6 +87,17 @@ const Observation = (props:obervation_props) => {
   </div>
 </div>
   <div className=" mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 ">
+  {inView?<div></div>:
+  <div className="fixed bottom-0 right-0 h-16 w-16 z-50 ">
+    <button
+     onClick={()=>{finshObservation()}}
+        type="button"
+        className="rounded-full bg-mq-lightred p-2 text-white shadow-sm hover:bg-mq-darkred focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mq-lightred"
+      >
+        <CheckIcon className="h-5 w-5" aria-hidden="true" />
+      </button>
+  </div>
+}
     {context.json.kinematic_deviations.map((deviation:any,index:any)=>(
          <label key={index} htmlFor= {`${deviation.label}_${index}`}>
       <div key={index} className="relative flex items-start py-4">
@@ -130,6 +148,7 @@ const Observation = (props:obervation_props) => {
       </label>
     ))}
   </div>
+ 
 </fieldset>
    
      
