@@ -1,10 +1,10 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react';
 import Analyser from '../components/analyser/Analyser';
 import Analyser2 from "../components/analyser/Analyser copy"
-
-
+import { isConsent } from '../utils/storage/storage';
+import Modal from "../components/modal/Modal"
 import stance_final_15042024 from "../jsonfiles/stance_final_15042024.json"
 import swing_json from "../jsonfiles/swing_data.json"
 import stance_json from "../jsonfiles/stance_data.json"
@@ -17,6 +17,23 @@ const Page = () => {
     { name: 'Swing', href: '#', current: false },
    
   ])
+  const [consentform,setForm]=useState(false)
+
+  useEffect(()=>{
+   var consent= window.localStorage.getItem("consent")
+   console.log(consent)
+   if(consent){
+   
+    setForm(true)
+   }else{
+  
+    setForm(false)
+   }
+
+  },[consentform])
+
+
+  const [open,setOpen]=useState(true)
   
   
   function classNames(...classes) {
@@ -24,11 +41,21 @@ const Page = () => {
   }
   
   return (
+    <div>
+       {consentform==false&&<Modal open={open} setOpen={setOpen} link={"#"}></Modal>}
+      
+
+
+
+   
     <div className='relative bg-mq-rice'>
+
       <section className="fixed top-0 left-0 right-0 z-10 ">
       <div>
       
       <div className="block">
+     
+
         <nav className="isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
           {view.map((tab, tabIdx) => (
             <a
@@ -88,6 +115,7 @@ const Page = () => {
        </div>
     
 
+    </div>
     </div>
   )
 }

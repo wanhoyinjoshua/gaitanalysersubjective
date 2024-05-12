@@ -406,7 +406,7 @@ const Testing = (props:any) => {
                     </h3>
                     <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                        Testing Stragety:<br></br>
+                        Testing strategy:<br></br>
                     {selectedimpairment[impairmentcount]["testing"]}
                     </p>
                     </div>

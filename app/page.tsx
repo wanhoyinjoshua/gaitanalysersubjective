@@ -2,6 +2,9 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import Tutorial from './components/Tutorial'
+import Explanation from './components/Explanation'
+import { Square3Stack3DIcon,BackwardIcon } from '@heroicons/react/20/solid'
+
 const navigation = [
     { name: 'Introduction', href: '#' },
     { name: 'Methodology', href: '#' },
@@ -33,7 +36,7 @@ const Page = () => {
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <span className="sr-only">Open main menu</span>
-                <div>bar icon</div>
+                <Square3Stack3DIcon className="h-5 w-5 flex-none text-mq-lightred" aria-hidden="true"/>
               </button>
             </div>
             <div className="hidden lg:flex lg:gap-x-12">
@@ -54,10 +57,10 @@ const Page = () => {
             <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">MAST</span>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    src="/Mast_2_cropped.svg"
                     alt=""
                   />
                 </a>
@@ -67,7 +70,7 @@ const Page = () => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
-                  <div>x markicon</div>
+                  <BackwardIcon className="h-5 w-5 flex-none text-mq-lightred" aria-hidden="true"/>
                 </button>
               </div>
               <div className="mt-6 flow-root">
@@ -151,7 +154,7 @@ const Page = () => {
                       >
                         Get started
                       </a>
-                      <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                      <a href="#livedemo" className="text-sm font-semibold leading-6 text-gray-900">
                         Live demo <span aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -209,7 +212,17 @@ const Page = () => {
             </div>
           </div>
         </main>
+        <div id="explain">
+          <Explanation></Explanation>
+
+        </div>
+        <div id='livedemo'>
+        <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-6xl">
+                     Live Demo
+                    </h2>
+
         <Tutorial></Tutorial>
+        </div>
       </div>
     )
 }

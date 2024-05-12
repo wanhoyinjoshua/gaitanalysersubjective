@@ -8,7 +8,8 @@ import Analyser from "../components/analyser/Analyser"
 import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
 import Modal from "../components/modal/Modal"
 import Router from 'next/router';
-
+import { setWindow } from '../utils/storage/storage';
+import { isConsent } from '../utils/storage/storage';
 import { read, utils, writeFile } from 'xlsx';
 import { Route } from 'react-router-dom';
 const Page = () => {
