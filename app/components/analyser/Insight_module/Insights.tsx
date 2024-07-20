@@ -1,14 +1,13 @@
 import React from 'react'
-import { useState,useEffect,useContext } from 'react'
-import {insights_props} from"../interface/interface"
-import Insights_renderer from './Insights_renderer'
-import {importedJsonfileContext} from './analyser/Context'
-import { useGetInsight } from './Insights/hooks/useGetInsight'
+import { useContext } from 'react'
+import Insights_renderer from './components/Insights_renderer'
+import { importedJsonfileContext } from '../Context'
+import { useGetInsight } from './hooks/useGetInsight'
+import Breadcrumbs from '../../Breadcrumbs'
 
-import Breadcrumbs from './Breadcrumbs'
-import Sideoverlay from './SideOverlay/Sideoverlay'
 const Insights = (props:any) => {
   const finalist= useGetInsight()
+  const context=useContext(importedJsonfileContext)
 
   console.log(finalist)
 
@@ -22,7 +21,7 @@ const Insights = (props:any) => {
     <div className="border-b border-gray-200   py-5 ">
   <div className=" mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
     <div className="mt-4">
-      <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
+      <Breadcrumbs stageController={context.stageController}></Breadcrumbs>
       <h3 className="text-base font-semibold leading-6 text-white">Step 3 </h3>
       <p className="mt-1 text-sm text-white">
         Insights

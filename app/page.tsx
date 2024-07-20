@@ -1,10 +1,10 @@
 "use client"
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
-import Tutorial from './components/Tutorial'
-import Explanation from './components/Explanation'
+import Tutorial from './components/ui/Tutorial'
+import Explanation from './components/ui/Explanation'
 import { Square3Stack3DIcon,BackwardIcon } from '@heroicons/react/20/solid'
-import Header from './components/Header/Header'
+import Header from './components/ui/Header/Header'
 import Image from 'next/image'
 import Link from 'next/link'
 const navigation = [

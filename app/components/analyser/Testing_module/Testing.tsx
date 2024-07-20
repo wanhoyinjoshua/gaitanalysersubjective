@@ -1,12 +1,10 @@
 import React from 'react'
 import {useState,useEffect,useContext} from "react"
-import { testing_props,impairment } from '../interface/interface';
-import ButtonPanel from './ButtonPanel';
-import Concentric_ButtonPanel from "./Concentric_ButtonPanel"
-import { Josefin_Sans } from 'next/font/google';
-import {importedJsonfileContext} from './analyser/Context'
-import Breadcrumbs from './Breadcrumbs';
-import { PlusIcon,BackwardIcon } from '@heroicons/react/20/solid'
+import ButtonPanel from './components/ButtonPanel';
+import Concentric_ButtonPanel from './components/Concentric_ButtonPanel';
+import {importedJsonfileContext} from '../../analyser/Context'
+import Breadcrumbs from '../../Breadcrumbs';
+import {BackwardIcon } from '@heroicons/react/20/solid'
 import { Disclosure } from '@headlessui/react'
 const Testing = (props:any) => {
     /*
@@ -324,7 +322,7 @@ const Testing = (props:any) => {
 <div className="border-b border-gray-200   py-5 ">
   <div className=" mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
     <div className="mt-4">
-      <Breadcrumbs stageController={props.stageController}></Breadcrumbs>
+      <Breadcrumbs stageController={context.stageController}></Breadcrumbs>
       <h3 className="text-base font-semibold leading-6 text-white">Step 2 </h3>
       <p className="mt-1 text-sm text-white">
         Testing

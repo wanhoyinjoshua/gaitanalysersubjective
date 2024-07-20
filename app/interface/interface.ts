@@ -25,8 +25,7 @@ export interface StageController{
 
 export interface obervation_props{
     
-    setSelectedDeviation_id:any;
-    setObservationinparent:React.Dispatch<React.SetStateAction<StageController>>,
+  
     stageController:any
 
 }

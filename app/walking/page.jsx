@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react';
-import Analyser from '../components/analyser/Analyser';
 import Analyser2 from "../components/analyser/Analyser copy"
 import { isConsent } from '../utils/storage/storage';
 import Modal from "../components/modal/Modal"

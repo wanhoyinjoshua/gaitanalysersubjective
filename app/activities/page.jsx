@@ -3,18 +3,12 @@ import React, { useState, useEffect } from 'react';
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
 
-import Walking_stance from '../components/analyser/Walking_stance'
-import Analyser from "../components/analyser/Analyser"
-import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
+
 import Modal from "../components/modal/Modal"
-import Router from 'next/router';
-import { setWindow } from '../utils/storage/storage';
-import { isConsent } from '../utils/storage/storage';
-import { read, utils, writeFile } from 'xlsx';
-import { Route } from 'react-router-dom';
+
 
 import { useRouter } from 'next/navigation'
-import Header from '../components/Header/Header';
+import Header from '../components/ui/Header/Header';
 const Page = () => {
   const [modalopen,setModalopen]=useState(false)
   const [confirm,setConfirm]=useState(false)

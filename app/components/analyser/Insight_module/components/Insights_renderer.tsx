@@ -1,14 +1,12 @@
 import React from 'react'
-import axios from 'axios'
 import { useState,useEffect } from 'react'
-import { Tab } from '@headlessui/react'
-import { Disclosure,Transition  } from '@headlessui/react'
+
 import { Insights } from '../utils/Insights'
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet,Image } from '@react-pdf/renderer';
-import {Radar_Plot} from "../components/Graph/radarplot"
-import Sideoverlay from './SideOverlay/Sideoverlay'
-import InsightsPanel from './InsightsPanel'
-import LightbulbPanel from './LightbulbPanel'
+
+import Sideoverlay from '@/app/components/SideOverlay/Sideoverlay';
+import InsightsPanel from './InsightsPanel';
+import LightbulbPanel from './LightbulbPanel';
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',

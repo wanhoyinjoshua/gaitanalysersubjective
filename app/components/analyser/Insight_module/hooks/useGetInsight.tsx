@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect,useContext } from 'react'
-import { importedJsonfileContext } from '../../analyser/Context';
+import { importedJsonfileContext } from '../../Context';
 export function useGetInsight() {
     const context = useContext(importedJsonfileContext);
 

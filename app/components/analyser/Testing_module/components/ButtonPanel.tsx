@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
-import { buttonpanel_props } from '../interface/interface'
-import {importedJsonfileContext} from './analyser/Context'
+import { buttonpanel_props } from '@/app/interface/interface'
+import { importedJsonfileContext } from '../../Context'
 import {  ButtonTesting } from '../utils/ButtonTesting'
 const ButtonPanel = (props:buttonpanel_props) => {
 var ButtonTest=new ButtonTesting()

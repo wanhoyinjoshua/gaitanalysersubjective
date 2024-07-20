@@ -1,25 +1,7 @@
 import { createContext } from 'react';
-interface jsonprops{
-    treatments:any;
-    kinematic_deviations:any;
-    impairments:any
-  
-  
-  }
-interface props{
-    json:jsonprops
-    selected_observations:number[]
-    selectedimpairment:any
-    skippedimpairments:any
-    setSelectedImpairment:any
-  setSkippedimpairments:any,
-  setObservations:any,
-  setStage:any,
-  testingeliminatedhx:any,
-  setSkipperq:any,
-  
-  }
-export const importedJsonfileContext = createContext<props>({
+import {context_props } from './interface';
+
+export const importedJsonfileContext = createContext<context_props>({
   json:{treatments:[],
     kinematic_deviations:[],
     impairments:[]},
@@ -31,7 +13,8 @@ export const importedJsonfileContext = createContext<props>({
   setObservations:null,
   setStage:null,
   testingeliminatedhx:{},
-  setSkipperq:null
+  setSkipperq:null,
+  stageController:null
 
 
 
