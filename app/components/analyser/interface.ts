@@ -1,7 +1,13 @@
+import { treatment } from "./common/models/treatment";
+import { KinDeviation } from "./common/models/kinematic_deviation"
+import { impairment } from "./common/models/impairments";
+import { selectedImpairment } from "./common/models/selectedimpairment";
+
+
 export interface jsonprops{
-    treatments:any;
-    kinematic_deviations:any;
-    impairments:any
+    treatments:treatment[];
+    kinematic_deviations:KinDeviation[];
+    impairments:impairment[]
   
   
   }
@@ -12,7 +18,7 @@ export interface jsonprops{
   export interface context_props{
     json:jsonprops
     selected_observations:number[]
-    selectedimpairment:any
+    selectedimpairment:selectedImpairment[]
     skippedimpairments:any
     setSelectedImpairment:any
   setSkippedimpairments:any,
@@ -28,8 +34,8 @@ export interface jsonprops{
     stageno:string,
     header:string,
     description:string,
-    buttonFunction:()=>void|undefined,
-    buttonText:string,
+    buttonFunction?:()=>void|undefined,
+    buttonText?:string,
     buttonMode:boolean
 
 

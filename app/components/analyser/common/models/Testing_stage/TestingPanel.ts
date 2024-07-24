@@ -1,0 +1,113 @@
+
+import { selectedImpairment } from "../../models/selectedimpairment";
+export interface TestingButtonprops{
+    buttontext:string,
+    button_function:any
+}
+export interface TestPanelProps{
+    impairment:selectedImpairment,
+    buttons:TestingButtonprops[],
+    reverse:any,
+    reverse_boolean:boolean,
+    selectedImpairment:selectedImpairment[]
+    setSelectedImpairment:any,
+    impairmentcount:number[],
+    setimpairmentcount:any,
+    backDisabled:boolean
+
+
+}
+
+export class button_text{
+    impairment: selectedImpairment;
+    
+    constructor(props:selectedImpairment) {
+        this.impairment = props;
+        
+    }
+    transform(){
+        return this.impairment.class[0]
+        switch(this.impairment.class[0]){
+
+            case "eccentric_str":
+                return "ecc_str"
+            case "concentric_str":
+                return "con_str"
+            default:
+                return "ecc_str"
+                
+        }
+       
+    }
+
+    get_eccentric_text_negative(){
+        //I can even use the class to display different messgaes based on physiological movements 
+
+        return "Able to control eccentric movements"
+
+    }
+    get_eccentric_text_positive(){
+
+        return "Unable to control eccentric movements"
+
+    }
+
+    get_sensation_negative(){
+        return"Sensation is intact"
+    }
+
+    get_sensation_positive(){
+        return"Has altered sensation"
+    }
+
+    get_rom_positive(){
+        return"Range of motion is restricted"
+    }
+
+    get_rom_negative(){
+        return"No restriction in range"
+    }
+
+    get_muscle_act_negative(){
+        return"Does not have excessive muscle activity"
+    }
+
+    get_muscle_act_positive(){
+        return"Has excessive muscle activity / spasticity"
+    }
+
+
+    get_coor_negative(){
+        return"No measurable coordination deficits"
+    }
+
+    get_coor_positive(){
+        return"Has measurable coordination deficits"
+    }
+
+    get_concentric_text_1(){
+
+        return "paralysed"
+
+    }
+    get_concentric_text_2(){
+
+        return "very weak"
+
+    }
+
+    get_concentric_text_3(){
+
+        return "weak"
+
+    }
+
+    get_concentric_text_4(){
+
+        return "strong"
+
+    }
+    
+    
+}
+

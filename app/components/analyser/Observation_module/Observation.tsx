@@ -103,6 +103,8 @@ setObservations={setObservations}
   </div>
  
 </fieldset>
+
+{JSON.stringify(context)}
    
      
    
