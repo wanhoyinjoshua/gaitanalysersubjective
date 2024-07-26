@@ -44,6 +44,7 @@ const Observation = () => {
    
    function finshObservation(){
     context.setObservations([...selected_observations])
+    context.setStage2Hx([0])
     
     
     context.setStage({...switchStages(2)})

@@ -11,6 +11,7 @@ export interface treatment{
     rom:boolean,
     reference: string[],
     image:string,
+    display:boolean
 
 
     

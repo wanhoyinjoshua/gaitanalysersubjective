@@ -8,15 +8,14 @@ import Breadcrumbs from '../../Breadcrumbs'
 const Insights = (props:any) => {
   const finalist= useGetInsight()
   const context=useContext(importedJsonfileContext)
-
+  console.log(context.selectedimpairment)
   console.log(finalist)
+  ///console.log(finalist)
 
-
-    
-    
 
   return (
     <div>
+      {JSON.stringify(finalist)}
     <div className="">
     <div className="border-b border-gray-200   py-5 ">
   <div className=" mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">
@@ -48,10 +47,11 @@ const Insights = (props:any) => {
     
   </div>
   
+  
 
-    {finalist&&finalist.map((insight:any)=>{
+    {finalist&&finalist.map((insight)=>{
 
-        return<div className='mb-4' key={JSON.stringify(insight)}>
+        return<div className='mb-4' key={"1"}>
            
         
           
@@ -63,6 +63,7 @@ const Insights = (props:any) => {
     
     </div>
   )
+    
 }
 
 export default Insights

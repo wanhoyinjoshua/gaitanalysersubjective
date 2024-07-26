@@ -1,14 +1,9 @@
 import React from 'react'
-import {useState,useEffect,useContext} from "react"
-import ButtonPanel from './components/ButtonPanel';
-import Concentric_ButtonPanel from './components/Concentric_ButtonPanel';
+import {useState,useContext} from "react"
 import {importedJsonfileContext} from '../../analyser/Context'
 import { id2deviation,id2impairment } from './utils/id_2_deviation_label';
-import {BackwardIcon } from '@heroicons/react/20/solid'
 import StageDescription from '../common/components/StageDescription';
 import { Disclosure } from '@headlessui/react'
-import { getallImpairments, sort_impairmentlist } from './utils/helpers';
-import { impairment } from '../common/models/impairments';
 import { selectedImpairment } from '../common/models/selectedimpairment';
 import useImpairmentList from './hooks/useImpairmentList';
 import TestPanel from './components/TestPanel';
@@ -34,23 +29,14 @@ const Testing = (props:any) => {
     const [selectedimpairment,setSelectedImpairment]=useImpairmentList()
     const [backDisabled,setBackDisabled]=useState(false)
     
-    type custom= React.Dispatch<React.SetStateAction<selectedImpairment[]>>
-   //
+
    //I need to keep track of the number, and everytime I go back 
    //I need to keep an index...
     
-    const [skippedImpairments,setSkippedimpairments]=useState(context.skippedimpairments)
-    const [impairmentcount,setimpairmentcount]=useState([0])
+   
+    const [impairmentcount,setimpairmentcount]=useState(context.stage2history)
     console.log(impairmentcount)
-    const [backupimpairmentcount,setBackupcount]=useState([0])
-    const [buttonstates,setButtonstates]=useState({
-        default:true,
-        basic_muscle_testing:false,
-        eccentric_muscle_testing:false
 
-
-
-    })
     
     //another idea is to create a copy of the impairmentlist and only display the filter?
     function resetImpairment(resetList:number[]){
@@ -92,20 +78,6 @@ const Testing = (props:any) => {
        
     }
 
-    
-
-      
-    
-    
-    function next(){
-        var newstage={
-            "1":false,
-            "2":false,
-            "3":true
-        }
-        context.setStage({...newstage})
-    }
-   
     function currentImp(){
         return (selectedimpairment as selectedImpairment[])[impairmentcount[impairmentcount.length-1]]
     }
@@ -182,7 +154,8 @@ if(currentImp()){
     reverse_boolean={false}/>
     }
 
-    {JSON.stringify(selectedimpairment)}
+    
+    {JSON.stringify(context.selectedimpairment)}
     
     
     

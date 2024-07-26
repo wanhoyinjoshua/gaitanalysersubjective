@@ -4,5 +4,6 @@ export interface impairment{
     treatment:number[],
     testing:string,
     physio_movements:string[],
-    class:string[]
+    class:string[],
+    display:boolean
 }

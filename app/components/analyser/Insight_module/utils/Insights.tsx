@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import { InsightList } from '../../common/models/Insights/InsightList'
 export class Insights{
 
 
-    props: any
+    props: {list:InsightList}
     dict:any={
         "1":"Paralysed",
         "2":"Very Weak",
@@ -44,7 +45,7 @@ export class Insights{
   }
 
   isEmpty(){
-    var validimp=this.props.list['impairments'].filter((e:any)=>e["status"]==true).length
+    var validimp=this.props.list.impairments.filter((e:any)=>e["status"]==true).length
     if (validimp==0){
         return true
     }
@@ -84,25 +85,24 @@ export class Insights{
   getImp(type:string){
     //return a list of element to display 
     return(
-        this.props.list['impairments'].map((e:any)=>{
+        this.props.list.impairments.map((e)=>{
           
           if(this.newdict[`${type}`](e)){
             //need to somehow store the treatment ideas to this shit and then geenrate
-            if(e.status==true){
+        
               return (
-                <div key={e[0]}>
+                <div key={e.id}>
                   
                   
-              <dd key={e[0]}className="font-medium text-gray-900"><strong>{e["key"]}</strong>-{this.dict[`${e["str_lvl"].toString()}`]}</dd>
+              <dd key={e.id}className="font-medium text-gray-900"><strong>{e["key"]}</strong>-{this.dict[`${e["str_lvl"].toString()}`]}</dd>
               
-              <div key={e[0]}>Potential treatment ideas</div>
-              {e.treatmentideas.length==0?<div>There are no strageties for this impairment</div>:null}
-              <ol key={e[0]}className='list-decimal  divide-y'>
+              <div key={e.id}>Potential treatment ideas</div>
+              {e.displayTreatment.length==0?<div>There are no strageties for this impairment</div>:null}
+              <ol key={e.id}className='list-decimal  divide-y'>
                
-              {e.treatmentideas.map((treatment:any)=>{
-                if(e.str_lvl!=-1||e.str_lvl!=-1){
-                  //paralaysed
-                  if(treatment.level<=e.str_lvl){
+              {e.displayTreatment.map((treatment:any)=>{
+                
+                  
                     return <div key={treatment.label} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                       
 
@@ -112,32 +112,13 @@ export class Insights{
       alt="No image available for this exercise."
       width={250} 
       height={250} 
-      // blurDataURL="data:..." automatically provided
-      // placeholder="blur" // Optional blur-up while loading
+    
     />
 
                       </div>
 
-                  }
+                  
 
-                }
-                else{
-                  return <div key={treatment.label} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                      
-
-                  <li className=""key={treatment.label}>{treatment.label}</li>
-                  <Image
-  src={`/${treatment.image}.png`||`/${treatment.image}.jpg`}
-  alt="No image available for this exercise."
-  width={250} 
-  height={250} 
-  // blurDataURL="data:..." automatically provided
-  // placeholder="blur" // Optional blur-up while loading
-/>
-
-                  </div>
-
-                }
                
                 
                   
@@ -151,10 +132,7 @@ export class Insights{
               
               )
   
-            }
-            else{
-              return 
-            }
+           
   
           
   

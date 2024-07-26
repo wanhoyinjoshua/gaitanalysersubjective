@@ -25,6 +25,8 @@ const Analyser2 = (props:props) => {
     const [selectedimpairment,setSelectedImpairment]=useState([])
   
     const [selected_observations,setObservations]=useState([])
+
+    const [impairmenthx,setImpairmentHx]=useState([0])
     
 
     const [skippedImpairments,setSkippedimpairments]=useState<any>([])
@@ -44,7 +46,9 @@ var context={
   setStage:setStage,
   testingeliminatedhx:skipperq,
   setSkipperq:setSkipperq,
-  stageController:stagesController
+  stageController:stagesController,
+  stage2history:impairmenthx,
+    setStage2Hx:setImpairmentHx
 }
   return (
     <div className='mt-3 md:mt-6 lg:mt-6  px-0 md:px-20 lg:px-28 '>

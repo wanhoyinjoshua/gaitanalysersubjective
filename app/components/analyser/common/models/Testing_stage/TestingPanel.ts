@@ -27,16 +27,7 @@ export class button_text{
     }
     transform(){
         return this.impairment.class[0]
-        switch(this.impairment.class[0]){
-
-            case "eccentric_str":
-                return "ecc_str"
-            case "concentric_str":
-                return "con_str"
-            default:
-                return "ecc_str"
-                
-        }
+        
        
     }
 
@@ -65,7 +56,7 @@ export class button_text{
     }
 
     get_rom_negative(){
-        return"No restriction in range"
+        return"No restriction"
     }
 
     get_muscle_act_negative(){
@@ -73,7 +64,7 @@ export class button_text{
     }
 
     get_muscle_act_positive(){
-        return"Has excessive muscle activity / spasticity"
+        return"Has excessive muscle activity/ spasticity"
     }
 
 
@@ -87,24 +78,24 @@ export class button_text{
 
     get_concentric_text_1(){
 
-        return "paralysed"
+        return "Paralysed-MMT 0"
 
     }
     get_concentric_text_2(){
 
-        return "very weak"
+        return "Very weak-MMT 1-2"
 
     }
 
     get_concentric_text_3(){
 
-        return "weak"
+        return "Weak-MMT 3-4"
 
     }
 
     get_concentric_text_4(){
 
-        return "strong"
+        return "Strong-MMT 5"
 
     }
     

@@ -5,12 +5,11 @@ import { TestPanelProps,TestingButtonprops } from '../../common/models/Testing_s
 import { button_text } from '../../common/models/Testing_stage/TestingPanel'
 import { BackwardIcon } from '@heroicons/react/20/solid'
 import { switchStages } from '../../services/switch_stages'
-import { impairment } from '../../common/models/impairments'
 import { ButtonTesting } from '../utils/ButtonTesting'
 import { selectedImpairment } from '../../common/models/selectedimpairment'
 const TestPanel = (props:TestPanelProps) => {
     const context=useContext(importedJsonfileContext)
-    const strengththreshold=3
+    
     const buttontest=new ButtonTesting()
     const texts=new button_text(props.impairment)
     const lasttest=props.impairmentcount[props.impairmentcount.length-1]+1==props.selectedImpairment.length
@@ -49,6 +48,7 @@ const TestPanel = (props:TestPanelProps) => {
         if(lasttest){
          
         context.setSelectedImpairment([...newlist])
+        context.setStage2Hx([...props.impairmentcount])
         context.setStage(switchStages(3))
 
         }else{
@@ -72,7 +72,8 @@ const TestPanel = (props:TestPanelProps) => {
 
       function handlenegative(){
         if(lasttest){
-           
+            context.setSelectedImpairment([...props.selectedImpairment])
+            context.setStage2Hx([...props.impairmentcount])
             context.setStage(switchStages(3))
  
          }else{
@@ -177,16 +178,18 @@ const TestPanel = (props:TestPanelProps) => {
         var skippedelement:number[]=[]
         var newshit =newImpList.map((impairment:selectedImpairment,index:number)=>{
             //need to find whwther to skip or not
-            if (index <= lastItem(props.impairmentcount)) return impairment
+            if (index < lastItem(props.impairmentcount)) return impairment
+            if (index == lastItem(props.impairmentcount))return changestr_lvl(impairment,number)
+
             if (isSkip(impairment,number)){
                 //need to set skip[status as true ]
                 var modified=impairment
                 modified.skip_status=true
                 skippedelement.push(index)
                 //window.alert(JSON.stringify(modified))
-                return changestr_lvl(modified,index)
+                return modified
             }else{
-                return changestr_lvl(impairment,index)
+                return impairment
             }
 
 
@@ -200,6 +203,7 @@ const TestPanel = (props:TestPanelProps) => {
 
         //then need to either go to next stage or go to next impairment
         if(lasttest){
+            context.setStage2Hx([...props.impairmentcount])
             context.setStage(switchStages(3))
  
          }else{
@@ -298,17 +302,17 @@ const TestPanel = (props:TestPanelProps) => {
                 </div>
                 
                 
-                <div className="mt-5 sm:mt-4 sm:flex sm:flex-row">
+                <div className="flex flex-col">
                 
                 {dict[`${texts.transform()}`].map((button_function:any)=>{
-                    return <div>
-                        <button onClick={()=>{button_function.button_function()}}>
+                    return <button className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"  
+                        onClick={()=>{button_function.button_function()}}>
                             {button_function.button_text}
 
                         </button>
 
 
-                    </div>
+            
                 })}
                
                 

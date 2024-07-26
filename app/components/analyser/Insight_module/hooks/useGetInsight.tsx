@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState,useEffect,useContext } from 'react'
 import { importedJsonfileContext } from '../../Context';
+import { KinDeviation } from '../../common/models/kinematic_deviation';
+import { Kin_Imp } from '../utils/Kin_Imp';
+import { InsightList } from '../../common/models/Insights/InsightList';
 export function useGetInsight() {
     const context = useContext(importedJsonfileContext);
 
@@ -12,86 +15,23 @@ export function useGetInsight() {
         // use selected observation and then loop through it, then include the impairments 
         
 
-        var finallist:any=[]
+        var finallist:InsightList[]=[]
         //console.log(context.selected_observations)
         //so per selected observation
-        context.selected_observations.forEach((element:any)=>{
+        
+        context.selected_observations.forEach((element)=>{
             //element is the index of the original observation list 
             // need to find the json obejct from the json object instead of just the index
             var finalised_kinematic_deviation:any={"kinematic":context.json.kinematic_deviations.filter((x:any)=>x.id==element)[0]}
-            
-            var allpossibleimpairments=finalised_kinematic_deviation["kinematic"]["possible_impairments"]
-            
-            //those with status=true and skip=true
-            var newselectedimpairment= context.selectedimpairment
-            
-     
-            var deviation_impaairment:any=[]
-            //have all possible impairments for one knematic deviatiom
-            //however the selected impairment list contained mroe impairments as it 
-            //mnay contain imp from another deviations
-            //so need to filter it out 
-            allpossibleimpairments.forEach((impairment_id:any)=>{
-              var filtered= newselectedimpairment.filter((e:any)=>{
-               
-                
-                return e["id"]==impairment_id
-
-
-              })
-              //this deviation object conatains impairments for this deviation
-              //that has the updated status 
-              deviation_impaairment.push(filtered[0])
-              
-
-            })
-
-
-
-            var identifiedimpairments:any=[]
-
+            const props={kd:element,context:context}
+            console.log(context.selectedimpairment)
+            var kin_imp= new Kin_Imp(props)
            
-            //then now the al impairments, the treatments are all ids, 
-            //so need to enrich it 
-            //window.alert(JSON.stringify(deviation_impaairment))
-            deviation_impaairment.forEach((impairment:any)=>{
-               
-                   
-                    var treatmentideas:any=[]
-                    if(impairment['treatment']){
-                      impairment['treatment'].forEach((e:any)=>{
-                        
-                       
-                        treatmentideas.push(context.json.treatments.filter((x:any)=>x.id==e)[0])
-
-                    })
-                      
-
-                    }
-                   
-                    impairment["treatmentideas"]=treatmentideas
-
-                    //impairment["treatment"]=impairment["treatment"].map((e)=>{return treatmentlist[e]})
-                    //now is establishing the new order 
-                    if(impairment["status"]==true||impairment["skip_status"]==true){
-                      identifiedimpairments.unshift(impairment,1)
-
-                    }
-                    
-                    else{
-                      identifiedimpairments.push(impairment)
-
-                    }
-                    
-
-
-
-                
-
-            })
+    
 
             
-            finalised_kinematic_deviation["impairments"]=identifiedimpairments
+            finalised_kinematic_deviation["impairments"]=kin_imp.filterEx()
+            
             
             finallist.push(finalised_kinematic_deviation)
         })
@@ -101,6 +41,12 @@ export function useGetInsight() {
         }
     
    var bb=getfinalist()
+
+   
+
+
+
+
 
    
     

@@ -26,7 +26,11 @@ export interface jsonprops{
   setStage:any,
   testingeliminatedhx:any,
   setSkipperq:any,
-  stageController:any
+  stageController:any,
+  
+  stage2history:number[],
+    setStage2Hx:any
+  
   
   }
 
