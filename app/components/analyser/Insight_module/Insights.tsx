@@ -5,17 +5,15 @@ import { importedJsonfileContext } from '../Context'
 import { useGetInsight } from './hooks/useGetInsight'
 import Breadcrumbs from '../../Breadcrumbs'
 
-const Insights = (props:any) => {
+const Insights = () => {
   const finalist= useGetInsight()
   const context=useContext(importedJsonfileContext)
-  console.log(context.selectedimpairment)
-  console.log(finalist)
-  ///console.log(finalist)
+
 
 
   return (
     <div>
-      {JSON.stringify(finalist)}
+    
     <div className="">
     <div className="border-b border-gray-200   py-5 ">
   <div className=" mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap bg-mq-lightgrey p-3 ">

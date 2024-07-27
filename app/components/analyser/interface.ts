@@ -1,13 +1,16 @@
 import { treatment } from "./common/models/treatment";
+
 import { KinDeviation } from "./common/models/kinematic_deviation"
 import { impairment } from "./common/models/impairments";
 import { selectedImpairment } from "./common/models/selectedimpairment";
 
 
 export interface jsonprops{
-    treatments:treatment[];
+    treatments:any;
     kinematic_deviations:KinDeviation[];
-    impairments:impairment[]
+    impairments:impairment[];
+    dispatchKd:any;
+    dispatchImp:any
   
   
   }

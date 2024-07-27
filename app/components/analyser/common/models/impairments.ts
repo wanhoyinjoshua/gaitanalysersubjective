@@ -5,5 +5,5 @@ export interface impairment{
     testing:string,
     physio_movements:string[],
     class:string[],
-    display:boolean
+    display?:boolean
 }

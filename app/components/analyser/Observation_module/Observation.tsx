@@ -105,7 +105,7 @@ setObservations={setObservations}
  
 </fieldset>
 
-{JSON.stringify(context)}
+
    
      
    

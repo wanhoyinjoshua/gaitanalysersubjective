@@ -92,7 +92,7 @@ const Testing = (props:any) => {
 if(currentImp()){
     return (
         <section className=' '>
-            {JSON.stringify(impairmentcount)}
+           
             
         <div>
         <div className="-space-y-px rounded-md bg-mq-rice">
@@ -147,7 +147,7 @@ if(currentImp()){
     selectedImpairment={selectedimpairment as selectedImpairment[]}
     setSelectedImpairment={setSelectedImpairment}
     impairmentcount={impairmentcount}
-    buttons={[{buttontext:"hi",button_function:()=>{}}]} 
+    
     setimpairmentcount={setimpairmentcount}
     reverse={reverse} 
     backDisabled={backDisabled}
@@ -155,7 +155,7 @@ if(currentImp()){
     }
 
     
-    {JSON.stringify(context.selectedimpairment)}
+    
     
     
     

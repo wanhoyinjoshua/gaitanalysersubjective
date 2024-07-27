@@ -6,7 +6,7 @@ export interface TestingButtonprops{
 }
 export interface TestPanelProps{
     impairment:selectedImpairment,
-    buttons:TestingButtonprops[],
+    
     reverse:any,
     reverse_boolean:boolean,
     selectedImpairment:selectedImpairment[]
