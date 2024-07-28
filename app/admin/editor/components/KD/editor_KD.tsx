@@ -3,6 +3,7 @@ import { KDaction } from '../../utils/reducers/kdReducer'
 import { useContext, useState } from 'react'
 import { editorJsonfileContext } from '@/app/admin/Context'
 import { findIndexfromId } from '../../utils/findIndexfromid'
+import LeftPanel from '../common/LeftPanel'
 import React from 'react'
 
 import { useEffect } from 'react'
@@ -18,51 +19,18 @@ const editor_KD = (props:any) => {
  }
   return (
     <div className='flex'>
-      <div className='w-1/2 '>
-      <input type='text' value={newKD} onChange={(e)=>{setNewKd(e.target.value)}}></input>
-      <button onClick={()=>{
-        context.dispatchKd({
-          type:"add",
-          text:newKD
-          
-          
-
-        })
-
-      }}>
-        Add KD
-      </button>
-      {context.kinematic_deviations.map((kd)=>{
-        return (
-          <section key={kd.id}>
-        <div 
-          >
-            
-            {kd.label}
-          
-          
-          </div>
-          <button onClick={()=>{setKdindex(kd.id)}}>
-            Edit
-          </button>
-          <button onClick={()=>{
-            
-            context.dispatchKd({
-              type:"delete",
-              id:kd.id
-              
-              
-    
-            })
-    
-
-
-          }}>
-            Delete
-          </button>
-          </section>)
-      })}
-      </div>
+      <LeftPanel 
+      newItem={newKD} 
+      setNewItem={setNewKd} 
+      dispatchItemadd={ context.dispatchKd} 
+      addLabeltext={'KD'} 
+      itemList={context.kinematic_deviations} 
+      itemLabelName={'label'} 
+      setViewItem={setKdindex} 
+      dispatchdeleteItem={context.dispatchKd}>
+        
+      </LeftPanel>
+  
 
       {context.kinematic_deviations.length>0&&findIndexfromId(context.kinematic_deviations,KdIndex)!=-1&&
 
@@ -140,6 +108,8 @@ const editor_KD = (props:any) => {
 
       </div>
 
+
+      {JSON.stringify(context.kinematic_deviations)}
 
 
 

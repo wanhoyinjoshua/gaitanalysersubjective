@@ -1,9 +1,10 @@
 import { createContext } from 'react';
-import { jsonprops } from '../components/analyser/interface';
+import { adminjson } from './Interfaces';
 
-export const editorJsonfileContext = createContext<jsonprops>({
+export const editorJsonfileContext = createContext<adminjson>({
   
-
+    view:1,
+    setView:null,
     treatments:[],
     dispatchKd:null,
     dispatchImp:null,

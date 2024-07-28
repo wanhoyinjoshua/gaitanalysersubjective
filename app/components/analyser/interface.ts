@@ -6,11 +6,13 @@ import { selectedImpairment } from "./common/models/selectedimpairment";
 
 
 export interface jsonprops{
+    view?:number,
+    setView?:any,
     treatments:any;
     kinematic_deviations:KinDeviation[];
     impairments:impairment[];
-    dispatchKd:any;
-    dispatchImp:any
+    dispatchKd?:any;
+    dispatchImp?:any
   
   
   }

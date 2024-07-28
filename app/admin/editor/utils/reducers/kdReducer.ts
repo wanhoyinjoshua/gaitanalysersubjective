@@ -48,12 +48,19 @@ export  function kDReducer(kd:KinDeviation[],action:KDaction):KinDeviation[] {
 
       case 'delete': {
         //need to find the id first, cannot change existing id
-        
-        return [
-          ...kd.filter((kd)=>{
-            return kd.id!=action.id
-          })
-        ];
+        console.log(action.id)
+        if(kd.length==1){
+          window.alert("unabel to delete at least one is required")
+          return [...kd]
+        }else{
+          return [
+            ...kd.filter((kd)=>{
+              return kd.id!=action.id
+            })
+          ];
+
+        }
+     
       }
 
       case 'change':{
@@ -104,9 +111,9 @@ export  function kDReducer(kd:KinDeviation[],action:KDaction):KinDeviation[] {
         if(action.id!=null&&action.imp_index!=null){
           var indexofKd=findIndexfromId(kd,action.id)
          var possimp= originalstate[indexofKd].possible_impairments
-         var indextodelet=possimp.indexOf(action.imp_index)
-         possimp.splice(indextodelet,1);
-         originalstate[indexofKd].possible_impairments=possimp
+         var filtered= possimp.filter((imp_id)=>{return imp_id!=action.imp_index})
+      
+         originalstate[indexofKd].possible_impairments=filtered
          return [...originalstate]
 
         }

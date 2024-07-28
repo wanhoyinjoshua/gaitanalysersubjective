@@ -5,11 +5,18 @@ export enum ImpActionKind {
     ADD = 'add',
     CHANGE = 'change',
     DELETE = 'delete',
-    SET='set'
+    SET='set',
+    TESTINGCHANGE='testingchange',
+    PHYSIOMOVEMENTadd="physiomovementadd",
+    PHYSIOMOVEMENTremove="physiomovementremove",
+    SETCLASSES="setClasses",
+    ADDTX="addTx",
+    REMOVETX="removeTx"
+
 
   }
 export const initilImpstate:impairment[]=[{
-    impairment: "",
+    impairment: "First impairment",
     kinematic_deviations: [],
     testing: "",
     category: 0,
@@ -17,13 +24,14 @@ export const initilImpstate:impairment[]=[{
     body: 0,
     physio_movements: [],
     class: [],
-    id: 0
+    id: 1
 }]
 export interface Impaction{
 type:ImpActionKind,
 text?:string,
 id?:number,
-entirelist?:impairment[]
+entirelist?:impairment[],
+tx_index?:number
 
 }
 
@@ -38,7 +46,7 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
         return [
           ...imp,
           {
-              impairment: "",
+              impairment: label,
               kinematic_deviations: [],
               testing: "",
               category: 0,
@@ -49,6 +57,22 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
               id: newid
           },
         ];
+      }
+      case 'delete': {
+        //need to find the id first, cannot change existing id
+        console.log(action.id)
+        if(imp.length==1){
+          window.alert("unabel to delete at least one is required")
+          return [...imp]
+        }else{
+          return [
+            ...imp.filter((imp)=>{
+              return imp.id!=action.id
+            })
+          ];
+
+        }
+     
       }
 
       case 'change':{
@@ -61,9 +85,84 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
           return [...originalstate]
           
         }
+        
        
 
       }
+      case 'testingchange':{
+        var originalstate=imp
+        if(action.id!=null&&action.text!=null){
+          var index=findIndexfromId(imp,action.id)
+          console.log(index)
+          
+          originalstate[index].testing=action.text
+          return [...originalstate]
+          
+        }
+
+      }
+
+      case 'physiomovementadd':{
+
+        var originalstate=imp
+        if(action.id!=null&&action.text!=null){
+          var index=findIndexfromId(imp,action.id)
+          console.log(index)
+          var tempmovements=originalstate[index].physio_movements
+          if(tempmovements.includes(action.text)){
+           
+            return[...originalstate]
+
+          }else{
+            originalstate[index].physio_movements.push(action.text)
+            return [...originalstate]
+
+            
+
+          }
+          
+          
+          
+        }
+
+
+      }
+
+      case 'physiomovementremove':{
+
+        var originalstate=imp
+        if(action.id!=null&&action.text!=null){
+          var index=findIndexfromId(imp,action.id)
+          console.log(index)
+          var tempmovements=originalstate[index].physio_movements
+    
+            var filteredmovement=tempmovements.filter((e)=>e!=action.text)
+            originalstate[index].physio_movements=filteredmovement
+            return[...originalstate]
+
+        
+          
+          
+          
+        }
+
+
+      }
+
+      case'setClasses':{
+
+        var originalstate=imp
+        if(action.id!=null&&action.text!=null){
+            
+          var index=findIndexfromId(imp,action.id)
+          console.log(index)
+         originalstate[index].class=[action.text]
+         
+         return [...originalstate]
+        }
+
+      }
+      
       case 'set':{
         if(action.entirelist!=null){
           return [
@@ -72,6 +171,41 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
 
         }
         
+      }
+
+      case 'addTx':{
+        var originalstate=imp
+        if(action.id!=null&&action.tx_index!=null){
+          var indexofKd=findIndexfromId(imp,action.id)
+         var origin=originalstate[indexofKd].treatment
+         if(origin.includes(action.tx_index)==false){
+          origin.push(action.tx_index)
+
+         }
+        
+         originalstate[indexofKd].treatment=origin
+         console.log("added")
+     
+         return [...originalstate]
+
+        }
+        
+
+      }
+
+      case 'removeTx':{
+        var originalstate=imp
+        if(action.id!=null&&action.tx_index!=null){
+          var indexofKd=findIndexfromId(imp,action.id)
+         var possimp= originalstate[indexofKd].treatment
+         var filtered= possimp.filter((imp_id)=>{return imp_id!=action.tx_index})
+      
+         originalstate[indexofKd].treatment=filtered
+         return [...originalstate]
+
+        }
+        
+
       }
 
       
