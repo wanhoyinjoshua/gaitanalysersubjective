@@ -1,4 +1,5 @@
 import { read, utils, writeFile } from 'xlsx';
+import { jsonprops } from '@/app/components/analyser/interface';
 //need to just download json file...
 //so I need to upload json and then 
 

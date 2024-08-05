@@ -15,7 +15,8 @@ const LeftPanel = (props:{
     //name  of field that contains the text
     setViewItem:any,
     //chnange state do when you click , left panels shows accoridngly 
-    dispatchdeleteItem:any
+    dispatchdeleteItem:any,
+    purge:any
 
 
     
@@ -38,7 +39,7 @@ const LeftPanel = (props:{
     </button>
     {props.itemList.length>0&&props.itemList.map((item:any)=>{
       return (
-        <section key={item.id}>
+        <section draggable={true} key={item.id}>
       <div 
         >
           
@@ -58,7 +59,15 @@ const LeftPanel = (props:{
             
     
           })
-  
+          {props.purge!=null&& props.purge({
+            type:"purge",
+            id:item.id
+            
+            
+    
+          })
+  }
+         
 
 
         }}>

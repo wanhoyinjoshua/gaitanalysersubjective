@@ -54,7 +54,10 @@ const Editor_Imp = (props:any) => {
       itemList={context.impairments} 
       itemLabelName={'impairment'} 
       setViewItem={setImpindex} 
-      dispatchdeleteItem={context.dispatchImp}>
+      dispatchdeleteItem={context.dispatchImp}
+      purge={context.dispatchKd}
+     
+      >
         
       </LeftPanel>
     {context.impairments.length>0&&findIndexfromId(context.impairments,ImpIndex)!=-1&&

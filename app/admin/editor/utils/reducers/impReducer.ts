@@ -11,7 +11,8 @@ export enum ImpActionKind {
     PHYSIOMOVEMENTremove="physiomovementremove",
     SETCLASSES="setClasses",
     ADDTX="addTx",
-    REMOVETX="removeTx"
+    REMOVETX="removeTx",
+   PURGE="purge"
 
 
   }
@@ -207,6 +208,27 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
         
 
       }
+
+      
+      case 'purge':{
+        var originalstate=imp
+        if(action.id!=null){
+         var changed= originalstate.map((imp)=>{
+          var filt=imp.treatment.filter((tx)=>{return action.id!=tx})
+          var full=imp
+          full.treatment=filt
+          return full
+         })
+         return [...changed]
+
+
+        }else{
+          return [...originalstate]
+        }
+
+
+      }
+
 
       
      

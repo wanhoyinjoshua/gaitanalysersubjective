@@ -41,6 +41,7 @@ tx_index?:number
 }
 
 export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
+    
     switch (action.type) {  
       case 'add': {
         //need to find the id first, cannot change existing id
@@ -69,7 +70,7 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
         //need to find the id first, cannot change existing id
         console.log(action.id)
         if(tx.length==1){
-          window.alert("unabel to delete at least one is required")
+      
           return [...tx]
         }else{
           return [
@@ -101,9 +102,9 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
       case'setClasses':{
 
         
-
+        
         var originalstate=tx
-        if(action.id!=null&&action.text!=null){
+        if(action.id!=null){
             
           var index=findIndexfromId(tx,action.id)
           console.log(index)
@@ -114,6 +115,7 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
 
           }
           if(action.subtype=="strength"){
+            
             originalstate[index].strength=action.payload
          
          return [...originalstate]

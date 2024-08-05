@@ -8,8 +8,14 @@ export const editorJsonfileContext = createContext<adminjson>({
     treatments:[],
     dispatchKd:null,
     dispatchImp:null,
+    dispatchTx:null,
     kinematic_deviations:[],
-    impairments:[]
+    impairments:[],
+    settings:{
+        id: 0,
+        label: ''
+    },
+    setSetting:null
    
 
 

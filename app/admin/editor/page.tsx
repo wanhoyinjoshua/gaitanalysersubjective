@@ -10,9 +10,11 @@ import { editorJsonfileContext } from '../Context'
 import { useReducer } from 'react';
 import Editor_KD from './components/KD/editor_KD'
 import Editor_Imp from './components/Impairments/Editor_Imp'
+import Editor_Tx from './components/Treatment/editor_tx'
 
 
 import { KinDeviation } from '@/app/components/analyser/common/models/kinematic_deviation'
+import Setting from './components/Setting/setting'
 const page = () => {
     //I probably need to learn how to write a reducer here....
     const[view,setView]=useState(1)
@@ -21,6 +23,7 @@ const page = () => {
     const [imp, dispatchImp] = useReducer(ImpReducer, initilImpstate);
 
     const [tx, dispatchTx] = useReducer(txReducer, initilTxstate);
+    const [settings,setSetting]=useState({"id":0,"label":""})
 
 
   
@@ -36,7 +39,9 @@ const page = () => {
     dispatchKd:dispatchKd,
     kinematic_deviations:kd,
     impairments:imp,
-    dispatchImp:dispatchImp
+    dispatchImp:dispatchImp,
+    settings:settings,
+    setSetting:setSetting
 
     }
 
@@ -45,6 +50,7 @@ const page = () => {
       <button onClick={()=>setView(1)}>KD view </button>
       <button onClick={()=>setView(2)}>Impairment view </button>
       <button onClick={()=>setView(3)}>Treatment View </button>
+      <button onClick={()=>setView(4)}>Setting View </button>
         <input type="file" onChange={async (e)=>{
            var json=await consumeJson(e)
            dispatchKd(
@@ -79,6 +85,13 @@ const page = () => {
            {view==2&&<Editor_Imp
            ImpIndexInitial={imp.length&&imp[0].id}
            ></Editor_Imp>}
+
+
+          {view==3&&<Editor_Tx></Editor_Tx>}
+
+          {view==4 &&<Setting></Setting>}
+
+
            
 
 

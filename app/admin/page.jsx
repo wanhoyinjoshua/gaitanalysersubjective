@@ -5,12 +5,26 @@ import * as icon from '@coreui/icons';
 import {JSONToExcel,ExcelToJSON} from "../utils/Json_excel"
 import Modal from "../components/modal/Modal"
 
-import { read, utils, writeFile } from 'xlsx';
+import {  read, writeFile,utils } from 'xlsx';
 
 const Page = () => {
   const [modalopen,setModalopen]=useState(false)
   const [confirm,setConfirm]=useState(false)
   const [link,setLink]=useState('#')
+
+  const data ={
+    // We will make a Workbook contains 2 Worksheets
+    'animals': [
+                {"name": "cat", "category": "animal"}
+                ,{"name": "dog", "category": "animal"}
+                ,{"name": "pig", "category": "animal"}
+              ],
+    'pokemons': [
+                {"name": "pikachu", "category": "pokemon"}
+                ,{"name": "Arbok", "category": "pokemon"}
+                ,{"name": "Eevee", "category": "pokemon"}
+              ]
+  }
   function handleClick(href){
     //if yes 
     console.log("hihih")
@@ -19,6 +33,14 @@ const Page = () => {
     
 
     
+  }
+  function download(){
+    var wb = utils.book_new()
+    var animalWS = utils.json_to_sheet(data.animals) 
+      var pokemonWS = utils.json_to_sheet(data.pokemons) 
+      utils.book_append_sheet(wb, animalWS, 'animals') // sheetAName is name of Worksheet
+      utils.book_append_sheet(wb, pokemonWS, 'pokemons')
+      writeFile(wb, 'book.xlsx')
   }
 
   const actions = [
@@ -162,6 +184,7 @@ const Page = () => {
 
   return(
     <div>
+      <button >fuck me </button>
       
       <input type="file" onChange={(e)=>{handlefile(e)}} />
        <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">

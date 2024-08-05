@@ -1,7 +1,13 @@
 import React from "react";
 export interface kinematic_deviation{
-    label:String,
+    label:string,
     id:number
+}
+export interface settings{
+    id:number,
+    label:string,
+    
+
 }
 export interface impairment{
     "impairment":string,

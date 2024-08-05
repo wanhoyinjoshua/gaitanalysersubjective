@@ -27,7 +27,9 @@ const editor_KD = (props:any) => {
       itemList={context.kinematic_deviations} 
       itemLabelName={'label'} 
       setViewItem={setKdindex} 
-      dispatchdeleteItem={context.dispatchKd}>
+      dispatchdeleteItem={context.dispatchKd}
+      purge={null}
+      >
         
       </LeftPanel>
   

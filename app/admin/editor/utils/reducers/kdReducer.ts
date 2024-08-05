@@ -7,7 +7,8 @@ export enum KDActionKind {
     SET='set',
     ADDIMP='addimp',
     DELETEIMP='deleteimp',
-    removeimp='removeimp'
+    removeimp='removeimp',
+    purge='purge'
 
   }
 export const initilKDstate:KinDeviation[]=[{
@@ -121,7 +122,22 @@ export  function kDReducer(kd:KinDeviation[],action:KDaction):KinDeviation[] {
 
       }
 
-      case 'deleteimp':{
+      case 'purge':{
+        var originalstate=kd
+        if(action.id!=null){
+         var changed= originalstate.map((kd)=>{
+          var filt=kd.possible_impairments.filter((imp)=>{return action.id!=imp})
+          var full=kd
+          full.possible_impairments=filt
+          return full
+         })
+         return [...changed]
+
+
+        }else{
+          return [...originalstate]
+        }
+
 
       }
 

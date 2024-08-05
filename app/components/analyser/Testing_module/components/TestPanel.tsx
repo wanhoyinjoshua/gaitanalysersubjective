@@ -4,7 +4,7 @@ import { importedJsonfileContext } from '../../Context'
 import { TestPanelProps,TestingButtonprops } from '../../common/models/Testing_stage/TestingPanel'
 import { button_text } from '../../common/models/Testing_stage/TestingPanel'
 import { BackwardIcon } from '@heroicons/react/20/solid'
-import { switchStages } from '../../services/switch_stages'
+import { switchStages } from '../../services/switch_stages' 
 import { ButtonTesting } from '../utils/ButtonTesting'
 import { selectedImpairment } from '../../common/models/selectedimpairment'
 const TestPanel = (props:TestPanelProps) => {

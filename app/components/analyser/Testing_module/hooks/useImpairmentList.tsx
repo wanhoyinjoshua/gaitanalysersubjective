@@ -7,6 +7,7 @@ import { importedJsonfileContext } from '../../Context'
 import { useContext,useState } from 'react'
 const useImpairmentList = () => {
     const context= useContext(importedJsonfileContext)
+    
 
 
     function getpotentialimpairments(){
