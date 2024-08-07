@@ -1,6 +1,8 @@
 import React from 'react'
 import { useContext } from 'react'
 import { editorJsonfileContext } from '@/app/admin/Context'
+import { downloadExcelWorkbook } from '../../utils/excelReadOut'
+
 const Setting = () => {
     const context= useContext(editorJsonfileContext)
   return (
@@ -9,6 +11,14 @@ const Setting = () => {
         <input  value={context.settings.label}
         onChange={(e)=>{context.setSetting({"id":context.settings.id,"label":e.target.value})}}></input>
 
+    <section>
+      <button onClick={()=>{
+        downloadExcelWorkbook(context.kinematic_deviations,context.impairments,context.treatments,context.settings,context.settings.label)
+      }}>Download Excel</button>
+      <br></br>
+      <button>Download JSON </button>
+      
+    </section>
     </div>
   )
 }

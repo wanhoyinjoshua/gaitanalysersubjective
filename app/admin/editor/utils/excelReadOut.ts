@@ -5,7 +5,7 @@ import { jsonprops } from '@/app/components/analyser/interface';
 
 export async function consumeExcel(e: React.ChangeEvent<HTMLInputElement>){
     if(e.target.files!=null){
-        const file=e.target.files[0];
+    const file=e.target.files[0];
     const data=await file.arrayBuffer()
     
     const workbook=read(data)
@@ -46,4 +46,55 @@ export async function consumeJson(e: React.ChangeEvent<HTMLInputElement>){
         
     }
    
+}
+
+export function downloadExcelWorkbook(kddata:any,impdata:any,txdata:any,settingdata:any,name:string){
+  var unparseddata={
+    "kinematic_deviations":kddata,
+    "impairments":impdata,
+    "treatment":txdata,
+    "settings":[settingdata]
+
+
+
+
+  }
+  const parseddata=jsonifydata(unparseddata)
+    var wb = utils.book_new()
+    var kdWS = utils.json_to_sheet(parseddata.kinematic_deviations) 
+      var impWS = utils.json_to_sheet(parseddata.impairments) 
+      var txWS = utils.json_to_sheet(parseddata.treatment) 
+      var settingWS = utils.json_to_sheet(parseddata.settings) 
+      utils.book_append_sheet(wb, kdWS, 'KD') // sheetAName is name of Worksheet
+      utils.book_append_sheet(wb, impWS, 'impairments')
+      utils.book_append_sheet(wb, txWS, 'treatments')
+      utils.book_append_sheet(wb, settingWS, 'settings')
+      writeFile(wb, `${name}.xlsx`)
+  
+
+}
+
+
+
+export function jsonifydata(data:any){
+
+  var newdata=data
+  
+  newdata['kinematic_deviations'].forEach((deviation:any)=>{
+    console.log(deviation['possible_impairments'])
+    deviation['possible_impairments']=JSON.stringify(deviation['possible_impairments'])
+
+  })
+
+  newdata['impairments'].forEach((imp:any)=>{
+    imp['treatment']=JSON.stringify(imp['treatment'])
+    imp['physio_movements']=JSON.stringify(imp['physio_movements'])
+    imp['class']=JSON.stringify(imp['class'])
+
+  }
+  )
+  
+  return newdata  
+
+
 }
