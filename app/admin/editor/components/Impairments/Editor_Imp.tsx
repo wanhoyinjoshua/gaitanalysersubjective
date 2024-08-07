@@ -6,10 +6,12 @@ import { findIndexfromId } from '../../utils/findIndexfromid'
 import { physio_movements , classes} from '../../models/constants'
 
 import { text } from 'stream/consumers'
+import { customSearch } from '../../utils/customSearch'
 const Editor_Imp = (props:any) => {
   const context=useContext(editorJsonfileContext)
   const [ImpIndex,setImpindex]=useState<any|number>(null)
   const [newIMP,setNewImp]=useState("")
+  const [userWord,setUserword]=useState("")
 
   function current(){
     return context.impairments[findIndexfromId(context.impairments,ImpIndex)]
@@ -47,15 +49,17 @@ const Editor_Imp = (props:any) => {
   return (
     <div className='flex'>
             <LeftPanel 
+            activeIndex={ImpIndex}
       newItem={newIMP} 
       setNewItem={setNewImp} 
       dispatchItemadd={ context.dispatchImp} 
       addLabeltext={'Imp'} 
-      itemList={context.impairments} 
+      itemList={context.impairments}
       itemLabelName={'impairment'} 
       setViewItem={setImpindex} 
       dispatchdeleteItem={context.dispatchImp}
       purge={context.dispatchKd}
+      reorderFunction={context.dispatchImp}
      
       >
         
@@ -119,13 +123,19 @@ const Editor_Imp = (props:any) => {
 
     })}
 
+<input placeholder='Type in your search words' onChange={(e)=>setUserword(e.target.value)}></input>
+
     {context.treatments.map((tx)=>{
 
-      return<div
-      className={current().treatment.includes(tx.id)?"bg-green-100":""}
+     if(current().treatment.includes(tx.id)){
+      return(
+      
+      
+        <div
+      className={"bg-green-100"}
       
       onClick={()=>{
-        if(current().treatment.includes(tx.id)){
+        
           context.dispatchImp({
             id:ImpIndex,
             tx_index:tx.id,
@@ -134,7 +144,36 @@ const Editor_Imp = (props:any) => {
 
           })
 
-        }else{
+       
+      }}>
+
+        {tx.label}
+
+
+      
+
+
+
+      </div>
+
+
+        
+      )
+     }else{
+      return
+     }
+
+    })}
+
+    {context.treatments.map((tx)=>{
+      if(current().treatment.includes(tx.id)==false&&customSearch(userWord,tx.label)){
+
+      
+      return<div
+      className={""}
+      
+      onClick={()=>{
+       
 
           context.dispatchImp({
             id:ImpIndex,
@@ -143,13 +182,14 @@ const Editor_Imp = (props:any) => {
             
 
           })
-        }
+        
       }}>
 
         {tx.label}
 
 
       </div>
+      }
 
     })}
 

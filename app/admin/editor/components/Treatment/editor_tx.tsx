@@ -28,6 +28,7 @@ const  Editor_Tx = (props:any) => {
   return (
     <div className='flex'>
             <LeftPanel 
+          activeIndex={TxIndex}
       newItem={newTx} 
       setNewItem={setNewTx} 
       dispatchItemadd={ context.dispatchTx} 
@@ -38,6 +39,7 @@ const  Editor_Tx = (props:any) => {
       dispatchdeleteItem={context.dispatchTx}
 
       purge={context.dispatchImp}
+      reorderFunction={context.dispatchTx}
       >
         
       </LeftPanel>

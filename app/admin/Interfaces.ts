@@ -1,6 +1,7 @@
 import { KinDeviation } from "../components/analyser/common/models/kinematic_deviation";
 import { treatment } from "../components/analyser/common/models/treatment";
-import { impairment } from "../interface/interface";
+
+import { impairment } from "../components/analyser/common/models/impairments";
 import { settings } from "../interface/interface";
 export interface adminjson{
     

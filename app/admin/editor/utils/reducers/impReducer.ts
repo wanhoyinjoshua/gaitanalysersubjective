@@ -1,6 +1,7 @@
 import { KinDeviation } from "@/app/components/analyser/common/models/kinematic_deviation"
 import { findIndexfromId } from "../findIndexfromid"
-import { impairment } from "@/app/interface/interface"
+
+import { impairment } from "@/app/components/analyser/common/models/impairments"
 export enum ImpActionKind {
     ADD = 'add',
     CHANGE = 'change',
@@ -18,11 +19,11 @@ export enum ImpActionKind {
   }
 export const initilImpstate:impairment[]=[{
     impairment: "First impairment",
-    kinematic_deviations: [],
+   
     testing: "",
-    category: 0,
+    
     treatment: [],
-    body: 0,
+    
     physio_movements: [],
     class: [],
     id: 1
@@ -48,11 +49,11 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
           ...imp,
           {
               impairment: label,
-              kinematic_deviations: [],
+             
               testing: "",
-              category: 0,
+             
               treatment: [],
-              body: 0,
+          
               physio_movements: [],
               class: [],
               id: newid
