@@ -47,10 +47,40 @@ const page = () => {
 
   return (
     <div>
-      <button onClick={()=>setView(1)}>KD view </button>
-      <button onClick={()=>setView(2)}>Impairment view </button>
-      <button onClick={()=>setView(3)}>Treatment View </button>
-      <button onClick={()=>setView(4)}>Setting View </button>
+      <span className="isolate inline-flex rounded-md shadow-sm">
+     
+      <button
+      onClick={()=>setView(1)}
+        type="button"
+        className="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        KD view
+      </button>
+      <button
+      onClick={()=>setView(2)}
+        type="button"
+        className="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        Impairment view 
+      </button>
+      <button
+      onClick={()=>setView(3)}
+        type="button"
+        className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        Treatment View
+      </button>
+      <button
+      onClick={()=>setView(4)}
+        type="button"
+        className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+      >
+        Settings page
+      </button>
+    </span>
+    OR  to import 
+     
+      
         <input type="file" onChange={async (e)=>{
            var json=await consumeJson(e)
            dispatchKd(

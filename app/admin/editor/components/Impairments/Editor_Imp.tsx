@@ -9,7 +9,7 @@ import { text } from 'stream/consumers'
 import { customSearch } from '../../utils/customSearch'
 const Editor_Imp = (props:any) => {
   const context=useContext(editorJsonfileContext)
-  const [ImpIndex,setImpindex]=useState<any|number>(null)
+  const [ImpIndex,setImpindex]=useState<any|number>(context.impairments[0].id)
   const [newIMP,setNewImp]=useState("")
   const [userWord,setUserword]=useState("")
 
@@ -64,10 +64,14 @@ const Editor_Imp = (props:any) => {
       >
         
       </LeftPanel>
-    {context.impairments.length>0&&findIndexfromId(context.impairments,ImpIndex)!=-1&&
-    <div className='w-1/2 '>
+      <section className='w-1/2 max-h-screen overflow-y-scroll'>
+    {context.impairments.length>0&&current()&&current().id!=null&&findIndexfromId(context.impairments,ImpIndex)!=-1&&
+    <div  >
+      <section className='bg-cyan-100 p-5'>
 
-    <input type='text' value={current().impairment} onChange={(e)=>{
+        <div>You can edit the words of your selected impairment below</div>
+        
+    <input className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type='text' value={current().impairment} onChange={(e)=>{
       context.dispatchImp({
         type:"change",
         id:ImpIndex,
@@ -75,6 +79,10 @@ const Editor_Imp = (props:any) => {
 
       })
     }}></input>
+      
+      
+      </section> 
+
 
 <input type='text' value={current().testing} onChange={(e)=>{
       context.dispatchImp({
@@ -84,6 +92,8 @@ const Editor_Imp = (props:any) => {
 
       })
     }}></input>
+
+    <div><strong>Select the physiological movement for the impairment.</strong></div>
 
     {Object.values(physio_movements).map((movement)=>{
       
@@ -104,6 +114,8 @@ const Editor_Imp = (props:any) => {
 
     })}
 <br></br>
+<div><strong>Select the category for the impairment.</strong></div>
+
 {Object.values(classes).map((classes)=>{
       
       return <div
@@ -123,7 +135,8 @@ const Editor_Imp = (props:any) => {
 
     })}
 
-<input placeholder='Type in your search words' onChange={(e)=>setUserword(e.target.value)}></input>
+<div><strong> Select the treatments for the impairment.</strong></div>
+<input  className='sticky top-0  shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' placeholder='Type in your search words' onChange={(e)=>setUserword(e.target.value)}></input>
 
     {context.treatments.map((tx)=>{
 
@@ -132,7 +145,7 @@ const Editor_Imp = (props:any) => {
       
       
         <div
-      className={"bg-green-100"}
+      className={"bg-green-100 mt-5"}
       
       onClick={()=>{
         
@@ -170,7 +183,7 @@ const Editor_Imp = (props:any) => {
 
       
       return<div
-      className={""}
+      className={"mt-5"}
       
       onClick={()=>{
        
@@ -211,9 +224,11 @@ const Editor_Imp = (props:any) => {
     
     
     }
+      {JSON.stringify(context.impairments)}
+    </section>
       
 
-      {JSON.stringify(context.impairments)}
+    
     </div>
   )
 }

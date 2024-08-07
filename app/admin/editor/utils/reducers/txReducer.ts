@@ -69,8 +69,9 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
       case 'delete': {
         //need to find the id first, cannot change existing id
         console.log(action.id)
+        
         if(tx.length==1){
-      
+          window.alert("Unable to delete, must have at least one")
           return [...tx]
         }else{
           return [

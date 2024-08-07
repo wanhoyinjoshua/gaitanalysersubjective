@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { editorJsonfileContext } from '@/app/admin/Context'
 import { findIndexfromId } from '../../utils/findIndexfromid'
+import { customSearch } from '../../utils/customSearch'
 
 const LeftPanel = (props:{
     newItem:string,
@@ -73,9 +74,9 @@ function swap(templist:any, fromid:number,targetid:number){
 
   const [startid,setStartid]=useState(0)
   const [ activeitem,setActive]=useState()
-    
+  const [userword,setUserword]=useState("")
   return (
-    <div className='w-1/2 '>
+    <div className='w-1/2 max-h-screen overflow-y-scroll '>
     <section className='bg-orange-100 p-5'>
     <input placeholder={`Type in your new ${props.addLabeltext}`} type='text' value={props.newItem} onChange={(e)=>{props.setNewItem(e.target.value)}}></input>
     <button 
@@ -94,7 +95,13 @@ function swap(templist:any, fromid:number,targetid:number){
     </button>
     </section>
 
+    <section >
+      <input 
+      className="sticky top-0 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder='Search items, please clear this before you reorder' type='text' onChange={(e)=>{setUserword(e.target.value)}}></input>
+
     {props.itemList.length>0&&props.itemList.map((item:any)=>{
+      if(customSearch(userword,item[`${props.itemLabelName}`])){
       return (
         <section className='mt-10' draggable={true} key={item.id} 
         id={item.id}
@@ -162,7 +169,9 @@ function swap(templist:any, fromid:number,targetid:number){
         </div>
        
         </section>)
+      }
     })}
+    </section>
     </div>
   )
 }

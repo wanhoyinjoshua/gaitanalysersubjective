@@ -12,7 +12,7 @@ import { text } from 'stream/consumers'
 const editor_KD = (props:any) => {
  
   const context=useContext(editorJsonfileContext)
-  const [KdIndex,setKdindex]=useState<any|number>(null)
+  const [KdIndex,setKdindex]=useState<any|number>(context.kinematic_deviations[0].id)
   const [newKD,setNewKd]=useState("")
   const [userWord,setUserword]=useState("")
  function current(){
@@ -45,10 +45,10 @@ const editor_KD = (props:any) => {
       </LeftPanel>
   
 
-      {context.kinematic_deviations.length>0&&findIndexfromId(context.kinematic_deviations,KdIndex)!=-1&&
+      {context.kinematic_deviations.length>0&&current()&&current().id!=null&&findIndexfromId(context.kinematic_deviations,KdIndex)!=-1&&
 
 
-<div className='w-1/2 '>
+<div className='w-1/2 max-h-screen overflow-y-scroll '>
        
         
         <div className="mb-4">
@@ -78,14 +78,14 @@ const editor_KD = (props:any) => {
 <section className='bg-pink-100'>
 
 <div>Select impairments related to your kinematic deviation here</div>
-<input onChange={(e)=>setUserword(e.target.value)}></input>
-      <div className='overflow-y-scroll p-5 bg-slate-50'>
+<input className=" sticky top-0 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  placeholder='Search for impairments by keyword' onChange={(e)=>setUserword(e.target.value)}></input>
+      <div className=' p-5 bg-slate-50'>
      
-    
+      
         {context.impairments.map((imp)=>{
            if(current().possible_impairments.includes(imp.id) ){
             return <div 
-            className='bg-green-100'
+            className='bg-green-100 mt-5'
             onClick={()=>{
               context.dispatchKd({
                 type:"removeimp",
@@ -101,7 +101,6 @@ const editor_KD = (props:any) => {
             >{imp.impairment}</div>
           }
 })}
-      
 
       </div>
 
@@ -109,6 +108,7 @@ const editor_KD = (props:any) => {
         {context.impairments.map((imp)=>{
           if(current().possible_impairments.includes(imp.id)==false && customSearch(userWord,imp.impairment)){
             return <div
+            className='mt-5'
             onClick={()=>{
               context.dispatchKd({
                 type:"addimp",
@@ -144,9 +144,7 @@ const editor_KD = (props:any) => {
       
       
       }
-      {KdIndex==null?<div>Nothing is selected</div>:null}
-      {findIndexfromId(context.kinematic_deviations,KdIndex)==-1?<div>wrong index</div>:null}
-      
+     
     </div>
   )
 }

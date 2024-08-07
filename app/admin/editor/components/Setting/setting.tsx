@@ -4,9 +4,9 @@ import { editorJsonfileContext } from '@/app/admin/Context'
 const Setting = () => {
     const context= useContext(editorJsonfileContext)
   return (
-    <div>
-       
-        <input value={context.settings.label}
+    <div className='bg-cyan-100 p-5'>
+       Please enter the unique identifier for this task. this will be used to retreive images from server.
+        <input  value={context.settings.label}
         onChange={(e)=>{context.setSetting({"id":context.settings.id,"label":e.target.value})}}></input>
 
     </div>

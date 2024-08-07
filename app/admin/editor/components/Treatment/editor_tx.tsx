@@ -7,7 +7,7 @@ import { physio_movements , classes} from '../../models/constants'
 import UploadImage from './image'
 const  Editor_Tx = (props:any) => {
   const context=useContext(editorJsonfileContext)
-  const [TxIndex,setTxindex]=useState<any|number>(null)
+  const [TxIndex,setTxindex]=useState<any|number>(context.treatments[0].id)
   const [newTx,setNewTx]=useState("")
   const [file, setFile] = useState<File | null>(null)
   function current(){
@@ -43,12 +43,15 @@ const  Editor_Tx = (props:any) => {
       >
         
       </LeftPanel>
-      {TxIndex!=null&& <UploadImage name={`${context.settings.label}_${current().id}`}></UploadImage>}
-     
+      <section className='w-1/2 '>
+      <div className='w-1/2'>
+      {TxIndex!=null&&current()&&current().id!=null&& 
+      <UploadImage name={`${context.settings.label}_${current().id}`}></UploadImage>}
+     </div>
     {context.treatments.length>0&&findIndexfromId(context.treatments,TxIndex)!=-1&&
-    <div className='w-1/2 '>
-
-    <input type='text' value={current().label} onChange={(e)=>{
+    <div  >
+      <div className='bg-cyan-100 p-5'><strong>You can edit the words of your treatment below</strong>
+      <input className='w-full' type='text' value={current().label} onChange={(e)=>{
       context.dispatchImp({
         type:"change",
         id:TxIndex,
@@ -56,9 +59,13 @@ const  Editor_Tx = (props:any) => {
 
       })
     }}></input>
+      
+      
+      </div>
+
 
     <br></br>
-
+<div>
     <label htmlFor="cars">Is this tagreting strength:</label>
 
 <select name="cars" id="strength" 
@@ -76,7 +83,8 @@ onChange={(e)=>{
   <option value="0">No </option>
   
 </select>
-    
+</div>
+    <div>
     <label htmlFor="cars">Exercise level , for  str based exercises:</label>
 
 <select name="cars" id="level"
@@ -92,14 +100,16 @@ value={current().level}
 
 }}
 >
+  
   <option value="1">Suitable for paralysed muscle groups</option>
   <option value="2">Suitable for muscle groups thaat can achieve full rom with gravity elimnated </option>
   <option value="3">Suitable for muscle groups that can achieve full rom with gravity</option>
   <option value="4">Suitable for eccentric movements</option>
 </select>
+</div>
 
 
-
+<div>
 <label htmlFor="coor">is this coordination based?</label>
 
 <select name="coor" id="=coor"
@@ -119,7 +129,9 @@ value={current().coordination}
  
 </select>
 
+</div>
 
+<div>
 <label htmlFor="coor">is this part task or whole task?</label>
 
 <select name="coor" id="=part"
@@ -139,7 +151,8 @@ onChange={(e)=>{
   <option value="false">Whole task</option>
  
 </select>
-
+</div>
+<div>
 <label htmlFor="coor">is this rom related?</label>
 
 <select name="rom" id="=rom"
@@ -158,6 +171,7 @@ onChange={(e)=>{
   <option value="false">NO</option>
  
 </select>
+</div>
 
 
 
@@ -177,13 +191,13 @@ onChange={(e)=>{
     
     
     </div>
-    
-    
-    
+
     }
+     {JSON.stringify(context.treatments)}
+    </section>
       
 
-      {JSON.stringify(context.treatments)}
+     
     </div>
   )
 }
