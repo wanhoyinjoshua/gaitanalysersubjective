@@ -82,7 +82,7 @@ const page = () => {
      
       
         <input type="file" onChange={async (e)=>{
-           var json=await consumeJson(e)
+           var json= await consumeJson(e)
            dispatchKd(
             // "action" object:
             {
@@ -105,7 +105,33 @@ const page = () => {
             }} 
             
             />
-      
+            <input type='file' onChange={async (e)=>{
+
+              const data= await consumeExcel(e)
+              dispatchKd(
+                // "action" object:
+                {
+                    type: KDActionKind.SET,
+                    entirelist: data.kinematic_deviations
+                }
+              );
+              dispatchImp({
+                type:ImpActionKind.SET,
+                entirelist: data.impairments
+    
+              })
+              dispatchTx({
+                type: TxActionKind.SET,
+                entirelist: data.treatments,
+                
+              })
+
+              console.log(data.setting)
+              console.log("shit")
+
+              setSetting(data.setting)
+
+            }}    />  
             
             <editorJsonfileContext.Provider value={context}>
               {view==1&&<Editor_KD

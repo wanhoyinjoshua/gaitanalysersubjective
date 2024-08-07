@@ -9,24 +9,39 @@ export async function consumeExcel(e: React.ChangeEvent<HTMLInputElement>){
     const data=await file.arrayBuffer()
     
     const workbook=read(data)
-    console.log(workbook)
-    const ws = workbook.Sheets[workbook.SheetNames[2]]; // get the first worksheet
-    const treatment_ws= workbook.Sheets[workbook.SheetNames[0]]
-    const kinematic_deviation_ws= workbook.Sheets[workbook.SheetNames[1]]
-    const final_data = utils.sheet_to_json(ws);
-    const treatment_final_data=utils.sheet_to_json(treatment_ws);
-    const kinematic_deviation_final_data=utils.sheet_to_json(kinematic_deviation_ws);
-  console.log(final_data)
+    
+   
+    var unparseddata={
+      "kinematic_deviations":utils.sheet_to_json(workbook.Sheets["KD"]),
+      "impairments":utils.sheet_to_json(workbook.Sheets["impairments"]),
+      "treatment":utils.sheet_to_json(workbook.Sheets["treatments"]),
+      "settings":utils.sheet_to_json(workbook.Sheets["settings"])
+  
+  
+  
+  
+    }
+    console.log(unparseddata)
+    const parsed=parseData(unparseddata)
+    console.log(parsed)
+    const tx_data = parsed.treatment; // get the first worksheet
+    const kd_data= parsed.kinematic_deviations
+    const imp_data= parsed.impairments
+    const setting_data= parsed.settings[0]
+    
+ 
 
 
 
-  const exitobject={
-    "treatments":treatment_final_data,
-    "kinematic_deviations":kinematic_deviation_final_data,
-    "impairments":final_data
+  const exitobject:any={
+    "treatments":tx_data,
+    "kinematic_deviations":kd_data,
+    "impairments":imp_data,
+    "setting":setting_data
 
   }
 
+  console.log(exitobject)
   return exitobject
         
     }
@@ -53,7 +68,7 @@ export function downloadExcelWorkbook(kddata:any,impdata:any,txdata:any,settingd
     "kinematic_deviations":kddata,
     "impairments":impdata,
     "treatment":txdata,
-    "settings":[settingdata]
+    "setting":[settingdata]
 
 
 
@@ -68,9 +83,35 @@ export function downloadExcelWorkbook(kddata:any,impdata:any,txdata:any,settingd
       utils.book_append_sheet(wb, kdWS, 'KD') // sheetAName is name of Worksheet
       utils.book_append_sheet(wb, impWS, 'impairments')
       utils.book_append_sheet(wb, txWS, 'treatments')
-      utils.book_append_sheet(wb, settingWS, 'settings')
+      utils.book_append_sheet(wb, settingWS, 'setting')
       writeFile(wb, `${name}.xlsx`)
   
+
+}
+function clean(jsonString:string){
+  let cleanedString = JSON.parse(jsonString)
+  return cleanedString
+}
+
+function parseData(data:any){
+  var newdata=data
+  
+  newdata['kinematic_deviations'].forEach((deviation:any)=>{
+    console.log(JSON.parse(deviation['possible_impairments']))
+    deviation['possible_impairments']=JSON.parse(clean(deviation['possible_impairments']))
+
+  })
+
+  newdata['impairments'].forEach((imp:any)=>{
+    imp['treatment']=JSON.parse(clean(imp['treatment']))
+    imp['physio_movements']=JSON.parse(clean(imp['physio_movements']))
+    imp['class']=JSON.parse(clean(imp['class']))
+
+  }
+  )
+  
+  return newdata  
+
 
 }
 
