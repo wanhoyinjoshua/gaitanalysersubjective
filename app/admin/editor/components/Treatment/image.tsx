@@ -2,9 +2,10 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import AWS from 'aws-sdk';
 import { imgString } from '@/app/utils/getImage';
-
-
-const UploadImage = (props:any) => {
+import { useContext } from 'react';
+import { editorJsonfileContext } from '@/app/admin/Context'
+const UploadImage = (props:any,id:any) => {
+  const context= useContext(editorJsonfileContext)
   useEffect(()=>{
     setName(imgString(props.name))
   },[props.name])
@@ -23,6 +24,15 @@ const UploadImage = (props:any) => {
    
    
     const handleSubmit = async () => {
+
+      if(context.settings.label==""||context.settings.label==null){
+        window.alert("need to provide id before you upload")
+        return
+      }
+      else{
+
+      
+
   
 
          const s3Bucket = new AWS.S3();
@@ -41,15 +51,18 @@ const UploadImage = (props:any) => {
                 console.error( error )
             
             }else{
+              
                 
                 window.alert("successfull")
             }
         
         } );
+
+        
               
             };
 
-         }
+         }}
 
         
        

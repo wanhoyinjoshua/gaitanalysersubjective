@@ -78,10 +78,14 @@ const page = () => {
         Settings page
       </button>
     </span>
-    OR  to import 
+    OR  
+    <br></br>
      
-      
-        <input type="file" onChange={async (e)=>{
+      JSON import - recommended
+        <input type="file" 
+        
+        accept='.json'
+        onChange={async (e)=>{
           
            var json= await consumeJson(e)
            dispatchKd(
@@ -106,7 +110,10 @@ const page = () => {
             }} 
             
             />
-            <input type='file' onChange={async (e)=>{
+
+            Excel import- legacy
+
+            <input type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={async (e)=>{
 
               const data= await consumeExcel(e)
               dispatchKd(

@@ -17,13 +17,13 @@ const Setting = () => {
     <section>
       <button onClick={()=>{
         downloadExcelWorkbook(context.kinematic_deviations,context.impairments,context.treatments,context.settings,context.settings.label)
-      }}>Download Excel</button>
+      }}>Download Excel not recommended</button>
       <br></br>
       <button
       onClick={()=>{
         downloadJson(context.kinematic_deviations,context.impairments,context.treatments,context.settings,context.settings.label)
       }}
-      >Download JSON </button>
+      >Download JSON  recommended</button>
       
     </section>
     </div>

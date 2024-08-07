@@ -78,7 +78,7 @@ function swap(templist:any, fromid:number,targetid:number){
   return (
     <div className='w-1/2 max-h-screen overflow-y-scroll '>
     <section className='bg-orange-100 p-5'>
-    <input placeholder={`Type in your new ${props.addLabeltext}`} type='text' value={props.newItem} onChange={(e)=>{props.setNewItem(e.target.value)}}></input>
+    <input className="  shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  placeholder={`Type in your new ${props.addLabeltext}`} type='text' value={props.newItem} onChange={(e)=>{props.setNewItem(e.target.value)}}></input>
     <button 
      className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
     onClick={()=>{

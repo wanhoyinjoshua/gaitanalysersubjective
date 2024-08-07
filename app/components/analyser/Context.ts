@@ -3,8 +3,11 @@ import {context_props } from './interface';
 
 export const importedJsonfileContext = createContext<context_props>({
   json:{treatments:[],
+    
     kinematic_deviations:[],
-    impairments:[]},
+    impairments:[],
+    setting:{}
+  },
     selected_observations:[],
     selectedimpairment:[],
     skippedimpairments:[],

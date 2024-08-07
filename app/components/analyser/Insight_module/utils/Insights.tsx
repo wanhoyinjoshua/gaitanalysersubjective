@@ -3,7 +3,8 @@ import { InsightList } from '../../common/models/Insights/InsightList'
 export class Insights{
 
 
-    props: {list:InsightList}
+    props: {list:InsightList,name:any}
+    
     dict:any={
         "1":"Paralysed",
         "2":"Very Weak",
@@ -20,6 +21,7 @@ export class Insights{
  
   constructor(props: any) {
     this.props = props
+    
   }
 
   
@@ -108,7 +110,8 @@ export class Insights{
 
                       <li className=""key={treatment.label}>{treatment.label}</li>
                       <Image
-      src={`/${treatment.image}.png`||`/${treatment.image}.jpg`}
+      src={`https://masttx.s3.ap-southeast-2.amazonaws.com/${this.props.name}_${treatment.id}`}
+      
       alt="No image available for this exercise."
       width={250} 
       height={250} 

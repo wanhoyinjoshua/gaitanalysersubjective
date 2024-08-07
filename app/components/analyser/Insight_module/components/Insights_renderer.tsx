@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 
 
-const Insights_renderer = (props:{list:InsightList}) => {
+const Insights_renderer = (props:{list:InsightList,name:any}) => {
   var outputobject=new Insights(props)
   const strpercentage=outputobject.getImpPercentage("str")
   const coorpercentage=outputobject.getImpPercentage("coor")

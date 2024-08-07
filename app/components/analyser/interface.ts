@@ -11,6 +11,7 @@ export interface jsonprops{
     treatments:any;
     kinematic_deviations:KinDeviation[];
     impairments:impairment[];
+    setting?:any;
     dispatchKd?:any;
     dispatchImp?:any
   
@@ -35,6 +36,7 @@ export interface jsonprops{
   
   stage2history:number[],
     setStage2Hx:any
+    
   
   
   }

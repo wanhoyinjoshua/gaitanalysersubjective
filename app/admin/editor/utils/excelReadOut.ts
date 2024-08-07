@@ -9,6 +9,10 @@ export async function consumelocalExcel(){
 }
 
 export async function downloadJson(kddata:any,impdata:any,txdata:any,settingdata:any,name:string){
+ if(name==null ||name =="" ||name ==undefined){
+  window.alert("please fill in the id of the task in settings page")
+  return
+ }else{
   var data={"treatments":txdata,
     "kinematic_deviations":kddata,
     "impairments":impdata,
@@ -21,6 +25,7 @@ export async function downloadJson(kddata:any,impdata:any,txdata:any,settingdata
   link.download = `${name}.json`;
 
   link.click();
+}
  
 }
 

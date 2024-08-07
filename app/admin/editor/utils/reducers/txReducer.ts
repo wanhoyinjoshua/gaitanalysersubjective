@@ -115,6 +115,12 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
          return [...originalstate]
 
           }
+          if(action.subtype=="image"){
+            originalstate[index].image=action.payload
+         
+         return [...originalstate]
+
+          }
           if(action.subtype=="strength"){
             
             originalstate[index].strength=action.payload

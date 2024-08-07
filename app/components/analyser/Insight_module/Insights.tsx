@@ -52,8 +52,8 @@ const Insights = () => {
         return<div className='mb-4' key={"1"}>
            
         
-          
-            <Insights_renderer list={insight} ></Insights_renderer>
+         
+            <Insights_renderer list={insight} name={context.json.setting.label} ></Insights_renderer>
 
             </div>
     })}

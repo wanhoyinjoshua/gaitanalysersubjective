@@ -46,7 +46,7 @@ const  Editor_Tx = (props:any) => {
       <section className='w-1/2 '>
       <div className='w-1/2'>
       {TxIndex!=null&&current()&&current().id!=null&& 
-      <UploadImage name={`${context.settings.label}_${current().id}`}></UploadImage>}
+      <UploadImage name={`${context.settings.label}_${current().id}`} id={TxIndex}></UploadImage>}
      </div>
     {context.treatments.length>0&&findIndexfromId(context.treatments,TxIndex)!=-1&&
     <div  >
