@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { editorJsonfileContext } from '@/app/admin/Context'
 import { downloadExcelWorkbook } from '../../utils/excelReadOut'
+import { downloadJson } from '../../utils/excelReadOut'
 import { consumeExcel } from '../../utils/excelReadOut'
 const Setting = () => {
     const context= useContext(editorJsonfileContext)
@@ -18,7 +19,11 @@ const Setting = () => {
         downloadExcelWorkbook(context.kinematic_deviations,context.impairments,context.treatments,context.settings,context.settings.label)
       }}>Download Excel</button>
       <br></br>
-      <button>Download JSON </button>
+      <button
+      onClick={()=>{
+        downloadJson(context.kinematic_deviations,context.impairments,context.treatments,context.settings,context.settings.label)
+      }}
+      >Download JSON </button>
       
     </section>
     </div>

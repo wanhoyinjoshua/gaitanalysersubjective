@@ -1,7 +1,28 @@
 import { read, utils, writeFile } from 'xlsx';
 import { jsonprops } from '@/app/components/analyser/interface';
+
 //need to just download json file...
 //so I need to upload json and then 
+
+export async function consumelocalExcel(){
+
+}
+
+export async function downloadJson(kddata:any,impdata:any,txdata:any,settingdata:any,name:string){
+  var data={"treatments":txdata,
+    "kinematic_deviations":kddata,
+    "impairments":impdata,
+    "setting":settingdata}
+  const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+    JSON.stringify(data)
+  )}`;
+  const link = document.createElement("a");
+  link.href = jsonString;
+  link.download = `${name}.json`;
+
+  link.click();
+ 
+}
 
 export async function consumeExcel(e: React.ChangeEvent<HTMLInputElement>){
     if(e.target.files!=null){

@@ -82,6 +82,7 @@ const page = () => {
      
       
         <input type="file" onChange={async (e)=>{
+          
            var json= await consumeJson(e)
            dispatchKd(
             // "action" object:
