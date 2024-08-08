@@ -13,7 +13,7 @@ export interface adminjson{
     dispatchKd?:any;
     dispatchImp?:any;
     dispatchTx?:any;
-    settings:settings;
+    setting:settings;
     setSetting:any
   
   

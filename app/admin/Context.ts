@@ -11,7 +11,7 @@ export const editorJsonfileContext = createContext<adminjson>({
     dispatchTx:null,
     kinematic_deviations:[],
     impairments:[],
-    settings:{
+    setting:{
         id: 0,
         label: ''
     },

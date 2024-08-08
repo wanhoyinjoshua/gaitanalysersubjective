@@ -44,7 +44,7 @@ export class Kin_Imp{
         if(id_List.length>0){
             var temp= id_List.map((id)=>{
             
-                return this.context.json.treatments.filter((tx)=>tx.id==id)[0]
+                return this.context.json.treatments.filter((tx:any)=>tx.id==id)[0]
     
             })
             return temp

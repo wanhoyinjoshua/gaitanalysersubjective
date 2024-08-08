@@ -23,7 +23,7 @@ const page = () => {
     const [imp, dispatchImp] = useReducer(ImpReducer, initilImpstate);
 
     const [tx, dispatchTx] = useReducer(txReducer, initilTxstate);
-    const [settings,setSetting]=useState({"id":0,"label":""})
+    const [settings,setSetting]=useState({"id":0,"label":"hh"})
 
 
   
@@ -40,7 +40,7 @@ const page = () => {
     kinematic_deviations:kd,
     impairments:imp,
     dispatchImp:dispatchImp,
-    settings:settings,
+    setting:settings,
     setSetting:setSetting
 
     }
@@ -88,6 +88,7 @@ const page = () => {
         onChange={async (e)=>{
           
            var json= await consumeJson(e)
+           setSetting(json.setting)
            dispatchKd(
             // "action" object:
             {
