@@ -29,9 +29,9 @@ const TestPanel = (props:TestPanelProps) => {
 
     }
     function findnext(newlist:selectedImpairment[]){
-        window.alert("yayy")
+   
         var targetcount= buttontest.Find_display_index(newlist,lastItem(props.impairmentcount))
-        window.alert(JSON.stringify(targetcount))
+       
         //if target count is -1, hyou need to go 
         if(targetcount==-1){
         context.setSelectedImpairment([...newlist])
@@ -136,14 +136,14 @@ const TestPanel = (props:TestPanelProps) => {
         const isSamePhysioMovement=util_same_physiomovement(impairment.physio_movements,props.impairment.physio_movements)
         
         if(isSamePhysioMovement){
-            window.alert(JSON.stringify(impairment.class))
+           
             //skip coor and eccentric 
             if(impairment.class[0].includes("coor")){
                 //if < group 3 then need to skip
                 //otherwise >3 or = 3 will still display
-                window.alert(group)
+              
                 const isTooWeakForCoor=group<=2?true:false
-                window.alert(isTooWeakForCoor)
+               
                 const skip= isTooWeakForCoor?true:false
               
                 return skip
@@ -151,10 +151,10 @@ const TestPanel = (props:TestPanelProps) => {
             }
             if(impairment.class[0].includes("eccentric")){
                 //if group is only 1 and 2 then need to skip
-                window.alert("trururu")
+              
                 const isTooWeakForEcc=group<=2?true:false
                 const skip= isTooWeakForEcc?true:false
-                window.alert("trururu")
+          
                 return skip
                 
 
@@ -194,11 +194,11 @@ const TestPanel = (props:TestPanelProps) => {
 
             if (isSkip(impairment,number)){
                 //need to set skip[status as true ]
-                window.alert("sjsjsj")
+               
                 var modified=impairment
                 modified.skip_status=true
                 skippedelement.push(index)
-                window.alert(JSON.stringify(modified))
+               
                 return modified
             }else{
                 return impairment
@@ -213,7 +213,7 @@ const TestPanel = (props:TestPanelProps) => {
 
 
         var final=setskipp(newshit,lastItem(props.impairmentcount),skippedelement)
-       window.alert(JSON.stringify(final))
+    
         context.setSelectedImpairment([...final])
 
 

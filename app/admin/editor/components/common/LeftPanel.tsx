@@ -135,8 +135,8 @@ function swap(templist:any, fromid:number,targetid:number){
             <button
             className="rounded-full bg-red-100 px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-50"
              onClick={()=>{
-          
-          props.dispatchdeleteItem({
+          if(window.confirm("Do you want to delete, it cannot be undone")){
+            props.dispatchdeleteItem({
               type:"delete",
               id:item.id
               
@@ -151,6 +151,13 @@ function swap(templist:any, fromid:number,targetid:number){
       
             })
     }
+
+          }
+          else{
+            return 
+            
+          }
+       
            
   
   

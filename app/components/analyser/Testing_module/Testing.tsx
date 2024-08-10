@@ -45,7 +45,7 @@ const Testing = (props:any) => {
         oldlist[impairmentcount[impairmentcount.length-2]].skipped_element=[]
         
         resetList.forEach((index:number)=>{
-            window.alert(JSON.stringify(oldlist[index]))
+           
             oldlist[index].skipped_element=[]
             oldlist[index].skip_status=false
 

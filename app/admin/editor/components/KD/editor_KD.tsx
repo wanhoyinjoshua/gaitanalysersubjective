@@ -58,7 +58,7 @@ const editor_KD = (props:any) => {
       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
         You can edit the words of your selected kinematic Deviation below
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+      <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
       id="username" type="text" placeholder="Username"
       value={context.kinematic_deviations[findIndexfromId(context.kinematic_deviations,KdIndex)].label}
       onChange={(e)=>{

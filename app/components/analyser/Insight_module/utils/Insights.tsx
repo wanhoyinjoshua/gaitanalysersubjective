@@ -162,7 +162,7 @@ export class Insights{
     var target=dict[type as keyof typeof dict]
     const allimpcount_positive=this.props.list['impairments'].filter((e:any)=>e.status==true).length
     const target_count=this.props.list['impairments'].filter((e:any)=>target(e)&&e.status==true).length
-    const percentage=Math.floor((target_count/allimpcount_positive)*100)
+    const percentage=target_count==0?0:Math.floor((target_count/allimpcount_positive)*100)
     return percentage
   }
 

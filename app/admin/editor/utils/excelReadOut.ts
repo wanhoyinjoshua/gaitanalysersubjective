@@ -80,6 +80,10 @@ export async function consumeExcel(e: React.ChangeEvent<HTMLInputElement>){
 
 export async function consumeJson(e: React.ChangeEvent<HTMLInputElement>){
     if(e.target.files!=null){
+      if(e.target.files[0]==null){
+        window.alert("No data file selected")
+        return 
+      }
         console.log(e.target.files[0])
         const jsonfile=e.target.files[0]
         const text=await jsonfile.text()
@@ -87,7 +91,6 @@ export async function consumeJson(e: React.ChangeEvent<HTMLInputElement>){
         
         
     }
-   
 }
 
 export function downloadExcelWorkbook(kddata:any,impdata:any,txdata:any,settingdata:any,name:string){

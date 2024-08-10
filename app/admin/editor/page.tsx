@@ -103,6 +103,10 @@ const page = () => {
         
         accept='.json'
         onChange={async (e)=>{
+          if(e.target.files&&e.target.files[0]==null){
+            window.alert("nil data file ")
+            return
+          }
           
            var json= await consumeJson(e)
            if(jsondatacheck(json)){
