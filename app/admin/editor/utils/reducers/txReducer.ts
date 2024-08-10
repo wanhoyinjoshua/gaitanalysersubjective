@@ -12,7 +12,10 @@ export enum TxActionKind {
     PHYSIOMOVEMENTremove="physiomovementremove",
     SETCLASSES="setClasses",
     ADDTX="addTx",
-    REMOVETX="removeTx"
+    REMOVETX="removeTx",
+    ADDREF="addRef",
+    DELREF='delRef',
+    CHANGEREF='changeRef'
 
 
   }
@@ -36,7 +39,8 @@ id?:number,
 entirelist?:treatment[],
 payload?:any,
 subtype?:string,
-tx_index?:number
+tx_index?:number,
+refid?:number
 
 }
 
@@ -156,6 +160,74 @@ export  function txReducer(tx:treatment[],action:Txaction):treatment[] {
         }
 
       }
+
+      case 'addRef':{
+        if(action.payload!=null&&action.id!=null){
+        var temptx=tx
+        var newarray=tx[findIndexfromId(tx,action.id)].reference
+        if(newarray.includes(action.payload)){
+          return [...temptx]
+        }
+        else{
+          temptx[findIndexfromId(tx,action.id)].reference.push(action.payload)
+            return [...temptx]
+        }
+    
+       
+     
+
+
+        }
+        
+
+      }
+
+
+      case 'delRef':{
+        if(action.payload!=null&&action.id!=null){
+        var temptx=tx
+        var newarray=tx[findIndexfromId(tx,action.id)].reference
+        if(newarray.includes(action.payload)==false){
+          return [...temptx]
+        }
+        else{
+          temptx[findIndexfromId(tx,action.id)].reference=temptx[findIndexfromId(tx,action.id)].reference.filter((e)=>{
+            return e!=action.payload
+
+          })
+            return [...temptx]
+        }
+    
+       
+     
+
+
+        }
+        
+
+      }
+
+      case 'changeRef':{
+        if(action.payload!=null&&action.id!=null&&action.text!=null&&action.refid!=null){
+        var temptx=tx
+        var newarray=tx[findIndexfromId(tx,action.id)].reference
+        
+        
+          temptx[findIndexfromId(tx,action.id)].reference[action.refid]=action.text
+            return [...temptx]
+        }
+    
+       
+     
+
+
+        
+        
+
+      }
+       
+      
+      
 
 
     

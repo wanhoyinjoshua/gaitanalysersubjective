@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { InsightList } from '../../common/models/Insights/InsightList'
+import Reference from '../components/Reference'
 export class Insights{
 
 
@@ -18,6 +19,8 @@ export class Insights{
         "coor":this.isCoor,
         "others":this.isOthers
     }
+
+    
  
   constructor(props: any) {
     this.props = props
@@ -86,6 +89,7 @@ export class Insights{
 
   getImp(type:string){
     //return a list of element to display 
+    var refCount=0
     return(
         this.props.list.impairments.map((e)=>{
           
@@ -102,13 +106,23 @@ export class Insights{
               {e.displayTreatment.length==0?<div>There are no strageties for this impairment</div>:null}
               <ol key={e.id}className='list-decimal  divide-y'>
                
-              {e.displayTreatment.map((treatment:any)=>{
+              {e.displayTreatment.map((treatment:any,exindex)=>{
                 
                   
                     return <div key={treatment.label} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                       
 
-                      <li className=""key={treatment.label}>{treatment.label}</li>
+                      <li className=""key={treatment.label}>{treatment.label} 
+                     {treatment.reference.map((ref:any,index:any)=>{
+                      refCount+=1
+                      
+            return <span className='ml-1 underline' style={{ verticalAlign: 'super', fontSize: 'small' }} id="sub"><a target='_blank' href={ref}>{refCount}</a></span>
+    
+        })}
+
+
+
+                      </li>
                       <Image
       src={`https://masttx.s3.ap-southeast-2.amazonaws.com/${this.props.name}_${treatment.id}`}
       

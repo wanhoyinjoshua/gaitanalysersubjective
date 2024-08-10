@@ -9,7 +9,7 @@ const  Editor_Tx = (props:any) => {
   const context=useContext(editorJsonfileContext)
   const [TxIndex,setTxindex]=useState<any|number>(context.treatments[0].id)
   const [newTx,setNewTx]=useState("")
-  const [file, setFile] = useState<File | null>(null)
+  const [newRef, setRef] = useState("")
   function current(){
     return context.treatments[findIndexfromId(context.treatments,TxIndex)]
    }
@@ -182,24 +182,61 @@ onChange={(e)=>{
  
 </select>
 </div>
+<section>
+  <div>References:</div>
+  <input type='text' placeholder='Add new Referenc' onChange={(e)=>{
 
+    setRef(e.target.value)
 
+  }}></input>
+  <button onClick={()=>{
+    context.dispatchTx({
+      type:"addRef",
+        id:TxIndex,
+        payload:newRef
+  })
+  }}>Add new ref</button>
+  <br></br>
+  Existing reference:
+  <br></br>
 
+  {current().reference.map((ref,index)=>{
+    return (
+    <div>
+      
 
- 
+      
+      <input type='text'
+      value={context.treatments[findIndexfromId(context.treatments,TxIndex)].reference[index]}
+      onChange={(e)=>{
+       
+          context.dispatchTx({
+            type:"changeRef",
+            text:e.target.value,
+            refid:index,
+            payload:ref,
+            id:TxIndex
+        })
+        
 
-    
+      }}
+      
+      ></input>
+      <button onClick={()=>{
+          context.dispatchTx({
+            type:"delRef",
+              id:TxIndex,
+              payload:context.treatments[findIndexfromId(context.treatments,TxIndex)].reference[index]
+        })
+      }}>Delete</button>
 
+    </div>
+    )
 
+  })}
+  
+</section>
 
-
-
-    
-    
-    
-    
-    
-    
     </div>
 
     }

@@ -7,6 +7,7 @@ import { BackwardIcon } from '@heroicons/react/20/solid'
 import { switchStages } from '../../services/switch_stages' 
 import { ButtonTesting } from '../utils/ButtonTesting'
 import { selectedImpairment } from '../../common/models/selectedimpairment'
+import TopTip from './TopTip'
 const TestPanel = (props:TestPanelProps) => {
     const context=useContext(importedJsonfileContext)
     
@@ -312,7 +313,8 @@ const TestPanel = (props:TestPanelProps) => {
                     <div className="mt-2">
                     <p className="text-sm text-gray-500">
                         Testing strategy:<br></br>
-                    {props.impairment.testing}
+                        <TopTip text={props.impairment.testing}></TopTip>
+                
                     <br></br>
                     {texts.isConcentric()?<span>Please classify strength level as below based on your assessment.</span>:""}
                     </p>

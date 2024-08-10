@@ -15,7 +15,7 @@ const UploadImage = (props:any,id:any) => {
         region: 'ap-southeast-2',            // or whatever your bucket region is
         maxRetries: 3,
         httpOptions: { timeout: 30000, connectTimeout: 5000 },
-     
+      
        } );
     const [file, setFile] = useState<File | undefined>(undefined)
     const [imgName,setName]=useState(`https://masttx.s3.ap-southeast-2.amazonaws.com/${props.name}`)
