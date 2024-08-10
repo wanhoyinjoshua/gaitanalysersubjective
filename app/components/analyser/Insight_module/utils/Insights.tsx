@@ -90,8 +90,13 @@ export class Insights{
   getImp(type:string){
     //return a list of element to display 
     var refCount=0
+    var refarr: any[]=[]
     return(
-        this.props.list.impairments.map((e)=>{
+
+       
+
+        <section>
+          { this.props.list.impairments.map((e)=>{
           
           if(this.newdict[`${type}`](e)){
             //need to somehow store the treatment ideas to this shit and then geenrate
@@ -115,9 +120,10 @@ export class Insights{
                       <li className=""key={treatment.label}>{treatment.label} 
                      {treatment.reference.map((ref:any,index:any)=>{
                       refCount+=1
+                      refarr.push(ref)
                       
             return <span className='ml-1 underline' style={{ verticalAlign: 'super', fontSize: 'small' }} id="sub"><a target='_blank' href={ref}>{refCount}</a></span>
-    
+     
         })}
 
 
@@ -159,7 +165,30 @@ export class Insights{
   
           }
          
-        })
+        })}
+
+
+        <div>
+          References:
+          {refarr.map((e,index)=>{
+
+            return <div>
+              <span style={{ verticalAlign: 'super', fontSize: 'small' }}>{index+1}</span>
+              <span><a  style={{ verticalAlign: 'sub', fontSize: 'small' }} target='_blank' className='underline' href={e}>{e}</a></span>
+
+                
+
+              </div>
+
+          })}
+        </div>
+
+
+
+        </section>
+
+
+
       )
   }
   getStrImpCount(){
