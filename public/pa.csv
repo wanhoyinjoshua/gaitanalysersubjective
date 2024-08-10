@@ -1,0 +1,33 @@
+P(A),prob
+strength-hip flexors,0.3
+strength -hip extensors ,0.4
+strength -hip abductors,0.2
+strength -knee flexors,0.3
+strength -knee extensors,0.3
+strength - ankle DF,0.2
+strength -ankle PF,0.2
+strength- ankle Soleus,0.23
+rom-hip flexors,0.34
+rom -hip extensors ,0.3
+rom -hip abductors,0.5
+rom-knee flexors,0.2
+rom -knee extensors,0.5
+rom - ankle DF,0.56
+rom -ankle PF,0.23
+rom- ankle Soleus,0.3
+coor-hip flexors,0.2
+coor -hip extensors ,0.1
+coor -hip abductors,0.45
+coor -knee flexors,0.2
+coor -knee extensors,0.4
+coor - ankle DF,0.2
+coor -ankle PF,0.1
+coor- ankle Soleus,0.05
+spas-hip flexors,0.1
+spas -hip extensors ,0.2
+spas -hip abductors,0.1
+spas -knee flexors,0.6
+spas -knee extensors,0.2
+spas - ankle DF,0.1
+spas -ankle PF,0.76
+spas- ankle Soleus,0.3
