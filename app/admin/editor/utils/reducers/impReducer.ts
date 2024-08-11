@@ -1,6 +1,6 @@
 import { KinDeviation } from "@/app/components/analyser/common/models/kinematic_deviation"
 import { findIndexfromId } from "../findIndexfromid"
-
+import { util_same_physiomovement } from "@/app/components/analyser/Testing_module/utils/util_same_physiomovement"
 import { impairment } from "@/app/components/analyser/common/models/impairments"
 export enum ImpActionKind {
     ADD = 'add',
@@ -155,10 +155,43 @@ export  function ImpReducer(imp:impairment[],action:Impaction):impairment[] {
 
         var originalstate=imp
         if(action.id!=null&&action.text!=null){
-            
           var index=findIndexfromId(imp,action.id)
-          console.log(index)
-         originalstate[index].class=[action.text]
+          if(action.text.includes("power")){
+           
+        
+            var movement= originalstate[index].physio_movements
+            var hasCoor=false
+            var hasStr=false
+            originalstate.forEach((e)=>{
+              if(util_same_physiomovement(e.physio_movements,movement)&&e.class.includes("coor")){
+                hasCoor=true
+
+              }
+              else if(util_same_physiomovement(e.physio_movements,movement)&&e.class.includes("concentric_str")){
+                hasStr=true
+              }
+
+            })
+
+            if(hasCoor&&hasStr){
+              originalstate[index].class=[action.text]
+              return [...originalstate]
+
+            }else{
+              window.alert("unable to create power impairment as you do not have str and coordination for the same physiological movement")
+              return [...originalstate]
+
+            }
+            
+          }
+          else{
+
+            console.log(index)
+            originalstate[index].class=[action.text]
+
+          }
+          
+        
          
          return [...originalstate]
         }

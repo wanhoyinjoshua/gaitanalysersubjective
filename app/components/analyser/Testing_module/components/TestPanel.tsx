@@ -7,6 +7,8 @@ import { BackwardIcon } from '@heroicons/react/20/solid'
 import { switchStages } from '../../services/switch_stages' 
 import { ButtonTesting } from '../utils/ButtonTesting'
 import { selectedImpairment } from '../../common/models/selectedimpairment'
+import { changestr_lvl } from '../utils/changestr_lvl'
+import { util_same_physiomovement } from '../utils/util_same_physiomovement'
 import TopTip from './TopTip'
 const TestPanel = (props:TestPanelProps) => {
     const context=useContext(importedJsonfileContext)
@@ -19,10 +21,7 @@ const TestPanel = (props:TestPanelProps) => {
         [key: string]: any;
       }
 
-    function lastItem(list:any[]){
-        return list[list.length-1]
 
-    }
     function newCount(newItem:number){
         var oldcount=props.impairmentcount
         oldcount.push(newItem)
@@ -51,7 +50,10 @@ const TestPanel = (props:TestPanelProps) => {
         
         return props.impairmentcount.length==1?true:false
     }
-    
+    function lastItem(list:any[]){
+        return list[list.length-1]
+
+    }
     function updateImpairment_status(index:number, impairmentList:selectedImpairment[]){
         var newlist=setImpairmentStatus(impairmentList,index,true)
         if(lasttest){
@@ -158,25 +160,7 @@ const TestPanel = (props:TestPanelProps) => {
         return newlist
 
       }
-      function util_same_physiomovement(newlist:any,oldlist:any){
-        //need to loop this for however many items in newlist[impairmentcount]["physio_movements"]
-        //keep a var to keep track 
-        var same_movement=false
-        //for an input of size 5 , it will run the for loop 5 times and in the loop only one operation.
-        //so it will be proportioanl to input size O(n)linear complexity
-        newlist.forEach((physio_movement:any)=>{
-          if(oldlist.includes(physio_movement)){
-            same_movement=true
-        
-          }
-          else{
-        
-          }
-        })
-        
-            return same_movement
-        
-        }
+
 
       function isSkip(impairment:selectedImpairment,group:number){
 
@@ -228,12 +212,7 @@ const TestPanel = (props:TestPanelProps) => {
 
 
       }
-      function changestr_lvl(impairment:selectedImpairment,group:number){
-        var changed=impairment
-        changed.str_lvl=group
-        return changed
 
-      }
 
       function group(number:number){
         //first of all whether to set current impaitment true or false
