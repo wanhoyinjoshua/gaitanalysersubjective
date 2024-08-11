@@ -73,7 +73,55 @@ const TestPanel = (props:TestPanelProps) => {
     }
 
       function handlepositive(){
+
+        
         //in the yes function I need to take in the impairment list and change the status
+        //now also need to consider the efect of power imp.
+        //need to search through the list for a power imp under the same physiological movement.
+        var newImpList= setImpairmentStatus(props.selectedImpairment,lastItem(props.impairmentcount),true)
+        //now I will have to consider processing the newImplist
+        //now have to loop through the new list and then depending on what type of impairment it is 
+        // to set skip stautus true.
+        //can run a foreach loop and only starts at current index +1, and then 
+        var skippedelement:number[]=[]
+        var newshit =newImpList.map((impairment:selectedImpairment,index:number)=>{
+            //need to find whwther to skip or not
+            const isSamePhysioMovement=util_same_physiomovement(impairment.physio_movements,props.impairment.physio_movements)
+        
+            if (index <= lastItem(props.impairmentcount)) return impairment
+           
+            if (impairment.class[0].includes("power")&&isSamePhysioMovement){
+                window.alert("power skip coordination")
+                //need to set skip[status as true ]
+               //so now for str impairment , if str is group 1/2/3, it will automatically skip the power imp
+               //regardless of what coordination says.
+               //now I need to address the coordinaton aspect. so in case str is perfect
+               //if coordination is fine, power will show, but if coordination is not fine, then power wil hide.
+
+                var modified=impairment
+                modified.skip_status=true
+                skippedelement.push(index)
+               
+                return modified
+            }else{
+                return impairment
+            }
+
+
+
+        })
+        //need to use aove t update state 
+        //the error is essentially when the last item of the list is eccentric impaiment 
+        // and when it skip status is true , this will proviude an error.
+
+
+        var final=setskipp(newshit,lastItem(props.impairmentcount),skippedelement)
+    
+        context.setSelectedImpairment([...final])
+
+
+
+
         updateImpairment_status(lastItem(props.impairmentcount),props.selectedImpairment)
         //context.setStage(switchStages(3))
 
@@ -161,6 +209,17 @@ const TestPanel = (props:TestPanelProps) => {
 
             }
 
+            if(impairment.class[0].includes("power")){
+                //if group is only 1 and 2 then need to skip
+              
+                const isTooWeakForPower=group<=3?true:false
+                const skip= isTooWeakForPower?true:false
+          
+                return skip
+                
+
+            }
+
 
 
         }else{
@@ -195,7 +254,11 @@ const TestPanel = (props:TestPanelProps) => {
 
             if (isSkip(impairment,number)){
                 //need to set skip[status as true ]
-               
+               //so now for str impairment , if str is group 1/2/3, it will automatically skip the power imp
+               //regardless of what coordination says.
+               //now I need to address the coordinaton aspect. so in case str is perfect
+               //if coordination is fine, power will show, but if coordination is not fine, then power wil hide.
+
                 var modified=impairment
                 modified.skip_status=true
                 skippedelement.push(index)
@@ -275,6 +338,12 @@ const TestPanel = (props:TestPanelProps) => {
             {button_text:texts.get_muscle_act_negative(),button_function:handlenegative},
             {button_text:texts.get_muscle_act_positive(),button_function:handlepositive}
            
+        ],
+        power:[ 
+            {button_text:texts.get_power_negative(),button_function:handlenegative},
+            {button_text:texts.get_power_positive(),button_function:handlepositive}
+           
+
         ],
 
         others:[

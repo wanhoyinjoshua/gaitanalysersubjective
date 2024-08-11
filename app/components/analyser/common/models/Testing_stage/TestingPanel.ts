@@ -106,6 +106,14 @@ export class button_text{
         return "Strong-MMT 5"
 
     }
+
+    get_power_negative(){
+        return "No Power Deficits"
+    }
+
+    get_power_positive(){
+        return "Has Power Deficits"
+    }
     
     
 }

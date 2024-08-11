@@ -18,7 +18,8 @@ export enum classes{
     coordination="coor",
     sensation="sensation",
     rangeOfMotion="rom",
-    muscleActivity="ex_mus_ac"
+    muscleActivity="ex_mus_ac",
+    power="power"
 
 
 }
