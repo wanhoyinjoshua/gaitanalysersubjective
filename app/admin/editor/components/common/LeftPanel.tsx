@@ -4,8 +4,9 @@ import { editorJsonfileContext } from '@/app/admin/Context'
 import { findIndexfromId } from '../../utils/findIndexfromid'
 import { customSearch } from '../../utils/customSearch'
 import ToolTip from '@/app/components/ui/ToolTip'
-const LeftPanel = (props:{
-    newItem:string,
+
+interface leftpanel{
+  newItem:string,
     //value of text of new item
     setNewItem:any,
     //function to set the text of new item
@@ -23,9 +24,8 @@ const LeftPanel = (props:{
     reorderFunction?:any,
     activeIndex:any
 
-
-    
-}) => {
+}
+const LeftPanel = (props:leftpanel) => {
 
 
 

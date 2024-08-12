@@ -49,8 +49,7 @@ const Editor_Imp = (props:any) => {
    }
   return (
     <div className='flex'>
-            <LeftPanel 
-            activeIndex={ImpIndex}
+            <LeftPanel activeIndex={ImpIndex}
       newItem={newIMP} 
       setNewItem={setNewImp} 
       dispatchItemadd={ context.dispatchImp} 
