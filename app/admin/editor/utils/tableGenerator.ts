@@ -30,6 +30,7 @@ function kdprocess(kd:KinDeviation,imparray:impairment[],txarray:treatment[]){
         
         for (let j=0;j<imp[i].treatment.length;j++){
             //produce tds 
+            //everything is based on the treatment....
             var tdarray=[]
             var treatmenttext=id2item(imp[i].treatment[j],txarray).label
            
@@ -43,7 +44,7 @@ function kdprocess(kd:KinDeviation,imparray:impairment[],txarray:treatment[]){
             tdarray.push(wrap(kdtext,"td"))
             tdarray.push(wrap(impairmenttext,"td"))
             tdarray.push(wrap(testingtext,"td"))
-            tdarray.push(wrap(treatmenttext,"td"))
+            tdarray.push(wrap(treatmenttext==undefined?"none":treatmenttext,"td"))
 
             imptdlist.push(wrap(tdarray.join(""),"tr"))
             first=1

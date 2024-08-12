@@ -92,7 +92,7 @@ const TestPanel = (props:TestPanelProps) => {
         
             if (index <= lastItem(props.impairmentcount)) return impairment
            
-            if (impairment.class[0].includes("power")&&isSamePhysioMovement){
+            if (impairment.class[0].includes("power")&&isSamePhysioMovement&&props.impairment.class.includes("coor")){
                 window.alert("power skip coordination")
                 //need to set skip[status as true ]
                //so now for str impairment , if str is group 1/2/3, it will automatically skip the power imp

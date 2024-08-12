@@ -19,7 +19,8 @@ export enum classes{
     sensation="sensation",
     rangeOfMotion="rom",
     muscleActivity="ex_mus_ac",
-    power="power"
+    power="power",
+    other="other"
 
 
 }

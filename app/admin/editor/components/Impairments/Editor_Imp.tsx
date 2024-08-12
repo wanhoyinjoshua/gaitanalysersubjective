@@ -98,7 +98,7 @@ type='text' value={current().testing} onChange={(e)=>{
 
 
 
-    <div><strong>Select the physiological movement for the impairment.</strong></div>
+    <div><strong>Select the physiological movement for the impairment.</strong> think about the physiological movement that will be affected as a result of this impairment</div>
 
     {Object.values(physio_movements).map((movement)=>{
       
