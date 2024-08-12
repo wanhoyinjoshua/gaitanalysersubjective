@@ -4,6 +4,7 @@ import AWS from 'aws-sdk';
 import { imgString } from '@/app/utils/getImage';
 import { useContext } from 'react';
 import { editorJsonfileContext } from '@/app/admin/Context'
+
 const UploadImage = (props:any,id:any) => {
   const context= useContext(editorJsonfileContext)
   useEffect(()=>{
@@ -15,8 +16,8 @@ const UploadImage = (props:any,id:any) => {
         region: 'ap-southeast-2',            // or whatever your bucket region is
         maxRetries: 3,
         httpOptions: { timeout: 30000, connectTimeout: 5000 },
-        accessKeyId: process.env.S3ID,
-        secretAccessKey: process.env.S3KEY,
+        accessKeyId: process.env.NEXT_PUBLIC_S3ID,
+        secretAccessKey: process.env.NEXT_PUBLIC_S3KEY,
        } );
     const [file, setFile] = useState<File | undefined>(undefined)
     const [imgName,setName]=useState(`https://masttx.s3.ap-southeast-2.amazonaws.com/${props.name}`)
