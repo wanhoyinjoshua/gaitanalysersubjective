@@ -42,9 +42,7 @@ const Editor_KD = (props:any) => {
       dispatchdeleteItem={context.dispatchKd}
       purge={null}
       reorderFunction={context.dispatchKd}
-      >
-        
-      </LeftPanel>
+      />
   
 
       {context.kinematic_deviations.length>0&&current()&&current().id!=null&&findIndexfromId(context.kinematic_deviations,KdIndex)!=-1&&

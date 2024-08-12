@@ -40,9 +40,7 @@ const  Editor_Tx = (props:any) => {
 
       purge={context.dispatchImp}
       reorderFunction={context.dispatchTx}
-      >
-        
-      </LeftPanel>
+      />
       <section className='w-1/2 '>
       <div className='w-1/2'>
       {TxIndex!=null&&current()&&current().id!=null&& 
@@ -204,7 +202,7 @@ onChange={(e)=>{
     return (
     <div
     key={index}
-    
+
     >
       
 

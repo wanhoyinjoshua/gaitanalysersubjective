@@ -8,6 +8,7 @@ import ToolTip from '@/app/components/ui/ToolTip'
 interface leftpanel{
   newItem:string,
     //value of text of new item
+  
     setNewItem:any,
     //function to set the text of new item
     dispatchItemadd:any,
@@ -25,7 +26,8 @@ interface leftpanel{
     activeIndex:any
 
 }
-const LeftPanel = (props:leftpanel) => {
+const 
+LeftPanel = (props:leftpanel) => {
 
 
 
