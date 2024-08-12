@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Tab } from '@headlessui/react'
-import LightbulbPanel from '../LightbulbPanel'
+
 interface type{
 setToggleopen:any;
 toggleopen:boolean;
