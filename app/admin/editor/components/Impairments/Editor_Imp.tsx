@@ -103,6 +103,7 @@ type='text' value={current().testing} onChange={(e)=>{
     {Object.values(physio_movements).map((movement)=>{
       
       return <div
+      key={movement}
       id={movement}
       className={current().physio_movements.includes(movement)==true?
         "bg-green-100":""
@@ -125,6 +126,7 @@ type='text' value={current().testing} onChange={(e)=>{
 {Object.values(classes).map((classes)=>{
       
       return <div
+      key={classes}
       id={classes}
       className={current().class.includes(classes)==true?
         "bg-green-100":""
@@ -153,6 +155,7 @@ type='text' value={current().testing} onChange={(e)=>{
       
       
         <div
+        key={tx.id}
       className={"bg-green-100 mt-5 cursor-pointer"}
       
       onClick={()=>{
@@ -191,6 +194,7 @@ type='text' value={current().testing} onChange={(e)=>{
 
       
       return<div
+      key={tx.id}
       className={"mt-5 cursor-pointer"}
       
       onClick={()=>{

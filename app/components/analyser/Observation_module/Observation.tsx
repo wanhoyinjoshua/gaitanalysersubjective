@@ -92,6 +92,7 @@ const Observation = () => {
 
 
 <KdItem
+key={index}
 index={index}
 deviation={deviation}
 selected_observations={selected_observations}

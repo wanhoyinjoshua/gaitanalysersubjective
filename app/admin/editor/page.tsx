@@ -17,7 +17,7 @@ import { jsondatacheck } from '@/app/utils/datacheck'
 import Analyser2 from '@/app/components/analyser/Analyser copy'
 import { KinDeviation } from '@/app/components/analyser/common/models/kinematic_deviation'
 import Setting from './components/Setting/setting'
-const page = () => {
+const Page = () => {
     //I probably need to learn how to write a reducer here....
     const[view,setView]=useState(1)
     
@@ -226,4 +226,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

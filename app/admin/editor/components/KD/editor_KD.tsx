@@ -11,7 +11,7 @@ import { text } from 'stream/consumers'
 import ToolTip from '@/app/components/ui/ToolTip'
 import CheckBox from '@/app/components/ui/CheckBox'
 
-const editor_KD = (props:any) => {
+const Editor_KD = (props:any) => {
  
   const context=useContext(editorJsonfileContext)
   const [KdIndex,setKdindex]=useState<any|number>(context.kinematic_deviations[0].id)
@@ -87,6 +87,7 @@ const editor_KD = (props:any) => {
         {context.impairments.map((imp)=>{
            if(current().possible_impairments.includes(imp.id) ){
             return <div 
+            key={imp.id}
             className='bg-green-100 mt-5 cursor-pointer'
             onClick={()=>{
               context.dispatchKd({
@@ -113,6 +114,7 @@ const editor_KD = (props:any) => {
         {context.impairments.map((imp)=>{
           if(current().possible_impairments.includes(imp.id)==false && customSearch(userWord,imp.impairment)){
             return <div
+            key={imp.id}
             className='mt-5 cursor-pointer'
             onClick={()=>{
               context.dispatchKd({
@@ -156,4 +158,4 @@ const editor_KD = (props:any) => {
   )
 }
 
-export default editor_KD
+export default Editor_KD

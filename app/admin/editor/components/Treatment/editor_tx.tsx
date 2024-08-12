@@ -202,7 +202,10 @@ onChange={(e)=>{
 
   {current().reference.map((ref,index)=>{
     return (
-    <div>
+    <div
+    key={index}
+    
+    >
       
 
       

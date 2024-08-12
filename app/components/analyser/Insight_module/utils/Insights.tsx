@@ -122,7 +122,7 @@ export class Insights{
                       refCount+=1
                       refarr.push(ref)
                       
-            return <span className='ml-1 underline' style={{ verticalAlign: 'super', fontSize: 'small' }} id="sub"><a target='_blank' href={ref}>{refCount}</a></span>
+            return <span key={index} className='ml-1 underline' style={{ verticalAlign: 'super', fontSize: 'small' }} id="sub"><a target='_blank' href={ref}>{refCount}</a></span>
      
         })}
 
@@ -172,7 +172,7 @@ export class Insights{
           References:
           {refarr.map((e,index)=>{
 
-            return <div>
+            return <div key={index}>
               <span style={{ verticalAlign: 'super', fontSize: 'small' }}>{index+1}</span>
               <span><a  style={{ verticalAlign: 'sub', fontSize: 'small' }} target='_blank' className='underline' href={e}>{e}</a></span>
 

@@ -8,9 +8,9 @@ const TopTip = (props:{text:string}) => {
         var temparr=props.text.split("TOP TIP:")
        return temparr.map((e,index)=>{
             if(index==0){
-                return <span>{e}</span>
+                return <span key={index}>{e}</span>
             }else{
-                return <span>
+                return <span key={index}>
                     
                     <div className="border-l-4 border-yellow-400 bg-yellow-50 p-4">
     <div className="flex">
