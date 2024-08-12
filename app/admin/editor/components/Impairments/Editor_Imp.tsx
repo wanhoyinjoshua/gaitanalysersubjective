@@ -49,19 +49,7 @@ const Editor_Imp = (props:any) => {
    }
   return (
     <div className='flex'>
-            <LeftPanel activeIndex={ImpIndex}
-      newItem={newIMP} 
-      setNewItem={setNewImp} 
-      dispatchItemadd={ context.dispatchImp} 
-      addLabeltext={'Imp'} 
-      itemList={context.impairments}
-      itemLabelName={'impairment'} 
-      setViewItem={setImpindex} 
-      dispatchdeleteItem={context.dispatchImp}
-      purge={context.dispatchKd}
-      reorderFunction={context.dispatchImp}
-     
-      />
+          
         
       
       <section className='w-1/2 max-h-screen overflow-y-scroll'>
