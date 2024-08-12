@@ -62,9 +62,9 @@ const Editor_Imp = (props:any) => {
       purge={context.dispatchKd}
       reorderFunction={context.dispatchImp}
      
-      >
+      />
         
-      </LeftPanel>
+      
       <section className='w-1/2 max-h-screen overflow-y-scroll'>
     {context.impairments.length>0&&current()&&current().id!=null&&findIndexfromId(context.impairments,ImpIndex)!=-1&&
     <div  >
