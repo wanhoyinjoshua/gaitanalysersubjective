@@ -182,12 +182,16 @@ onChange={(e)=>{
 </div>
 <section>
   <div>References:</div>
-  <input type='text' placeholder='Add new Referenc' onChange={(e)=>{
+  <input type='text' placeholder='Add new Referenc'
+  className='className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"' onChange={(e)=>{
+
 
     setRef(e.target.value)
 
   }}></input>
-  <button onClick={()=>{
+  <button 
+    className="rounded-full bg-indigo-600 px-2.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    onClick={()=>{
     context.dispatchTx({
       type:"addRef",
         id:TxIndex,
@@ -208,6 +212,7 @@ onChange={(e)=>{
 
       
       <input type='text'
+      className='className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"'
       value={context.treatments[findIndexfromId(context.treatments,TxIndex)].reference[index]}
       onChange={(e)=>{
        
@@ -223,7 +228,9 @@ onChange={(e)=>{
       }}
       
       ></input>
-      <button onClick={()=>{
+      <button
+      className='  className="rounded-full bg-red-600 px-2.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"'
+       onClick={()=>{
           context.dispatchTx({
             type:"delRef",
               id:TxIndex,

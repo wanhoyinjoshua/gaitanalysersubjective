@@ -15,7 +15,9 @@ const Setting = () => {
       
        Please enter the unique identifier for this task. this will be used to retreive images from server.
        
-        <input  value={context.setting.label}
+        <input 
+        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+         value={context.setting.label}
         onChange={(e)=>{context.setSetting({"id":context.setting.id,"label":e.target.value})}}></input>
 
     <section>
@@ -24,12 +26,15 @@ const Setting = () => {
       }}>Download Excel not recommended</button>
       <br></br>
       <button
+
+      className='mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
       onClick={()=>{
         downloadJson(context.kinematic_deviations,context.impairments,context.treatments,context.setting,context.setting.label)
       }}
       >Download JSON  recommended</button>
+      <br></br>
 
-      <button onClick={async ()=>{
+      <button className='mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={async ()=>{
 
         await window.navigator.clipboard.write(
 [
