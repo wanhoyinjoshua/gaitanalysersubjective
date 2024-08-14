@@ -325,9 +325,9 @@ const TestPanel = (props:TestPanelProps) => {
 
         ],
 
-        others:[
-            {button_text:texts.get_rom_negative(),button_function:handlenegative},
-            {button_text:texts.get_rom_positive(),button_function:handlepositive}
+        other:[
+            {button_text:texts.get_others_negative(),button_function:handlenegative},
+            {button_text:texts.get_others_positive(),button_function:handlepositive}
            
         
         ]

@@ -114,6 +114,14 @@ export class button_text{
     get_power_positive(){
         return "Has Power Deficits"
     }
+
+    get_others_negative(){
+        return "No"
+    }
+
+    get_others_positive(){
+        return "Yes"
+    }
     
     
 }

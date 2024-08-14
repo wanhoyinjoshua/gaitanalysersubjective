@@ -1,23 +1,18 @@
 import React from 'react'
-
-export const InsightsPanel = (props:any) => {
+import Radarplot from "./Radarplot"
+import {Radardata} from "./radardata"
+export const InsightsPanel = (props:Radardata) => {
     const stats = [
-    { id: 1, name: 'Strength', value: `${props.str}` },
-    { id: 2, name: 'Coordination', value: `${props.coor}`},
-    { id: 3, name: 'Others', value: `${props.others}` }
+    { id: 1, name: 'Strength', value: `${0}` },
+    { id: 2, name: 'Coordination', value: `${0}`},
+    { id: 3, name: 'Others', value: `${0}` }
    
   ]
     return (
        
-            <div className="mx-auto max-w-2xl lg:max-w-none">
-            <dl className="mt-8 mb-8 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((stat) => (
-                  <div key={stat.id} className="flex flex-col bg-gray-400/5 p-8">
-                    <dt className="text-sm font-semibold leading-6 text-gray-600">{stat.name}</dt>
-                    <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">{stat.value}%</dd>
-                  </div>
-                ))}
-              </dl>
+            <div className="">
+              <Radarplot strength={props.strength} coor={props.coor} power={props.power} rom={props.rom} sensation={props.sensation} ex_mus_ac={props.ex_mus_ac}></Radarplot>
+           
             
             </div>
        

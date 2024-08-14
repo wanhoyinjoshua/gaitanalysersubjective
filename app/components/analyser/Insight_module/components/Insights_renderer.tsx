@@ -50,9 +50,22 @@ const Insights_renderer = (props:{list:InsightList,name:any}) => {
     <div className='text-l font-extrabold'>
       {props.list["kinematic"]["label"]}
     </div>
+    <div className='grid lg:grid-cols-2  md:grid-cols-1  sm:grid-cols-1'>
+    <div>
+
+ 
     <LightbulbPanel setToggleopen={setToggleopen} content={outputobject.getImpstatement()}></LightbulbPanel>
-    
-<InsightsPanel str={strpercentage} coor={coorpercentage} others={otherspercentage}></InsightsPanel>
+    </div>
+    <InsightsPanel 
+    strength={outputobject.getStrImpCount()} 
+    coor={outputobject.getCoorImpCount()} 
+    power={outputobject.getPowerImpCount()} 
+    rom={outputobject.getRomImpCount()} 
+    sensation={outputobject.getSensationImpCount()} 
+    ex_mus_ac={outputobject.getMusAcImpCount()}></InsightsPanel>
+
+    </div>
+  
 
         </div>
     

@@ -30,9 +30,9 @@ export class Insights{
   
 
   isOthers(e:any){
-    const isStr=e&&e["class"]&&(e["class"].includes("eccentric_str")||e["class"].includes("concentric_str"))
-    const isCoor=e&&e["class"]&&e["class"].includes("coor")
-    if(isStr==false&&isCoor==false){
+    const isStr=e["class"].includes("concentric_str")||e["class"].includes("eccentric_str")
+    const isCoor=e["class"].includes("coor")
+    if(isStr==false &&isCoor==false){
         return true
     }
     else{
@@ -249,6 +249,28 @@ export class Insights{
 
 
   }
+  getSensationImpCount(){
+    return this.props.list['impairments'].filter((e)=>e.class.includes("sensation")&&e.status==true).length
+
+
+
+  }
+  getRomImpCount(){
+    return this.props.list['impairments'].filter((e)=>e.class.includes("rom")&&e.status==true).length
+
+
+  }
+  getMusAcImpCount(){
+    return this.props.list['impairments'].filter((e)=>e.class.includes("ex_mus_ac")&&e.status==true).length
+
+
+  }
+  getPowerImpCount(){
+    return this.props.list['impairments'].filter((e)=>e.class.includes("power")&&e.status==true).length
+
+
+  }
+ 
 
   getOthersImpCount(){
     
