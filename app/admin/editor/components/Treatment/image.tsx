@@ -91,7 +91,7 @@ const UploadImage = (props:any,id:any) => {
           accept="image/png, image/jpeg"
         />
         <button onClick={()=>{handleSubmit()}} >
-          Upload
+          Upload Photo
         </button>
       
    </div>
