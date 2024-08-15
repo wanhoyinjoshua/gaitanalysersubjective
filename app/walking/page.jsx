@@ -6,6 +6,8 @@ import { isConsent } from '../utils/storage/storage';
 import Modal from "../components/modal/Modal"
 import stance_final_15042024 from "../jsonfiles/stance_final_15042024.json"
 import swing_json from "../jsonfiles/swing_data.json"
+import walking_stance_production from "../jsonfiles/production/walking_stance_production.json"
+import walking_swing_production from "../jsonfiles/production/walking_swing_production.json"
 import play_dummy from "../jsonfiles/play_dummy.json"
 import stance_json from "../jsonfiles/stance_data.json"
 
@@ -104,13 +106,13 @@ const Page = () => {
     </div>
       </section>
        <div className={view[0].current==true?"pt-12":"hidden"}>
-       <Analyser2  key="component1" json={play_dummy}></Analyser2>
+       <Analyser2  key="component1" json={walking_stance_production}></Analyser2>
 
        </div>
    
        <div className={view[0].current==false?"pt-12":"hidden"}>
        
-       <Analyser2  key="component1" json={swing_json}></Analyser2>
+       <Analyser2  key="component1" json={walking_swing_production}></Analyser2>
 
        </div>
     
